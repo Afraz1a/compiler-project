@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Student ID | BSCS23029 |
-| Repository | `https://github.com/<username>/citu-compiler` |
+| Repository | https://github.com/Afraz1a/compiler-project |
 | Commit | see section 5 |
 
 Citu is the language from the grammar assignment. Its keywords are Urdu
@@ -693,14 +693,14 @@ does not hide the rest of the file.
 | | |
 |---|---|
 | Student ID | BSCS23029 |
-| Repository | `https://github.com/<username>/citu-compiler` |
+| Repository | https://github.com/Afraz1a/compiler-project |
 | Commit | `git rev-parse HEAD` after pushing |
 
 Shared with `umarsuleman@gmail.com` and `mscs24052@itu.edu.pk` through
 Settings → Collaborators.
 
 ```
-citu-compiler/
+compiler-project/
     cituc.py              driver
     citu/lexer.py         phase 1
     citu/parser.py        phase 2
