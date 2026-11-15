@@ -735,25 +735,27 @@ The AST drops punctuation and chain productions. The 614-node parse tree of
 `ex1_search.citu` becomes an AST small enough to read on one screen:
 
 ```
-Program
+Program : void
   VarDecl [type_name='int32', name='size'] : int32
     IntLit [value=8] : intlit
   ArrayDecl [type_name='int32', name='a', size=8] : int32
   ...
-  While
+  While : void
     Binary [op='<'] : bool
       Var [name='i'] : int32
       Var [name='size'] : int32
-    Block
-      If
+    Block : void
+      If : void
         Binary [op='='] : bool
           Index [name='a'] : int32
             Var [name='i'] : int32
           IntLit [value=0] : intlit
-        Block
+        Block : void
           Assign [name='found'] : int32
             Var [name='i'] : int32
-          Break
+          Break : void
+      Assign [name='i'] : int32
+        Binary [op='+'] : int32
 ```
 
 Two slots are filled in later rather than at parse time: `ctype` by the
