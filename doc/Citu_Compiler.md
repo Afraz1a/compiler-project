@@ -1,8 +1,10 @@
 # Citu — Language and Compiler
 
-**Student ID:** BSCS23029
-**Repository:** `https://github.com/<username>/citu-compiler`
-**Commit:** see section 5
+| | |
+|---|---|
+| Student ID | BSCS23029 |
+| Repository | `https://github.com/<username>/citu-compiler` |
+| Commit | see section 5 |
 
 Citu is the language from the grammar assignment. Its keywords are Urdu
 words. The compiler is in `citu/` and is run with:
