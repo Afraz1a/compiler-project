@@ -1,0 +1,11 @@
+# citu-program-output v1
+# source: examples/ex3_stats.citu
+# instructions executed: 321
+#--------------------------------------------------
+count   : 10
+lowest  : 33
+highest : 95
+sum     : 689
+mean    : 68.9
+passed  : 8 of 10
+grade   : C

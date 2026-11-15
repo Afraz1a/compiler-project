@@ -1,0 +1,85 @@
+# citu-tokens v1
+# source: examples/ex4_errors.citu
+# fields: INDEX | LINE | COL | TOKEN_TYPE | CATEGORY | LEXEME | VALUE
+#------------------------------------------------------------------------------
+0     | 12   | 1   | INT32      | TYPE_KEYWORD   | int32        | -
+1     | 12   | 7   | ID         | IDENTIFIER     | x            | -
+2     | 12   | 9   | MEDALO     | KEYWORD        | medalo       | -
+3     | 12   | 16  | INTLIT     | INT_LITERAL    | 5            | 5
+4     | 12   | 17  | SEMI       | PUNCTUATOR     | ;            | -
+5     | 13   | 1   | INT32      | TYPE_KEYWORD   | int32        | -
+6     | 13   | 7   | ID         | IDENTIFIER     | x            | -
+7     | 13   | 9   | MEDALO     | KEYWORD        | medalo       | -
+8     | 13   | 16  | INTLIT     | INT_LITERAL    | 6            | 6
+9     | 13   | 17  | SEMI       | PUNCTUATOR     | ;            | -
+10    | 15   | 1   | CHAR       | TYPE_KEYWORD   | char         | -
+11    | 15   | 7   | ID         | IDENTIFIER     | c            | -
+12    | 15   | 9   | MEDALO     | KEYWORD        | medalo       | -
+13    | 15   | 16  | INTLIT     | INT_LITERAL    | 70000        | 70000
+14    | 15   | 21  | SEMI       | PUNCTUATOR     | ;            | -
+15    | 17   | 1   | INT32      | TYPE_KEYWORD   | int32        | -
+16    | 17   | 7   | ID         | IDENTIFIER     | arr          | -
+17    | 17   | 10  | LBRACK     | PUNCTUATOR     | [            | -
+18    | 17   | 11  | INTLIT     | INT_LITERAL    | 3            | 3
+19    | 17   | 12  | RBRACK     | PUNCTUATOR     | ]            | -
+20    | 17   | 13  | SEMI       | PUNCTUATOR     | ;            | -
+21    | 18   | 1   | ID         | IDENTIFIER     | arr          | -
+22    | 18   | 4   | LBRACK     | PUNCTUATOR     | [            | -
+23    | 18   | 5   | INTLIT     | INT_LITERAL    | 7            | 7
+24    | 18   | 6   | RBRACK     | PUNCTUATOR     | ]            | -
+25    | 18   | 8   | MEDALO     | KEYWORD        | medalo       | -
+26    | 18   | 15  | INTLIT     | INT_LITERAL    | 1            | 1
+27    | 18   | 16  | SEMI       | PUNCTUATOR     | ;            | -
+28    | 20   | 1   | AGAR       | KEYWORD        | agar         | -
+29    | 20   | 6   | LPAREN     | PUNCTUATOR     | (            | -
+30    | 20   | 8   | ID         | IDENTIFIER     | x            | -
+31    | 20   | 10  | RPAREN     | PUNCTUATOR     | )            | -
+32    | 20   | 12  | SHURO      | KEYWORD        | shuro        | -
+33    | 21   | 5   | DIKHAO     | KEYWORD        | dikhao       | -
+34    | 21   | 11  | LPAREN     | PUNCTUATOR     | (            | -
+35    | 21   | 12  | ID         | IDENTIFIER     | y            | -
+36    | 21   | 13  | RPAREN     | PUNCTUATOR     | )            | -
+37    | 21   | 14  | SEMI       | PUNCTUATOR     | ;            | -
+38    | 22   | 1   | KHATAM     | KEYWORD        | khatam       | -
+39    | 24   | 1   | NIKAL      | KEYWORD        | nikal        | -
+40    | 24   | 6   | SEMI       | PUNCTUATOR     | ;            | -
+41    | 26   | 1   | INT32      | TYPE_KEYWORD   | int32        | -
+42    | 26   | 7   | ID         | IDENTIFIER     | q            | -
+43    | 26   | 9   | MEDALO     | KEYWORD        | medalo       | -
+44    | 26   | 16  | ID         | IDENTIFIER     | x            | -
+45    | 26   | 18  | SLASH      | OPERATOR       | /            | -
+46    | 26   | 20  | INTLIT     | INT_LITERAL    | 0            | 0
+47    | 26   | 21  | SEMI       | PUNCTUATOR     | ;            | -
+48    | 27   | 1   | INT32      | TYPE_KEYWORD   | int32        | -
+49    | 27   | 7   | ID         | IDENTIFIER     | w            | -
+50    | 27   | 9   | MEDALO     | KEYWORD        | medalo       | -
+51    | 27   | 16  | ID         | IDENTIFIER     | arr          | -
+52    | 27   | 19  | SEMI       | PUNCTUATOR     | ;            | -
+53    | 29   | 1   | REAL       | TYPE_KEYWORD   | real         | -
+54    | 29   | 6   | ID         | IDENTIFIER     | r            | -
+55    | 29   | 8   | MEDALO     | KEYWORD        | medalo       | -
+56    | 29   | 15  | REALLIT    | REAL_LITERAL   | 2.5          | 2.5
+57    | 29   | 18  | SEMI       | PUNCTUATOR     | ;            | -
+58    | 30   | 1   | INT32      | TYPE_KEYWORD   | int32        | -
+59    | 30   | 7   | ID         | IDENTIFIER     | z            | -
+60    | 30   | 9   | MEDALO     | KEYWORD        | medalo       | -
+61    | 30   | 16  | ID         | IDENTIFIER     | x            | -
+62    | 30   | 18  | PERCENT    | OPERATOR       | %            | -
+63    | 30   | 20  | ID         | IDENTIFIER     | r            | -
+64    | 30   | 21  | SEMI       | PUNCTUATOR     | ;            | -
+65    | 32   | 1   | INT32      | TYPE_KEYWORD   | int32        | -
+66    | 32   | 7   | ID         | IDENTIFIER     | m            | -
+67    | 32   | 9   | MEDALO     | KEYWORD        | medalo       | -
+68    | 32   | 16  | INTLIT     | INT_LITERAL    | 3            | 3
+69    | 32   | 20  | INTLIT     | INT_LITERAL    | 4            | 4
+70    | 32   | 21  | SEMI       | PUNCTUATOR     | ;            | -
+71    | 34   | 1   | INT32      | TYPE_KEYWORD   | int32        | -
+72    | 34   | 7   | ID         | IDENTIFIER     | k            | -
+73    | 34   | 9   | MEDALO     | KEYWORD        | medalo       | -
+74    | 34   | 16  | SEMI       | PUNCTUATOR     | ;            | -
+75    | 35   | 1   | DIKHAO     | KEYWORD        | dikhao       | -
+76    | 35   | 7   | LPAREN     | PUNCTUATOR     | (            | -
+77    | 36   | 1   | EOF        | EOF            | <eof>        | -
+#------------------------------------------------------------------------------
+# total tokens: 78 (including EOF)
+# lexical errors: 2

@@ -1,0 +1,190 @@
+{
+  "format": "citu-ast",
+  "version": 1,
+  "source": "examples/ex4_errors.citu",
+  "tree": {
+    "kind": "Program",
+    "line": 1,
+    "col": 1,
+    "stmts": [
+      {
+        "kind": "VarDecl",
+        "line": 12,
+        "col": 1,
+        "type_name": "int32",
+        "name": "x",
+        "init": {
+          "kind": "IntLit",
+          "line": 12,
+          "col": 16,
+          "value": 5
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 13,
+        "col": 1,
+        "type_name": "int32",
+        "name": "x",
+        "init": {
+          "kind": "IntLit",
+          "line": 13,
+          "col": 16,
+          "value": 6
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 15,
+        "col": 1,
+        "type_name": "char",
+        "name": "c",
+        "init": {
+          "kind": "IntLit",
+          "line": 15,
+          "col": 16,
+          "value": 70000
+        }
+      },
+      {
+        "kind": "ArrayDecl",
+        "line": 17,
+        "col": 1,
+        "type_name": "int32",
+        "name": "arr",
+        "size": 3
+      },
+      {
+        "kind": "IndexAssign",
+        "line": 18,
+        "col": 1,
+        "name": "arr",
+        "index": {
+          "kind": "IntLit",
+          "line": 18,
+          "col": 5,
+          "value": 7
+        },
+        "value": {
+          "kind": "IntLit",
+          "line": 18,
+          "col": 15,
+          "value": 1
+        }
+      },
+      {
+        "kind": "If",
+        "line": 20,
+        "col": 1,
+        "cond": {
+          "kind": "Var",
+          "line": 20,
+          "col": 8,
+          "name": "x"
+        },
+        "then_block": {
+          "kind": "Block",
+          "line": 20,
+          "col": 12,
+          "stmts": [
+            {
+              "kind": "Print",
+              "line": 21,
+              "col": 5,
+              "args": [
+                {
+                  "kind": "Var",
+                  "line": 21,
+                  "col": 12,
+                  "name": "y"
+                }
+              ]
+            }
+          ]
+        },
+        "else_block": null
+      },
+      {
+        "kind": "Break",
+        "line": 24,
+        "col": 1
+      },
+      {
+        "kind": "VarDecl",
+        "line": 26,
+        "col": 1,
+        "type_name": "int32",
+        "name": "q",
+        "init": {
+          "kind": "Binary",
+          "line": 26,
+          "col": 18,
+          "op": "/",
+          "left": {
+            "kind": "Var",
+            "line": 26,
+            "col": 16,
+            "name": "x"
+          },
+          "right": {
+            "kind": "IntLit",
+            "line": 26,
+            "col": 20,
+            "value": 0
+          }
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 27,
+        "col": 1,
+        "type_name": "int32",
+        "name": "w",
+        "init": {
+          "kind": "Var",
+          "line": 27,
+          "col": 16,
+          "name": "arr"
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 29,
+        "col": 1,
+        "type_name": "real",
+        "name": "r",
+        "init": {
+          "kind": "RealLit",
+          "line": 29,
+          "col": 15,
+          "value": 2.5
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 30,
+        "col": 1,
+        "type_name": "int32",
+        "name": "z",
+        "init": {
+          "kind": "Binary",
+          "line": 30,
+          "col": 18,
+          "op": "%",
+          "left": {
+            "kind": "Var",
+            "line": 30,
+            "col": 16,
+            "name": "x"
+          },
+          "right": {
+            "kind": "Var",
+            "line": 30,
+            "col": 20,
+            "name": "r"
+          }
+        }
+      }
+    ]
+  }
+}

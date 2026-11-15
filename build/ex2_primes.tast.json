@@ -1,0 +1,521 @@
+{
+  "format": "citu-typed-ast",
+  "version": 1,
+  "source": "examples/ex2_primes.citu",
+  "frame_size": 14,
+  "tree": {
+    "kind": "Program",
+    "line": 1,
+    "col": 1,
+    "ctype": "void",
+    "stmts": [
+      {
+        "kind": "VarDecl",
+        "line": 10,
+        "col": 1,
+        "ctype": "uint16",
+        "type_name": "uint16",
+        "name": "limit",
+        "init": {
+          "kind": "IntLit",
+          "line": 10,
+          "col": 21,
+          "ctype": "intlit",
+          "value": 40
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 11,
+        "col": 1,
+        "ctype": "uint16",
+        "type_name": "uint16",
+        "name": "n",
+        "init": {
+          "kind": "IntLit",
+          "line": 11,
+          "col": 17,
+          "ctype": "intlit",
+          "value": 2
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 12,
+        "col": 1,
+        "ctype": "uint16",
+        "type_name": "uint16",
+        "name": "count",
+        "init": {
+          "kind": "IntLit",
+          "line": 12,
+          "col": 21,
+          "ctype": "intlit",
+          "value": 0
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 13,
+        "col": 1,
+        "ctype": "uint32",
+        "type_name": "uint32",
+        "name": "total",
+        "init": {
+          "kind": "IntLit",
+          "line": 13,
+          "col": 21,
+          "ctype": "intlit",
+          "value": 0
+        }
+      },
+      {
+        "kind": "While",
+        "line": 15,
+        "col": 1,
+        "ctype": "void",
+        "cond": {
+          "kind": "Binary",
+          "line": 15,
+          "col": 12,
+          "ctype": "bool",
+          "op": "<",
+          "left": {
+            "kind": "Var",
+            "line": 15,
+            "col": 10,
+            "ctype": "uint16",
+            "name": "n"
+          },
+          "right": {
+            "kind": "Var",
+            "line": 15,
+            "col": 14,
+            "ctype": "uint16",
+            "name": "limit"
+          }
+        },
+        "body": {
+          "kind": "Block",
+          "line": 15,
+          "col": 22,
+          "ctype": "void",
+          "stmts": [
+            {
+              "kind": "VarDecl",
+              "line": 18,
+              "col": 5,
+              "ctype": "uint16",
+              "type_name": "uint16",
+              "name": "d",
+              "init": {
+                "kind": "IntLit",
+                "line": 18,
+                "col": 21,
+                "ctype": "intlit",
+                "value": 2
+              }
+            },
+            {
+              "kind": "VarDecl",
+              "line": 19,
+              "col": 5,
+              "ctype": "int16",
+              "type_name": "int16",
+              "name": "prime",
+              "init": {
+                "kind": "IntLit",
+                "line": 19,
+                "col": 24,
+                "ctype": "intlit",
+                "value": 1
+              }
+            },
+            {
+              "kind": "While",
+              "line": 21,
+              "col": 5,
+              "ctype": "void",
+              "cond": {
+                "kind": "Binary",
+                "line": 21,
+                "col": 20,
+                "ctype": "bool",
+                "op": "<=",
+                "left": {
+                  "kind": "Binary",
+                  "line": 21,
+                  "col": 16,
+                  "ctype": "uint16",
+                  "op": "*",
+                  "left": {
+                    "kind": "Var",
+                    "line": 21,
+                    "col": 14,
+                    "ctype": "uint16",
+                    "name": "d"
+                  },
+                  "right": {
+                    "kind": "Var",
+                    "line": 21,
+                    "col": 18,
+                    "ctype": "uint16",
+                    "name": "d"
+                  }
+                },
+                "right": {
+                  "kind": "Var",
+                  "line": 21,
+                  "col": 23,
+                  "ctype": "uint16",
+                  "name": "n"
+                }
+              },
+              "body": {
+                "kind": "Block",
+                "line": 21,
+                "col": 27,
+                "ctype": "void",
+                "stmts": [
+                  {
+                    "kind": "If",
+                    "line": 22,
+                    "col": 9,
+                    "ctype": "void",
+                    "cond": {
+                      "kind": "Binary",
+                      "line": 22,
+                      "col": 22,
+                      "ctype": "bool",
+                      "op": "=",
+                      "left": {
+                        "kind": "Binary",
+                        "line": 22,
+                        "col": 18,
+                        "ctype": "uint16",
+                        "op": "%",
+                        "left": {
+                          "kind": "Var",
+                          "line": 22,
+                          "col": 16,
+                          "ctype": "uint16",
+                          "name": "n"
+                        },
+                        "right": {
+                          "kind": "Var",
+                          "line": 22,
+                          "col": 20,
+                          "ctype": "uint16",
+                          "name": "d"
+                        }
+                      },
+                      "right": {
+                        "kind": "IntLit",
+                        "line": 22,
+                        "col": 24,
+                        "ctype": "intlit",
+                        "value": 0
+                      }
+                    },
+                    "then_block": {
+                      "kind": "Block",
+                      "line": 22,
+                      "col": 28,
+                      "ctype": "void",
+                      "stmts": [
+                        {
+                          "kind": "Assign",
+                          "line": 23,
+                          "col": 13,
+                          "ctype": "int16",
+                          "name": "prime",
+                          "value": {
+                            "kind": "IntLit",
+                            "line": 23,
+                            "col": 26,
+                            "ctype": "intlit",
+                            "value": 0
+                          }
+                        },
+                        {
+                          "kind": "Break",
+                          "line": 24,
+                          "col": 13,
+                          "ctype": "void"
+                        }
+                      ]
+                    },
+                    "else_block": null
+                  },
+                  {
+                    "kind": "Assign",
+                    "line": 26,
+                    "col": 9,
+                    "ctype": "uint16",
+                    "name": "d",
+                    "value": {
+                      "kind": "Binary",
+                      "line": 26,
+                      "col": 20,
+                      "ctype": "uint16",
+                      "op": "+",
+                      "left": {
+                        "kind": "Var",
+                        "line": 26,
+                        "col": 18,
+                        "ctype": "uint16",
+                        "name": "d"
+                      },
+                      "right": {
+                        "kind": "IntLit",
+                        "line": 26,
+                        "col": 22,
+                        "ctype": "intlit",
+                        "value": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "kind": "If",
+              "line": 29,
+              "col": 5,
+              "ctype": "void",
+              "cond": {
+                "kind": "Binary",
+                "line": 29,
+                "col": 22,
+                "ctype": "bool",
+                "op": "aur",
+                "left": {
+                  "kind": "Binary",
+                  "line": 29,
+                  "col": 18,
+                  "ctype": "bool",
+                  "op": "=",
+                  "left": {
+                    "kind": "Var",
+                    "line": 29,
+                    "col": 12,
+                    "ctype": "int16",
+                    "name": "prime"
+                  },
+                  "right": {
+                    "kind": "IntLit",
+                    "line": 29,
+                    "col": 20,
+                    "ctype": "intlit",
+                    "value": 1
+                  }
+                },
+                "right": {
+                  "kind": "Unary",
+                  "line": 29,
+                  "col": 26,
+                  "ctype": "bool",
+                  "op": "nahi",
+                  "operand": {
+                    "kind": "Binary",
+                    "line": 29,
+                    "col": 34,
+                    "ctype": "bool",
+                    "op": "=",
+                    "left": {
+                      "kind": "Var",
+                      "line": 29,
+                      "col": 32,
+                      "ctype": "uint16",
+                      "name": "n"
+                    },
+                    "right": {
+                      "kind": "IntLit",
+                      "line": 29,
+                      "col": 36,
+                      "ctype": "intlit",
+                      "value": 1
+                    }
+                  }
+                }
+              },
+              "then_block": {
+                "kind": "Block",
+                "line": 29,
+                "col": 41,
+                "ctype": "void",
+                "stmts": [
+                  {
+                    "kind": "Print",
+                    "line": 30,
+                    "col": 9,
+                    "ctype": "void",
+                    "args": [
+                      {
+                        "kind": "Var",
+                        "line": 30,
+                        "col": 16,
+                        "ctype": "uint16",
+                        "name": "n"
+                      },
+                      {
+                        "kind": "StrLit",
+                        "line": 30,
+                        "col": 19,
+                        "ctype": "string",
+                        "value": " is prime"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Assign",
+                    "line": 31,
+                    "col": 9,
+                    "ctype": "uint16",
+                    "name": "count",
+                    "value": {
+                      "kind": "Binary",
+                      "line": 31,
+                      "col": 28,
+                      "ctype": "uint16",
+                      "op": "+",
+                      "left": {
+                        "kind": "Var",
+                        "line": 31,
+                        "col": 22,
+                        "ctype": "uint16",
+                        "name": "count"
+                      },
+                      "right": {
+                        "kind": "IntLit",
+                        "line": 31,
+                        "col": 30,
+                        "ctype": "intlit",
+                        "value": 1
+                      }
+                    }
+                  },
+                  {
+                    "kind": "Assign",
+                    "line": 32,
+                    "col": 9,
+                    "ctype": "uint32",
+                    "name": "total",
+                    "value": {
+                      "kind": "Binary",
+                      "line": 32,
+                      "col": 28,
+                      "ctype": "uint32",
+                      "op": "+",
+                      "left": {
+                        "kind": "Var",
+                        "line": 32,
+                        "col": 22,
+                        "ctype": "uint32",
+                        "name": "total"
+                      },
+                      "right": {
+                        "kind": "Var",
+                        "line": 32,
+                        "col": 30,
+                        "ctype": "uint16",
+                        "name": "n"
+                      }
+                    }
+                  }
+                ]
+              },
+              "else_block": null
+            },
+            {
+              "kind": "Assign",
+              "line": 35,
+              "col": 5,
+              "ctype": "uint16",
+              "name": "n",
+              "value": {
+                "kind": "Binary",
+                "line": 35,
+                "col": 16,
+                "ctype": "uint16",
+                "op": "+",
+                "left": {
+                  "kind": "Var",
+                  "line": 35,
+                  "col": 14,
+                  "ctype": "uint16",
+                  "name": "n"
+                },
+                "right": {
+                  "kind": "IntLit",
+                  "line": 35,
+                  "col": 18,
+                  "ctype": "intlit",
+                  "value": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Print",
+        "line": 38,
+        "col": 1,
+        "ctype": "void",
+        "args": [
+          {
+            "kind": "StrLit",
+            "line": 38,
+            "col": 8,
+            "ctype": "string",
+            "value": "primes below "
+          },
+          {
+            "kind": "Var",
+            "line": 38,
+            "col": 25,
+            "ctype": "uint16",
+            "name": "limit"
+          },
+          {
+            "kind": "StrLit",
+            "line": 38,
+            "col": 32,
+            "ctype": "string",
+            "value": ": "
+          },
+          {
+            "kind": "Var",
+            "line": 38,
+            "col": 38,
+            "ctype": "uint16",
+            "name": "count"
+          }
+        ]
+      },
+      {
+        "kind": "Print",
+        "line": 39,
+        "col": 1,
+        "ctype": "void",
+        "args": [
+          {
+            "kind": "StrLit",
+            "line": 39,
+            "col": 8,
+            "ctype": "string",
+            "value": "their sum: "
+          },
+          {
+            "kind": "Var",
+            "line": 39,
+            "col": 23,
+            "ctype": "uint32",
+            "name": "total"
+          }
+        ]
+      }
+    ]
+  }
+}

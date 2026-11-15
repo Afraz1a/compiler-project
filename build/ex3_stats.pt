@@ -1,0 +1,1332 @@
+# citu-parse-tree v1
+# source: examples/ex3_stats.citu
+# nodes: 1327
+# notation: one node per line, depth shown by '|  '; leaves carry their lexeme
+#----------------------------------------------------------------------
+Program
+|  StmtList
+|  |  Stmt
+|  |  |  Decl
+|  |  |  |  Type
+|  |  |  |  |  INT32  "int32"
+|  |  |  |  ID  "count"
+|  |  |  |  DeclTail
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "10"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Decl
+|  |  |  |  Type
+|  |  |  |  |  INT16  "int16"
+|  |  |  |  ID  "marks"
+|  |  |  |  DeclTail
+|  |  |  |  |  LBRACK  "["
+|  |  |  |  |  INTLIT  "10"
+|  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Assign
+|  |  |  |  ID  "marks"
+|  |  |  |  AsgTail
+|  |  |  |  |  LBRACK  "["
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "0"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "72"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Assign
+|  |  |  |  ID  "marks"
+|  |  |  |  AsgTail
+|  |  |  |  |  LBRACK  "["
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "1"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "48"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Assign
+|  |  |  |  ID  "marks"
+|  |  |  |  AsgTail
+|  |  |  |  |  LBRACK  "["
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "2"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "91"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Assign
+|  |  |  |  ID  "marks"
+|  |  |  |  AsgTail
+|  |  |  |  |  LBRACK  "["
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "3"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "65"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Assign
+|  |  |  |  ID  "marks"
+|  |  |  |  AsgTail
+|  |  |  |  |  LBRACK  "["
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "4"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "33"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Assign
+|  |  |  |  ID  "marks"
+|  |  |  |  AsgTail
+|  |  |  |  |  LBRACK  "["
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "5"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "88"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Assign
+|  |  |  |  ID  "marks"
+|  |  |  |  AsgTail
+|  |  |  |  |  LBRACK  "["
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "6"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "57"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Assign
+|  |  |  |  ID  "marks"
+|  |  |  |  AsgTail
+|  |  |  |  |  LBRACK  "["
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "7"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "79"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Assign
+|  |  |  |  ID  "marks"
+|  |  |  |  AsgTail
+|  |  |  |  |  LBRACK  "["
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "8"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "95"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Assign
+|  |  |  |  ID  "marks"
+|  |  |  |  AsgTail
+|  |  |  |  |  LBRACK  "["
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "9"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "61"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Decl
+|  |  |  |  Type
+|  |  |  |  |  INT16  "int16"
+|  |  |  |  ID  "lowest"
+|  |  |  |  DeclTail
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "32767"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Decl
+|  |  |  |  Type
+|  |  |  |  |  INT16  "int16"
+|  |  |  |  ID  "highest"
+|  |  |  |  DeclTail
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  MINUS  "-"
+|  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "32768"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Decl
+|  |  |  |  Type
+|  |  |  |  |  INT32  "int32"
+|  |  |  |  ID  "sum"
+|  |  |  |  DeclTail
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "0"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Decl
+|  |  |  |  Type
+|  |  |  |  |  INT32  "int32"
+|  |  |  |  ID  "passes"
+|  |  |  |  DeclTail
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "0"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Decl
+|  |  |  |  Type
+|  |  |  |  |  INT32  "int32"
+|  |  |  |  ID  "k"
+|  |  |  |  DeclTail
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "0"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  While
+|  |  |  |  JABTAK  "jabtak"
+|  |  |  |  LPAREN  "("
+|  |  |  |  Expr
+|  |  |  |  |  OrExpr
+|  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  ID  "k"
+|  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  RelOp
+|  |  |  |  |  |  |  |  |  |  LT  "<"
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  ID  "count"
+|  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  OrTail
+|  |  |  |  RPAREN  ")"
+|  |  |  |  Block
+|  |  |  |  |  SHURO  "shuro"
+|  |  |  |  |  StmtList
+|  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  If
+|  |  |  |  |  |  |  |  AGAR  "agar"
+|  |  |  |  |  |  |  |  LPAREN  "("
+|  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "marks"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  LBRACK  "["
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "k"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  RelOp
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  LT  "<"
+|  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "lowest"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  RPAREN  ")"
+|  |  |  |  |  |  |  |  Block
+|  |  |  |  |  |  |  |  |  SHURO  "shuro"
+|  |  |  |  |  |  |  |  |  StmtList
+|  |  |  |  |  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  |  |  |  |  Assign
+|  |  |  |  |  |  |  |  |  |  |  |  ID  "lowest"
+|  |  |  |  |  |  |  |  |  |  |  |  AsgTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "marks"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  LBRACK  "["
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "k"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  SEMI  ";"
+|  |  |  |  |  |  |  |  |  KHATAM  "khatam"
+|  |  |  |  |  |  |  |  ElsePart
+|  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  If
+|  |  |  |  |  |  |  |  AGAR  "agar"
+|  |  |  |  |  |  |  |  LPAREN  "("
+|  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "marks"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  LBRACK  "["
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "k"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  RelOp
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  GT  ">"
+|  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "highest"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  RPAREN  ")"
+|  |  |  |  |  |  |  |  Block
+|  |  |  |  |  |  |  |  |  SHURO  "shuro"
+|  |  |  |  |  |  |  |  |  StmtList
+|  |  |  |  |  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  |  |  |  |  Assign
+|  |  |  |  |  |  |  |  |  |  |  |  ID  "highest"
+|  |  |  |  |  |  |  |  |  |  |  |  AsgTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "marks"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  LBRACK  "["
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "k"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  SEMI  ";"
+|  |  |  |  |  |  |  |  |  KHATAM  "khatam"
+|  |  |  |  |  |  |  |  ElsePart
+|  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  Assign
+|  |  |  |  |  |  |  |  ID  "sum"
+|  |  |  |  |  |  |  |  AsgTail
+|  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "sum"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PLUS  "+"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "marks"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  LBRACK  "["
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "k"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  SEMI  ";"
+|  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  If
+|  |  |  |  |  |  |  |  AGAR  "agar"
+|  |  |  |  |  |  |  |  LPAREN  "("
+|  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "marks"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  LBRACK  "["
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "k"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RBRACK  "]"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  RelOp
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  GE  ">="
+|  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "50"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  RPAREN  ")"
+|  |  |  |  |  |  |  |  Block
+|  |  |  |  |  |  |  |  |  SHURO  "shuro"
+|  |  |  |  |  |  |  |  |  StmtList
+|  |  |  |  |  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  |  |  |  |  Assign
+|  |  |  |  |  |  |  |  |  |  |  |  ID  "passes"
+|  |  |  |  |  |  |  |  |  |  |  |  AsgTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "passes"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PLUS  "+"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "1"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  SEMI  ";"
+|  |  |  |  |  |  |  |  |  KHATAM  "khatam"
+|  |  |  |  |  |  |  |  ElsePart
+|  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  Assign
+|  |  |  |  |  |  |  |  ID  "k"
+|  |  |  |  |  |  |  |  AsgTail
+|  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "k"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PLUS  "+"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  INTLIT  "1"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  SEMI  ";"
+|  |  |  |  |  KHATAM  "khatam"
+|  |  Stmt
+|  |  |  Decl
+|  |  |  |  Type
+|  |  |  |  |  REAL  "real"
+|  |  |  |  ID  "mean"
+|  |  |  |  DeclTail
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  ID  "sum"
+|  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  SLASH  "/"
+|  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  REALLIT  "1.0"
+|  |  |  |  |  |  |  |  |  |  |  |  SLASH  "/"
+|  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "count"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Print
+|  |  |  |  DIKHAO  "dikhao"
+|  |  |  |  LPAREN  "("
+|  |  |  |  ArgList
+|  |  |  |  |  Arg
+|  |  |  |  |  |  STRLIT  ""count   : ""
+|  |  |  |  |  ArgTail
+|  |  |  |  |  |  COMMA  ","
+|  |  |  |  |  |  Arg
+|  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "count"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  RPAREN  ")"
+|  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Print
+|  |  |  |  DIKHAO  "dikhao"
+|  |  |  |  LPAREN  "("
+|  |  |  |  ArgList
+|  |  |  |  |  Arg
+|  |  |  |  |  |  STRLIT  ""lowest  : ""
+|  |  |  |  |  ArgTail
+|  |  |  |  |  |  COMMA  ","
+|  |  |  |  |  |  Arg
+|  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "lowest"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  RPAREN  ")"
+|  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Print
+|  |  |  |  DIKHAO  "dikhao"
+|  |  |  |  LPAREN  "("
+|  |  |  |  ArgList
+|  |  |  |  |  Arg
+|  |  |  |  |  |  STRLIT  ""highest : ""
+|  |  |  |  |  ArgTail
+|  |  |  |  |  |  COMMA  ","
+|  |  |  |  |  |  Arg
+|  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "highest"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  RPAREN  ")"
+|  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Print
+|  |  |  |  DIKHAO  "dikhao"
+|  |  |  |  LPAREN  "("
+|  |  |  |  ArgList
+|  |  |  |  |  Arg
+|  |  |  |  |  |  STRLIT  ""sum     : ""
+|  |  |  |  |  ArgTail
+|  |  |  |  |  |  COMMA  ","
+|  |  |  |  |  |  Arg
+|  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "sum"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  RPAREN  ")"
+|  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Print
+|  |  |  |  DIKHAO  "dikhao"
+|  |  |  |  LPAREN  "("
+|  |  |  |  ArgList
+|  |  |  |  |  Arg
+|  |  |  |  |  |  STRLIT  ""mean    : ""
+|  |  |  |  |  ArgTail
+|  |  |  |  |  |  COMMA  ","
+|  |  |  |  |  |  Arg
+|  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "mean"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  RPAREN  ")"
+|  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Print
+|  |  |  |  DIKHAO  "dikhao"
+|  |  |  |  LPAREN  "("
+|  |  |  |  ArgList
+|  |  |  |  |  Arg
+|  |  |  |  |  |  STRLIT  ""passed  : ""
+|  |  |  |  |  ArgTail
+|  |  |  |  |  |  COMMA  ","
+|  |  |  |  |  |  Arg
+|  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "passes"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  COMMA  ","
+|  |  |  |  |  |  Arg
+|  |  |  |  |  |  |  STRLIT  "" of ""
+|  |  |  |  |  |  COMMA  ","
+|  |  |  |  |  |  Arg
+|  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "count"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  RPAREN  ")"
+|  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  Decl
+|  |  |  |  Type
+|  |  |  |  |  CHAR  "char"
+|  |  |  |  ID  "grade"
+|  |  |  |  DeclTail
+|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  Expr
+|  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  CHARLIT  "'F'"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  OrTail
+|  |  |  |  |  SEMI  ";"
+|  |  Stmt
+|  |  |  If
+|  |  |  |  AGAR  "agar"
+|  |  |  |  LPAREN  "("
+|  |  |  |  Expr
+|  |  |  |  |  OrExpr
+|  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  ID  "mean"
+|  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  RelOp
+|  |  |  |  |  |  |  |  |  |  GE  ">="
+|  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  REALLIT  "80.0"
+|  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  OrTail
+|  |  |  |  RPAREN  ")"
+|  |  |  |  Block
+|  |  |  |  |  SHURO  "shuro"
+|  |  |  |  |  StmtList
+|  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  Assign
+|  |  |  |  |  |  |  |  ID  "grade"
+|  |  |  |  |  |  |  |  AsgTail
+|  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  CHARLIT  "'A'"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  SEMI  ";"
+|  |  |  |  |  KHATAM  "khatam"
+|  |  |  |  ElsePart
+|  |  |  |  |  WAGARNA  "wagarna"
+|  |  |  |  |  Block
+|  |  |  |  |  |  SHURO  "shuro"
+|  |  |  |  |  |  StmtList
+|  |  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  |  If
+|  |  |  |  |  |  |  |  |  AGAR  "agar"
+|  |  |  |  |  |  |  |  |  LPAREN  "("
+|  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "mean"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  RelOp
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  GE  ">="
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  REALLIT  "70.0"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  RPAREN  ")"
+|  |  |  |  |  |  |  |  |  Block
+|  |  |  |  |  |  |  |  |  |  SHURO  "shuro"
+|  |  |  |  |  |  |  |  |  |  StmtList
+|  |  |  |  |  |  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  |  |  |  |  |  Assign
+|  |  |  |  |  |  |  |  |  |  |  |  |  ID  "grade"
+|  |  |  |  |  |  |  |  |  |  |  |  |  AsgTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  CHARLIT  "'B'"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  SEMI  ";"
+|  |  |  |  |  |  |  |  |  |  KHATAM  "khatam"
+|  |  |  |  |  |  |  |  |  ElsePart
+|  |  |  |  |  |  |  |  |  |  WAGARNA  "wagarna"
+|  |  |  |  |  |  |  |  |  |  Block
+|  |  |  |  |  |  |  |  |  |  |  SHURO  "shuro"
+|  |  |  |  |  |  |  |  |  |  |  StmtList
+|  |  |  |  |  |  |  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  |  |  |  |  |  |  If
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  AGAR  "agar"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  LPAREN  "("
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "mean"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelOp
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  GE  ">="
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  REALLIT  "60.0"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  YA  "ya"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "mean"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelOp
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  GE  ">="
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  REALLIT  "55.0"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  RPAREN  ")"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Block
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  SHURO  "shuro"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  StmtList
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Stmt
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Assign
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "grade"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AsgTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  CHARLIT  "'C'"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  SEMI  ";"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  KHATAM  "khatam"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  ElsePart
+|  |  |  |  |  |  |  |  |  |  |  KHATAM  "khatam"
+|  |  |  |  |  |  KHATAM  "khatam"
+|  |  Stmt
+|  |  |  Print
+|  |  |  |  DIKHAO  "dikhao"
+|  |  |  |  LPAREN  "("
+|  |  |  |  ArgList
+|  |  |  |  |  Arg
+|  |  |  |  |  |  STRLIT  ""grade   : ""
+|  |  |  |  |  ArgTail
+|  |  |  |  |  |  COMMA  ","
+|  |  |  |  |  |  Arg
+|  |  |  |  |  |  |  Expr
+|  |  |  |  |  |  |  |  OrExpr
+|  |  |  |  |  |  |  |  |  AndExpr
+|  |  |  |  |  |  |  |  |  |  RelExpr
+|  |  |  |  |  |  |  |  |  |  |  AddExpr
+|  |  |  |  |  |  |  |  |  |  |  |  MulExpr
+|  |  |  |  |  |  |  |  |  |  |  |  |  Unary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  Primary
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "grade"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  PrimTail
+|  |  |  |  |  |  |  |  |  |  |  |  |  MulTail
+|  |  |  |  |  |  |  |  |  |  |  |  AddTail
+|  |  |  |  |  |  |  |  |  |  |  RelTail
+|  |  |  |  |  |  |  |  |  |  AndTail
+|  |  |  |  |  |  |  |  |  OrTail
+|  |  |  |  RPAREN  ")"
+|  |  |  |  SEMI  ";"

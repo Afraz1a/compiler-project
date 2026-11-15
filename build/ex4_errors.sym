@@ -1,0 +1,18 @@
+# citu-symbol-table v1
+# source: examples/ex4_errors.citu
+# scopes: 2   symbols: 7   frame size: 37 bytes
+# fields: NAME | RT_NAME | KIND | TYPE | LEN | WIDTH | OFFSET | LINE:COL | READS | WRITES
+
+[scope 0] level=0 parent=- tag=global
+----------------------------------------------------------------------------------------------------
+  x          | x            | scalar | int32  | 1   | 4     | 0      |   12:1   | 3     | 1
+  c          | c            | scalar | char   | 1   | 1     | 4      |   15:1   | 0     | 1
+  arr        | arr          | array  | int32  | 3   | 12    | 5      |   17:1   | 0     | 1
+  q          | q            | scalar | int32  | 1   | 4     | 17     |   26:1   | 0     | 1
+  w          | w            | scalar | int32  | 1   | 4     | 21     |   27:1   | 0     | 1
+  r          | r            | scalar | real   | 1   | 8     | 25     |   29:1   | 1     | 1
+  z          | z            | scalar | int32  | 1   | 4     | 33     |   30:1   | 0     | 1
+
+[scope 1] level=1 parent=0 tag=block@20:12
+----------------------------------------------------------------------------------------------------
+  (empty)

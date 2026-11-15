@@ -1,0 +1,70 @@
+// ===================================================================
+//  ex3_stats.citu  --  minimum, maximum and mean of a data set
+//
+//  Shows: every declarable Citu type (char, int16, uint16, int32,
+//         uint32, real), mixed-type arithmetic with the automatic
+//         widening the compiler inserts, real division, the ya
+//         operator, a char literal, and a grade chosen with a chain
+//         of agar / wagarna.
+// ===================================================================
+
+int32 count medalo 10;
+int16 marks[10];
+
+marks[0] medalo 72;
+marks[1] medalo 48;
+marks[2] medalo 91;
+marks[3] medalo 65;
+marks[4] medalo 33;
+marks[5] medalo 88;
+marks[6] medalo 57;
+marks[7] medalo 79;
+marks[8] medalo 95;
+marks[9] medalo 61;
+
+int16  lowest  medalo 32767;    // the largest value an int16 can hold
+int16  highest medalo -32768;
+int32  sum     medalo 0;
+int32  passes  medalo 0;
+int32  k       medalo 0;
+
+jabtak ( k < count ) shuro
+    agar ( marks[k] < lowest ) shuro
+        lowest medalo marks[k];
+    khatam
+    agar ( marks[k] > highest ) shuro
+        highest medalo marks[k];
+    khatam
+    sum medalo sum + marks[k];
+    agar ( marks[k] >= 50 ) shuro
+        passes medalo passes + 1;
+    khatam
+    k medalo k + 1;
+khatam
+
+// integer sum divided by an integer count, in real arithmetic:
+// the compiler widens both operands to real before dividing
+real mean medalo sum / 1.0 / count;
+
+dikhao("count   : ", count);
+dikhao("lowest  : ", lowest);
+dikhao("highest : ", highest);
+dikhao("sum     : ", sum);
+dikhao("mean    : ", mean);
+dikhao("passed  : ", passes, " of ", count);
+
+// a grade for the class average
+char grade medalo 'F';
+agar ( mean >= 80.0 ) shuro
+    grade medalo 'A';
+khatam wagarna shuro
+    agar ( mean >= 70.0 ) shuro
+        grade medalo 'B';
+    khatam wagarna shuro
+        agar ( mean >= 60.0 ya mean >= 55.0 ) shuro
+            grade medalo 'C';
+        khatam
+    khatam
+khatam
+
+dikhao("grade   : ", grade);

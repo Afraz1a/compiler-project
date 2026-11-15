@@ -1,0 +1,39 @@
+// ===================================================================
+//  ex2_primes.citu  --  print every prime below a limit
+//
+//  Shows: nested jabtak loops, the % operator, nikal inside the inner
+//         loop only, the word operators aur / ya / nahi, block scope
+//         (the inner `d` and `prime` live in the loop body block),
+//         and several unsigned / sized integer types.
+// ===================================================================
+
+uint16 limit medalo 40;
+uint16 n medalo 2;
+uint16 count medalo 0;
+uint32 total medalo 0;          // sum of the primes found
+
+jabtak ( n < limit ) shuro
+
+    // these two belong to the loop body block, not to the program
+    uint16 d medalo 2;
+    int16 prime medalo 1;
+
+    jabtak ( d * d <= n ) shuro
+        agar ( n % d = 0 ) shuro
+            prime medalo 0;
+            nikal;              // no need to try any more divisors
+        khatam
+        d medalo d + 1;
+    khatam
+
+    agar ( prime = 1 aur nahi (n = 1) ) shuro
+        dikhao(n, " is prime");
+        count medalo count + 1;
+        total medalo total + n;
+    khatam
+
+    n medalo n + 1;
+khatam
+
+dikhao("primes below ", limit, ": ", count);
+dikhao("their sum: ", total);

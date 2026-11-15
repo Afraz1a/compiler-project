@@ -1,0 +1,44 @@
+// ===================================================================
+//  ex1_search.citu  --  linear search
+//
+//  Shows: array declaration and element assignment, a jabtak loop,
+//         agar / wagarna, nikal (early exit), unary minus, dikhao.
+//
+//  This is the program from the Citu grammar assignment
+//      jabtak ( i < size ) shuro
+//          agar ( a[i] = 0 ) shuro nikal ; khatam
+//          i medalo ( i + 1 ) ;
+//      khatam
+//  extended so that it declares its own data and reports the answer.
+// ===================================================================
+
+int32 size medalo 8;
+int32 a[8];
+
+a[0] medalo 14;
+a[1] medalo 7;
+a[2] medalo 23;
+a[3] medalo 0;
+a[4] medalo 9;
+a[5] medalo 0;
+a[6] medalo 31;
+a[7] medalo 5;
+
+int32 i medalo 0;
+int32 found medalo -1;          /* -1 stands for "not found yet" */
+
+jabtak ( i < size ) shuro
+    agar ( a[i] = 0 ) shuro
+        found medalo i;
+        nikal;                  // stop at the FIRST zero
+    khatam
+    i medalo i + 1;
+khatam
+
+agar ( found < 0 ) shuro
+    dikhao("there is no zero in the array");
+khatam wagarna shuro
+    dikhao("first zero is at index ", found);
+khatam
+
+dikhao("elements inspected: ", i + 1);

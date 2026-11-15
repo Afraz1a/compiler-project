@@ -1,0 +1,899 @@
+{
+  "format": "citu-ast",
+  "version": 1,
+  "source": "examples/ex3_stats.citu",
+  "tree": {
+    "kind": "Program",
+    "line": 1,
+    "col": 1,
+    "stmts": [
+      {
+        "kind": "VarDecl",
+        "line": 11,
+        "col": 1,
+        "type_name": "int32",
+        "name": "count",
+        "init": {
+          "kind": "IntLit",
+          "line": 11,
+          "col": 20,
+          "value": 10
+        }
+      },
+      {
+        "kind": "ArrayDecl",
+        "line": 12,
+        "col": 1,
+        "type_name": "int16",
+        "name": "marks",
+        "size": 10
+      },
+      {
+        "kind": "IndexAssign",
+        "line": 14,
+        "col": 1,
+        "name": "marks",
+        "index": {
+          "kind": "IntLit",
+          "line": 14,
+          "col": 7,
+          "value": 0
+        },
+        "value": {
+          "kind": "IntLit",
+          "line": 14,
+          "col": 17,
+          "value": 72
+        }
+      },
+      {
+        "kind": "IndexAssign",
+        "line": 15,
+        "col": 1,
+        "name": "marks",
+        "index": {
+          "kind": "IntLit",
+          "line": 15,
+          "col": 7,
+          "value": 1
+        },
+        "value": {
+          "kind": "IntLit",
+          "line": 15,
+          "col": 17,
+          "value": 48
+        }
+      },
+      {
+        "kind": "IndexAssign",
+        "line": 16,
+        "col": 1,
+        "name": "marks",
+        "index": {
+          "kind": "IntLit",
+          "line": 16,
+          "col": 7,
+          "value": 2
+        },
+        "value": {
+          "kind": "IntLit",
+          "line": 16,
+          "col": 17,
+          "value": 91
+        }
+      },
+      {
+        "kind": "IndexAssign",
+        "line": 17,
+        "col": 1,
+        "name": "marks",
+        "index": {
+          "kind": "IntLit",
+          "line": 17,
+          "col": 7,
+          "value": 3
+        },
+        "value": {
+          "kind": "IntLit",
+          "line": 17,
+          "col": 17,
+          "value": 65
+        }
+      },
+      {
+        "kind": "IndexAssign",
+        "line": 18,
+        "col": 1,
+        "name": "marks",
+        "index": {
+          "kind": "IntLit",
+          "line": 18,
+          "col": 7,
+          "value": 4
+        },
+        "value": {
+          "kind": "IntLit",
+          "line": 18,
+          "col": 17,
+          "value": 33
+        }
+      },
+      {
+        "kind": "IndexAssign",
+        "line": 19,
+        "col": 1,
+        "name": "marks",
+        "index": {
+          "kind": "IntLit",
+          "line": 19,
+          "col": 7,
+          "value": 5
+        },
+        "value": {
+          "kind": "IntLit",
+          "line": 19,
+          "col": 17,
+          "value": 88
+        }
+      },
+      {
+        "kind": "IndexAssign",
+        "line": 20,
+        "col": 1,
+        "name": "marks",
+        "index": {
+          "kind": "IntLit",
+          "line": 20,
+          "col": 7,
+          "value": 6
+        },
+        "value": {
+          "kind": "IntLit",
+          "line": 20,
+          "col": 17,
+          "value": 57
+        }
+      },
+      {
+        "kind": "IndexAssign",
+        "line": 21,
+        "col": 1,
+        "name": "marks",
+        "index": {
+          "kind": "IntLit",
+          "line": 21,
+          "col": 7,
+          "value": 7
+        },
+        "value": {
+          "kind": "IntLit",
+          "line": 21,
+          "col": 17,
+          "value": 79
+        }
+      },
+      {
+        "kind": "IndexAssign",
+        "line": 22,
+        "col": 1,
+        "name": "marks",
+        "index": {
+          "kind": "IntLit",
+          "line": 22,
+          "col": 7,
+          "value": 8
+        },
+        "value": {
+          "kind": "IntLit",
+          "line": 22,
+          "col": 17,
+          "value": 95
+        }
+      },
+      {
+        "kind": "IndexAssign",
+        "line": 23,
+        "col": 1,
+        "name": "marks",
+        "index": {
+          "kind": "IntLit",
+          "line": 23,
+          "col": 7,
+          "value": 9
+        },
+        "value": {
+          "kind": "IntLit",
+          "line": 23,
+          "col": 17,
+          "value": 61
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 25,
+        "col": 1,
+        "type_name": "int16",
+        "name": "lowest",
+        "init": {
+          "kind": "IntLit",
+          "line": 25,
+          "col": 23,
+          "value": 32767
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 26,
+        "col": 1,
+        "type_name": "int16",
+        "name": "highest",
+        "init": {
+          "kind": "Unary",
+          "line": 26,
+          "col": 23,
+          "op": "-",
+          "operand": {
+            "kind": "IntLit",
+            "line": 26,
+            "col": 24,
+            "value": 32768
+          }
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 27,
+        "col": 1,
+        "type_name": "int32",
+        "name": "sum",
+        "init": {
+          "kind": "IntLit",
+          "line": 27,
+          "col": 23,
+          "value": 0
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 28,
+        "col": 1,
+        "type_name": "int32",
+        "name": "passes",
+        "init": {
+          "kind": "IntLit",
+          "line": 28,
+          "col": 23,
+          "value": 0
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 29,
+        "col": 1,
+        "type_name": "int32",
+        "name": "k",
+        "init": {
+          "kind": "IntLit",
+          "line": 29,
+          "col": 23,
+          "value": 0
+        }
+      },
+      {
+        "kind": "While",
+        "line": 31,
+        "col": 1,
+        "cond": {
+          "kind": "Binary",
+          "line": 31,
+          "col": 12,
+          "op": "<",
+          "left": {
+            "kind": "Var",
+            "line": 31,
+            "col": 10,
+            "name": "k"
+          },
+          "right": {
+            "kind": "Var",
+            "line": 31,
+            "col": 14,
+            "name": "count"
+          }
+        },
+        "body": {
+          "kind": "Block",
+          "line": 31,
+          "col": 22,
+          "stmts": [
+            {
+              "kind": "If",
+              "line": 32,
+              "col": 5,
+              "cond": {
+                "kind": "Binary",
+                "line": 32,
+                "col": 21,
+                "op": "<",
+                "left": {
+                  "kind": "Index",
+                  "line": 32,
+                  "col": 12,
+                  "name": "marks",
+                  "index": {
+                    "kind": "Var",
+                    "line": 32,
+                    "col": 18,
+                    "name": "k"
+                  }
+                },
+                "right": {
+                  "kind": "Var",
+                  "line": 32,
+                  "col": 23,
+                  "name": "lowest"
+                }
+              },
+              "then_block": {
+                "kind": "Block",
+                "line": 32,
+                "col": 32,
+                "stmts": [
+                  {
+                    "kind": "Assign",
+                    "line": 33,
+                    "col": 9,
+                    "name": "lowest",
+                    "value": {
+                      "kind": "Index",
+                      "line": 33,
+                      "col": 23,
+                      "name": "marks",
+                      "index": {
+                        "kind": "Var",
+                        "line": 33,
+                        "col": 29,
+                        "name": "k"
+                      }
+                    }
+                  }
+                ]
+              },
+              "else_block": null
+            },
+            {
+              "kind": "If",
+              "line": 35,
+              "col": 5,
+              "cond": {
+                "kind": "Binary",
+                "line": 35,
+                "col": 21,
+                "op": ">",
+                "left": {
+                  "kind": "Index",
+                  "line": 35,
+                  "col": 12,
+                  "name": "marks",
+                  "index": {
+                    "kind": "Var",
+                    "line": 35,
+                    "col": 18,
+                    "name": "k"
+                  }
+                },
+                "right": {
+                  "kind": "Var",
+                  "line": 35,
+                  "col": 23,
+                  "name": "highest"
+                }
+              },
+              "then_block": {
+                "kind": "Block",
+                "line": 35,
+                "col": 33,
+                "stmts": [
+                  {
+                    "kind": "Assign",
+                    "line": 36,
+                    "col": 9,
+                    "name": "highest",
+                    "value": {
+                      "kind": "Index",
+                      "line": 36,
+                      "col": 24,
+                      "name": "marks",
+                      "index": {
+                        "kind": "Var",
+                        "line": 36,
+                        "col": 30,
+                        "name": "k"
+                      }
+                    }
+                  }
+                ]
+              },
+              "else_block": null
+            },
+            {
+              "kind": "Assign",
+              "line": 38,
+              "col": 5,
+              "name": "sum",
+              "value": {
+                "kind": "Binary",
+                "line": 38,
+                "col": 20,
+                "op": "+",
+                "left": {
+                  "kind": "Var",
+                  "line": 38,
+                  "col": 16,
+                  "name": "sum"
+                },
+                "right": {
+                  "kind": "Index",
+                  "line": 38,
+                  "col": 22,
+                  "name": "marks",
+                  "index": {
+                    "kind": "Var",
+                    "line": 38,
+                    "col": 28,
+                    "name": "k"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "If",
+              "line": 39,
+              "col": 5,
+              "cond": {
+                "kind": "Binary",
+                "line": 39,
+                "col": 21,
+                "op": ">=",
+                "left": {
+                  "kind": "Index",
+                  "line": 39,
+                  "col": 12,
+                  "name": "marks",
+                  "index": {
+                    "kind": "Var",
+                    "line": 39,
+                    "col": 18,
+                    "name": "k"
+                  }
+                },
+                "right": {
+                  "kind": "IntLit",
+                  "line": 39,
+                  "col": 24,
+                  "value": 50
+                }
+              },
+              "then_block": {
+                "kind": "Block",
+                "line": 39,
+                "col": 29,
+                "stmts": [
+                  {
+                    "kind": "Assign",
+                    "line": 40,
+                    "col": 9,
+                    "name": "passes",
+                    "value": {
+                      "kind": "Binary",
+                      "line": 40,
+                      "col": 30,
+                      "op": "+",
+                      "left": {
+                        "kind": "Var",
+                        "line": 40,
+                        "col": 23,
+                        "name": "passes"
+                      },
+                      "right": {
+                        "kind": "IntLit",
+                        "line": 40,
+                        "col": 32,
+                        "value": 1
+                      }
+                    }
+                  }
+                ]
+              },
+              "else_block": null
+            },
+            {
+              "kind": "Assign",
+              "line": 42,
+              "col": 5,
+              "name": "k",
+              "value": {
+                "kind": "Binary",
+                "line": 42,
+                "col": 16,
+                "op": "+",
+                "left": {
+                  "kind": "Var",
+                  "line": 42,
+                  "col": 14,
+                  "name": "k"
+                },
+                "right": {
+                  "kind": "IntLit",
+                  "line": 42,
+                  "col": 18,
+                  "value": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "VarDecl",
+        "line": 47,
+        "col": 1,
+        "type_name": "real",
+        "name": "mean",
+        "init": {
+          "kind": "Binary",
+          "line": 47,
+          "col": 28,
+          "op": "/",
+          "left": {
+            "kind": "Binary",
+            "line": 47,
+            "col": 22,
+            "op": "/",
+            "left": {
+              "kind": "Var",
+              "line": 47,
+              "col": 18,
+              "name": "sum"
+            },
+            "right": {
+              "kind": "RealLit",
+              "line": 47,
+              "col": 24,
+              "value": 1.0
+            }
+          },
+          "right": {
+            "kind": "Var",
+            "line": 47,
+            "col": 30,
+            "name": "count"
+          }
+        }
+      },
+      {
+        "kind": "Print",
+        "line": 49,
+        "col": 1,
+        "args": [
+          {
+            "kind": "StrLit",
+            "line": 49,
+            "col": 8,
+            "value": "count   : "
+          },
+          {
+            "kind": "Var",
+            "line": 49,
+            "col": 22,
+            "name": "count"
+          }
+        ]
+      },
+      {
+        "kind": "Print",
+        "line": 50,
+        "col": 1,
+        "args": [
+          {
+            "kind": "StrLit",
+            "line": 50,
+            "col": 8,
+            "value": "lowest  : "
+          },
+          {
+            "kind": "Var",
+            "line": 50,
+            "col": 22,
+            "name": "lowest"
+          }
+        ]
+      },
+      {
+        "kind": "Print",
+        "line": 51,
+        "col": 1,
+        "args": [
+          {
+            "kind": "StrLit",
+            "line": 51,
+            "col": 8,
+            "value": "highest : "
+          },
+          {
+            "kind": "Var",
+            "line": 51,
+            "col": 22,
+            "name": "highest"
+          }
+        ]
+      },
+      {
+        "kind": "Print",
+        "line": 52,
+        "col": 1,
+        "args": [
+          {
+            "kind": "StrLit",
+            "line": 52,
+            "col": 8,
+            "value": "sum     : "
+          },
+          {
+            "kind": "Var",
+            "line": 52,
+            "col": 22,
+            "name": "sum"
+          }
+        ]
+      },
+      {
+        "kind": "Print",
+        "line": 53,
+        "col": 1,
+        "args": [
+          {
+            "kind": "StrLit",
+            "line": 53,
+            "col": 8,
+            "value": "mean    : "
+          },
+          {
+            "kind": "Var",
+            "line": 53,
+            "col": 22,
+            "name": "mean"
+          }
+        ]
+      },
+      {
+        "kind": "Print",
+        "line": 54,
+        "col": 1,
+        "args": [
+          {
+            "kind": "StrLit",
+            "line": 54,
+            "col": 8,
+            "value": "passed  : "
+          },
+          {
+            "kind": "Var",
+            "line": 54,
+            "col": 22,
+            "name": "passes"
+          },
+          {
+            "kind": "StrLit",
+            "line": 54,
+            "col": 30,
+            "value": " of "
+          },
+          {
+            "kind": "Var",
+            "line": 54,
+            "col": 38,
+            "name": "count"
+          }
+        ]
+      },
+      {
+        "kind": "VarDecl",
+        "line": 57,
+        "col": 1,
+        "type_name": "char",
+        "name": "grade",
+        "init": {
+          "kind": "CharLit",
+          "line": 57,
+          "col": 19,
+          "value": "F"
+        }
+      },
+      {
+        "kind": "If",
+        "line": 58,
+        "col": 1,
+        "cond": {
+          "kind": "Binary",
+          "line": 58,
+          "col": 13,
+          "op": ">=",
+          "left": {
+            "kind": "Var",
+            "line": 58,
+            "col": 8,
+            "name": "mean"
+          },
+          "right": {
+            "kind": "RealLit",
+            "line": 58,
+            "col": 16,
+            "value": 80.0
+          }
+        },
+        "then_block": {
+          "kind": "Block",
+          "line": 58,
+          "col": 23,
+          "stmts": [
+            {
+              "kind": "Assign",
+              "line": 59,
+              "col": 5,
+              "name": "grade",
+              "value": {
+                "kind": "CharLit",
+                "line": 59,
+                "col": 18,
+                "value": "A"
+              }
+            }
+          ]
+        },
+        "else_block": {
+          "kind": "Block",
+          "line": 60,
+          "col": 16,
+          "stmts": [
+            {
+              "kind": "If",
+              "line": 61,
+              "col": 5,
+              "cond": {
+                "kind": "Binary",
+                "line": 61,
+                "col": 17,
+                "op": ">=",
+                "left": {
+                  "kind": "Var",
+                  "line": 61,
+                  "col": 12,
+                  "name": "mean"
+                },
+                "right": {
+                  "kind": "RealLit",
+                  "line": 61,
+                  "col": 20,
+                  "value": 70.0
+                }
+              },
+              "then_block": {
+                "kind": "Block",
+                "line": 61,
+                "col": 27,
+                "stmts": [
+                  {
+                    "kind": "Assign",
+                    "line": 62,
+                    "col": 9,
+                    "name": "grade",
+                    "value": {
+                      "kind": "CharLit",
+                      "line": 62,
+                      "col": 22,
+                      "value": "B"
+                    }
+                  }
+                ]
+              },
+              "else_block": {
+                "kind": "Block",
+                "line": 63,
+                "col": 20,
+                "stmts": [
+                  {
+                    "kind": "If",
+                    "line": 64,
+                    "col": 9,
+                    "cond": {
+                      "kind": "Binary",
+                      "line": 64,
+                      "col": 29,
+                      "op": "ya",
+                      "left": {
+                        "kind": "Binary",
+                        "line": 64,
+                        "col": 21,
+                        "op": ">=",
+                        "left": {
+                          "kind": "Var",
+                          "line": 64,
+                          "col": 16,
+                          "name": "mean"
+                        },
+                        "right": {
+                          "kind": "RealLit",
+                          "line": 64,
+                          "col": 24,
+                          "value": 60.0
+                        }
+                      },
+                      "right": {
+                        "kind": "Binary",
+                        "line": 64,
+                        "col": 37,
+                        "op": ">=",
+                        "left": {
+                          "kind": "Var",
+                          "line": 64,
+                          "col": 32,
+                          "name": "mean"
+                        },
+                        "right": {
+                          "kind": "RealLit",
+                          "line": 64,
+                          "col": 40,
+                          "value": 55.0
+                        }
+                      }
+                    },
+                    "then_block": {
+                      "kind": "Block",
+                      "line": 64,
+                      "col": 47,
+                      "stmts": [
+                        {
+                          "kind": "Assign",
+                          "line": 65,
+                          "col": 13,
+                          "name": "grade",
+                          "value": {
+                            "kind": "CharLit",
+                            "line": 65,
+                            "col": 26,
+                            "value": "C"
+                          }
+                        }
+                      ]
+                    },
+                    "else_block": null
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Print",
+        "line": 70,
+        "col": 1,
+        "args": [
+          {
+            "kind": "StrLit",
+            "line": 70,
+            "col": 8,
+            "value": "grade   : "
+          },
+          {
+            "kind": "Var",
+            "line": 70,
+            "col": 22,
+            "name": "grade"
+          }
+        ]
+      }
+    ]
+  }
+}
