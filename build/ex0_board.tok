@@ -1,0 +1,60 @@
+# citu-tokens v1
+# source: examples/ex0_board.citu
+# fields: INDEX | LINE | COL | TOKEN_TYPE | CATEGORY | LEXEME | VALUE
+#------------------------------------------------------------------------------
+0     | 3    | 1   | INT32      | TYPE_KEYWORD   | int32        | -
+1     | 3    | 7   | ID         | IDENTIFIER     | SIZE         | -
+2     | 3    | 12  | MELADO     | KEYWORD        | melado       | -
+3     | 3    | 19  | INTLIT     | INT_LITERAL    | 4            | 4
+4     | 3    | 20  | SEMI       | PUNCTUATOR     | ;            | -
+5     | 4    | 1   | INT32      | TYPE_KEYWORD   | int32        | -
+6     | 4    | 7   | ID         | IDENTIFIER     | a            | -
+7     | 4    | 8   | LBRACK     | PUNCTUATOR     | [            | -
+8     | 4    | 9   | INTLIT     | INT_LITERAL    | 4            | 4
+9     | 4    | 10  | RBRACK     | PUNCTUATOR     | ]            | -
+10    | 4    | 11  | SEMI       | PUNCTUATOR     | ;            | -
+11    | 5    | 1   | INT32      | TYPE_KEYWORD   | int32        | -
+12    | 5    | 7   | ID         | IDENTIFIER     | i            | -
+13    | 5    | 9   | MELADO     | KEYWORD        | melado       | -
+14    | 5    | 16  | INTLIT     | INT_LITERAL    | 0            | 0
+15    | 5    | 17  | SEMI       | PUNCTUATOR     | ;            | -
+16    | 7    | 1   | JABTAK     | KEYWORD        | jabtak       | -
+17    | 7    | 8   | LPAREN     | PUNCTUATOR     | (            | -
+18    | 7    | 10  | ID         | IDENTIFIER     | i            | -
+19    | 7    | 12  | LT         | OPERATOR       | <            | -
+20    | 7    | 14  | ID         | IDENTIFIER     | SIZE         | -
+21    | 7    | 19  | RPAREN     | PUNCTUATOR     | )            | -
+22    | 7    | 21  | SHURO      | KEYWORD        | shuro        | -
+23    | 8    | 5   | AGAR       | KEYWORD        | agar         | -
+24    | 8    | 10  | LPAREN     | PUNCTUATOR     | (            | -
+25    | 8    | 12  | ID         | IDENTIFIER     | a            | -
+26    | 8    | 13  | LBRACK     | PUNCTUATOR     | [            | -
+27    | 8    | 14  | ID         | IDENTIFIER     | i            | -
+28    | 8    | 15  | RBRACK     | PUNCTUATOR     | ]            | -
+29    | 8    | 17  | EQ         | OPERATOR       | =            | -
+30    | 8    | 19  | INTLIT     | INT_LITERAL    | 0            | 0
+31    | 8    | 21  | RPAREN     | PUNCTUATOR     | )            | -
+32    | 8    | 23  | SHURO      | KEYWORD        | shuro        | -
+33    | 8    | 29  | NIKAL      | KEYWORD        | nikal        | -
+34    | 8    | 35  | SEMI       | PUNCTUATOR     | ;            | -
+35    | 8    | 37  | KHATAM     | KEYWORD        | khatam       | -
+36    | 9    | 5   | ID         | IDENTIFIER     | i            | -
+37    | 9    | 7   | MELADO     | KEYWORD        | melado       | -
+38    | 9    | 14  | LPAREN     | PUNCTUATOR     | (            | -
+39    | 9    | 16  | ID         | IDENTIFIER     | i            | -
+40    | 9    | 18  | PLUS       | OPERATOR       | +            | -
+41    | 9    | 20  | INTLIT     | INT_LITERAL    | 1            | 1
+42    | 9    | 22  | RPAREN     | PUNCTUATOR     | )            | -
+43    | 9    | 24  | SEMI       | PUNCTUATOR     | ;            | -
+44    | 10   | 1   | KHATAM     | KEYWORD        | khatam       | -
+45    | 11   | 1   | DIKHAO     | KEYWORD        | dikhao       | -
+46    | 11   | 7   | LPAREN     | PUNCTUATOR     | (            | -
+47    | 11   | 8   | STRLIT     | STRING_LITERAL | "i = "       | 'i = '
+48    | 11   | 14  | COMMA      | PUNCTUATOR     | ,            | -
+49    | 11   | 16  | ID         | IDENTIFIER     | i            | -
+50    | 11   | 17  | RPAREN     | PUNCTUATOR     | )            | -
+51    | 11   | 18  | SEMI       | PUNCTUATOR     | ;            | -
+52    | 12   | 1   | EOF        | EOF            | <eof>        | -
+#------------------------------------------------------------------------------
+# total tokens: 53 (including EOF)
+# lexical errors: 0

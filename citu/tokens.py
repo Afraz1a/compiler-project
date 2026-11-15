@@ -20,7 +20,8 @@ KEYWORDS = {
     "jabtak":  "JABTAK",     # while
     "nikal":   "NIKAL",      # break
     # statements
-    "medalo":  "MEDALO",     # assignment operator (a medalo b  ==  a = b)
+    "melado":  "MELADO",     # assignment operator (a melado b  ==  a = b)
+    "medalo":  "MELADO",     # an accepted second spelling of 'melado'
     "dikhao":  "DIKHAO",     # print
     # word operators
     "aur":     "AUR",        # &&
@@ -32,11 +33,12 @@ KEYWORDS = {
     "uint16":  "UINT16",
     "uint32":  "UINT32",
     "real":    "REAL",
+    "float":   "FLOAT",     # an accepted second spelling of 'real'
     "char":    "CHAR",
 }
 
 TYPE_KEYWORDS = frozenset(
-    ["INT16", "INT32", "UINT16", "UINT32", "REAL", "CHAR"])
+    ["INT16", "INT32", "UINT16", "UINT32", "REAL", "FLOAT", "CHAR"])
 
 # ----------------------------------------------------------- operator sets --
 # Longest first: the lexer tries these in order, which implements maximal
@@ -63,7 +65,7 @@ SYMBOLS = [
 
 OPERATOR_TYPES = frozenset(
     ["LE", "GE", "NE", "LT", "GT", "EQ", "PLUS", "MINUS",
-     "STAR", "SLASH", "PERCENT", "AUR", "YA", "NAHI", "MEDALO"])
+     "STAR", "SLASH", "PERCENT", "AUR", "YA", "NAHI", "MELADO"])
 
 PUNCTUATOR_TYPES = frozenset(
     ["LPAREN", "RPAREN", "LBRACK", "RBRACK", "SEMI", "COMMA"])

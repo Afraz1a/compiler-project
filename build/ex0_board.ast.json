@@ -1,0 +1,161 @@
+{
+  "format": "citu-ast",
+  "version": 1,
+  "source": "examples/ex0_board.citu",
+  "tree": {
+    "kind": "Program",
+    "line": 1,
+    "col": 1,
+    "stmts": [
+      {
+        "kind": "VarDecl",
+        "line": 3,
+        "col": 1,
+        "type_name": "int32",
+        "name": "SIZE",
+        "init": {
+          "kind": "IntLit",
+          "line": 3,
+          "col": 19,
+          "value": 4
+        }
+      },
+      {
+        "kind": "ArrayDecl",
+        "line": 4,
+        "col": 1,
+        "type_name": "int32",
+        "name": "a",
+        "size": 4
+      },
+      {
+        "kind": "VarDecl",
+        "line": 5,
+        "col": 1,
+        "type_name": "int32",
+        "name": "i",
+        "init": {
+          "kind": "IntLit",
+          "line": 5,
+          "col": 16,
+          "value": 0
+        }
+      },
+      {
+        "kind": "While",
+        "line": 7,
+        "col": 1,
+        "cond": {
+          "kind": "Binary",
+          "line": 7,
+          "col": 12,
+          "op": "<",
+          "left": {
+            "kind": "Var",
+            "line": 7,
+            "col": 10,
+            "name": "i"
+          },
+          "right": {
+            "kind": "Var",
+            "line": 7,
+            "col": 14,
+            "name": "SIZE"
+          }
+        },
+        "body": {
+          "kind": "Block",
+          "line": 7,
+          "col": 21,
+          "stmts": [
+            {
+              "kind": "If",
+              "line": 8,
+              "col": 5,
+              "cond": {
+                "kind": "Binary",
+                "line": 8,
+                "col": 17,
+                "op": "=",
+                "left": {
+                  "kind": "Index",
+                  "line": 8,
+                  "col": 12,
+                  "name": "a",
+                  "index": {
+                    "kind": "Var",
+                    "line": 8,
+                    "col": 14,
+                    "name": "i"
+                  }
+                },
+                "right": {
+                  "kind": "IntLit",
+                  "line": 8,
+                  "col": 19,
+                  "value": 0
+                }
+              },
+              "then_block": {
+                "kind": "Block",
+                "line": 8,
+                "col": 23,
+                "stmts": [
+                  {
+                    "kind": "Break",
+                    "line": 8,
+                    "col": 29
+                  }
+                ]
+              },
+              "else_block": null
+            },
+            {
+              "kind": "Assign",
+              "line": 9,
+              "col": 5,
+              "name": "i",
+              "value": {
+                "kind": "Binary",
+                "line": 9,
+                "col": 18,
+                "op": "+",
+                "left": {
+                  "kind": "Var",
+                  "line": 9,
+                  "col": 16,
+                  "name": "i"
+                },
+                "right": {
+                  "kind": "IntLit",
+                  "line": 9,
+                  "col": 20,
+                  "value": 1
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Print",
+        "line": 11,
+        "col": 1,
+        "args": [
+          {
+            "kind": "StrLit",
+            "line": 11,
+            "col": 8,
+            "value": "i = "
+          },
+          {
+            "kind": "Var",
+            "line": 11,
+            "col": 16,
+            "name": "i"
+          }
+        ]
+      }
+    ]
+  }
+}

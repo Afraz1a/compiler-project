@@ -11,7 +11,7 @@ Program
 |  |  |  |  |  INT32  "int32"
 |  |  |  |  ID  "size"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -57,7 +57,7 @@ Program
 |  |  |  |  |  |  |  |  AndTail
 |  |  |  |  |  |  |  OrTail
 |  |  |  |  |  RBRACK  "]"
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -93,7 +93,7 @@ Program
 |  |  |  |  |  |  |  |  AndTail
 |  |  |  |  |  |  |  OrTail
 |  |  |  |  |  RBRACK  "]"
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -129,7 +129,7 @@ Program
 |  |  |  |  |  |  |  |  AndTail
 |  |  |  |  |  |  |  OrTail
 |  |  |  |  |  RBRACK  "]"
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -165,7 +165,7 @@ Program
 |  |  |  |  |  |  |  |  AndTail
 |  |  |  |  |  |  |  OrTail
 |  |  |  |  |  RBRACK  "]"
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -201,7 +201,7 @@ Program
 |  |  |  |  |  |  |  |  AndTail
 |  |  |  |  |  |  |  OrTail
 |  |  |  |  |  RBRACK  "]"
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -237,7 +237,7 @@ Program
 |  |  |  |  |  |  |  |  AndTail
 |  |  |  |  |  |  |  OrTail
 |  |  |  |  |  RBRACK  "]"
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -273,7 +273,7 @@ Program
 |  |  |  |  |  |  |  |  AndTail
 |  |  |  |  |  |  |  OrTail
 |  |  |  |  |  RBRACK  "]"
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -309,7 +309,7 @@ Program
 |  |  |  |  |  |  |  |  AndTail
 |  |  |  |  |  |  |  OrTail
 |  |  |  |  |  RBRACK  "]"
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -331,7 +331,7 @@ Program
 |  |  |  |  |  INT32  "int32"
 |  |  |  |  ID  "i"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -353,7 +353,7 @@ Program
 |  |  |  |  |  INT32  "int32"
 |  |  |  |  ID  "found"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -457,7 +457,7 @@ Program
 |  |  |  |  |  |  |  |  |  |  |  Assign
 |  |  |  |  |  |  |  |  |  |  |  |  ID  "found"
 |  |  |  |  |  |  |  |  |  |  |  |  AsgTail
-|  |  |  |  |  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
@@ -484,7 +484,7 @@ Program
 |  |  |  |  |  |  |  Assign
 |  |  |  |  |  |  |  |  ID  "i"
 |  |  |  |  |  |  |  |  AsgTail
-|  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  |  |  |  |  Expr
 |  |  |  |  |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  |  |  |  |  AndExpr

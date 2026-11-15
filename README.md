@@ -13,16 +13,16 @@ Written in Python 3. No third-party libraries.
 ## A Citu program
 
 ```citu
-int32 i medalo 0;
+int32 i melado 0;
 int32 a[5];
 
 jabtak ( i < 5 ) shuro
     agar ( i % 2 = 0 ) shuro
-        a[i] medalo i * i;
+        a[i] melado i * i;
     khatam wagarna shuro
-        a[i] medalo -1;
+        a[i] melado -1;
     khatam
-    i medalo i + 1;
+    i melado i + 1;
 khatam
 
 dikhao("a[2] = ", a[2]);
@@ -30,12 +30,13 @@ dikhao("a[2] = ", a[2]);
 
 | Citu | Meaning | | Citu | Meaning |
 |---|---|---|---|---|
-| `shuro` / `khatam` | `{` / `}` | | `medalo` | assignment |
+| `shuro` / `khatam` | `{` / `}` | | `melado` | assignment |
 | `agar` / `wagarna` | `if` / `else` | | `dikhao` | print |
 | `jabtak` | `while` | | `aur` / `ya` / `nahi` | `&&` / `\|\|` / `!` |
 | `nikal` | `break` | | `=` | equality test |
 
-Types: `char`, `int16`, `uint16`, `int32`, `uint32`, `real`, plus 1-D arrays.
+Types: `char`, `int16`, `uint16`, `int32`, `uint32`, `real` (also spelled
+`float`), plus 1-D arrays. `melado` may also be spelled `medalo`.
 
 ## Running it
 
@@ -77,6 +78,7 @@ Each phase writes its result into `build/`:
 
 | File | Shows |
 |---|---|
+| `examples/ex0_board.citu` | the original assignment program, verbatim |
 | `examples/ex1_search.citu` | arrays, `jabtak`, `agar`/`wagarna`, `nikal` |
 | `examples/ex2_primes.citu` | nested loops, `%`, `aur`/`nahi`, block scope |
 | `examples/ex3_stats.citu` | all six types, mixed arithmetic, real division |
@@ -89,7 +91,7 @@ submission document: example programs, the complete grammar (lexical and
 syntax rules), the compiler's data structures, and the intermediate file
 formats.
 
-**[doc/grammar_report.txt](doc/grammar_report.txt)** — generated: all 69
+**[doc/grammar_report.txt](doc/grammar_report.txt)** — generated: all 70
 productions, FIRST, FOLLOW, every PREDICT set, and the LL(1) conflict check.
 
 ## Also in this repository

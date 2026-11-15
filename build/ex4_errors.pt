@@ -11,7 +11,7 @@ Program
 |  |  |  |  |  INT32  "int32"
 |  |  |  |  ID  "x"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -33,7 +33,7 @@ Program
 |  |  |  |  |  INT32  "int32"
 |  |  |  |  ID  "x"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -55,7 +55,7 @@ Program
 |  |  |  |  |  CHAR  "char"
 |  |  |  |  ID  "c"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -101,7 +101,7 @@ Program
 |  |  |  |  |  |  |  |  AndTail
 |  |  |  |  |  |  |  OrTail
 |  |  |  |  |  RBRACK  "]"
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -176,7 +176,7 @@ Program
 |  |  |  |  |  INT32  "int32"
 |  |  |  |  ID  "q"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -203,7 +203,7 @@ Program
 |  |  |  |  |  INT32  "int32"
 |  |  |  |  ID  "w"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -226,7 +226,7 @@ Program
 |  |  |  |  |  REAL  "real"
 |  |  |  |  ID  "r"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -248,7 +248,7 @@ Program
 |  |  |  |  |  INT32  "int32"
 |  |  |  |  ID  "z"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -276,7 +276,7 @@ Program
 |  |  |  |  |  INT32  "int32"
 |  |  |  |  ID  "m"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -297,7 +297,7 @@ Program
 |  |  |  |  |  INT32  "int32"
 |  |  |  |  ID  "k"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr

@@ -35,7 +35,7 @@ Urdu words:
 | `wagarna` | otherwise | `else` |
 | `jabtak` | as long as | `while` |
 | `nikal` | get out | `break` |
-| `medalo` | put into | `=` (assignment) |
+| `melado` | put into | `=` (assignment) |
 | `dikhao` | show | `printf` |
 | `aur` | and | `&&` |
 | `ya` | or | `\|\|` |
@@ -46,11 +46,11 @@ The loop from the original assignment is still valid Citu today:
 ```citu
 jabtak ( i < size ) shuro
     agar ( a[i] = 0 ) shuro nikal; khatam
-    i medalo i + 1;
+    i melado i + 1;
 khatam
 ```
 
-Note that `=` is the **equality test**. Assignment is the word `medalo`, so
+Note that `=` is the **equality test**. Assignment is the word `melado`, so
 the classic `if (x = 0)` bug cannot be written in Citu.
 
 The language was extended beyond the original assignment sketch with
@@ -142,12 +142,39 @@ zero warnings**, and the output shown below is the real output of
 
 | Program | Tokens | Parse-tree nodes | Symbols / scopes | Quads | After optimisation |
 |---|---|---|---|---|---|
+| `ex0_board.citu` | 53 | 214 | 3 / 3 | 21 | 21 |
 | `ex1_search.citu` | 142 | 614 | 4 / 5 | 45 | 43 |
 | `ex2_primes.citu` | 129 | 551 | 6 / 5 | 60 | 60 |
 | `ex3_stats.citu` | 297 | 1327 | 9 / 10 | 108 | 105 |
 
-A fourth file, `ex4_errors.citu`, is deliberately broken and is described in
-section 1.4.
+`ex4_errors.citu` is deliberately broken and is described in section 1.4.
+
+### 1.0 `ex0_board.citu` — the original assignment program
+
+The program written on the board in the Citu grammar assignment, verbatim,
+with the declarations the language requires added above it. It is here to
+show that the compiler accepts the original language unchanged — including
+the parenthesised assignment form `i melado ( i + 1 ) ;` of the original
+production `A -> id melado ( E ) ;`.
+
+```citu
+int32 SIZE melado 4;
+int32 a[4];
+int32 i melado 0;
+
+jabtak ( i < SIZE ) shuro
+    agar ( a[i] = 0 ) shuro nikal ; khatam
+    i melado ( i + 1 ) ;
+khatam
+dikhao("i = ", i);
+```
+
+Output — an array is zero-filled when it is declared, so `a[0]` is already
+0 and the loop leaves on its first iteration:
+
+```
+i = 0
+```
 
 ### 1.1 `ex1_search.citu` — linear search
 
@@ -157,27 +184,27 @@ This is the program from the original grammar assignment, extended so that
 it declares its own data and reports the answer.
 
 ```citu
-int32 size medalo 8;
+int32 size melado 8;
 int32 a[8];
 
-a[0] medalo 14;
-a[1] medalo 7;
-a[2] medalo 23;
-a[3] medalo 0;
-a[4] medalo 9;
-a[5] medalo 0;
-a[6] medalo 31;
-a[7] medalo 5;
+a[0] melado 14;
+a[1] melado 7;
+a[2] melado 23;
+a[3] melado 0;
+a[4] melado 9;
+a[5] melado 0;
+a[6] melado 31;
+a[7] melado 5;
 
-int32 i medalo 0;
-int32 found medalo -1;          /* -1 stands for "not found yet" */
+int32 i melado 0;
+int32 found melado -1;          /* -1 stands for "not found yet" */
 
 jabtak ( i < size ) shuro
     agar ( a[i] = 0 ) shuro
-        found medalo i;
+        found melado i;
         nikal;                  // stop at the FIRST zero
     khatam
-    i medalo i + 1;
+    i melado i + 1;
 khatam
 
 agar ( found < 0 ) shuro
@@ -203,32 +230,32 @@ loop, the word operators `aur` and `nahi`, block scope (`d` and `prime`
 belong to the loop body, not to the program), and the unsigned types.
 
 ```citu
-uint16 limit medalo 40;
-uint16 n medalo 2;
-uint16 count medalo 0;
-uint32 total medalo 0;          // sum of the primes found
+uint16 limit melado 40;
+uint16 n melado 2;
+uint16 count melado 0;
+uint32 total melado 0;          // sum of the primes found
 
 jabtak ( n < limit ) shuro
 
     // these two belong to the loop body block, not to the program
-    uint16 d medalo 2;
-    int16 prime medalo 1;
+    uint16 d melado 2;
+    int16 prime melado 1;
 
     jabtak ( d * d <= n ) shuro
         agar ( n % d = 0 ) shuro
-            prime medalo 0;
+            prime melado 0;
             nikal;              // no need to try any more divisors
         khatam
-        d medalo d + 1;
+        d melado d + 1;
     khatam
 
     agar ( prime = 1 aur nahi (n = 1) ) shuro
         dikhao(n, " is prime");
-        count medalo count + 1;
-        total medalo total + n;
+        count melado count + 1;
+        total melado total + n;
     khatam
 
-    n medalo n + 1;
+    n melado n + 1;
 khatam
 
 dikhao("primes below ", limit, ": ", count);
@@ -261,43 +288,43 @@ widening the compiler inserts automatically, real division, `ya`, a
 character literal, and nested `agar` / `wagarna` used as a chain.
 
 ```citu
-int32 count medalo 10;
+int32 count melado 10;
 int16 marks[10];
 
-marks[0] medalo 72;
-marks[1] medalo 48;
-marks[2] medalo 91;
-marks[3] medalo 65;
-marks[4] medalo 33;
-marks[5] medalo 88;
-marks[6] medalo 57;
-marks[7] medalo 79;
-marks[8] medalo 95;
-marks[9] medalo 61;
+marks[0] melado 72;
+marks[1] melado 48;
+marks[2] melado 91;
+marks[3] melado 65;
+marks[4] melado 33;
+marks[5] melado 88;
+marks[6] melado 57;
+marks[7] melado 79;
+marks[8] melado 95;
+marks[9] melado 61;
 
-int16  lowest  medalo 32767;    // the largest value an int16 can hold
-int16  highest medalo -32768;
-int32  sum     medalo 0;
-int32  passes  medalo 0;
-int32  k       medalo 0;
+int16  lowest  melado 32767;    // the largest value an int16 can hold
+int16  highest melado -32768;
+int32  sum     melado 0;
+int32  passes  melado 0;
+int32  k       melado 0;
 
 jabtak ( k < count ) shuro
     agar ( marks[k] < lowest ) shuro
-        lowest medalo marks[k];
+        lowest melado marks[k];
     khatam
     agar ( marks[k] > highest ) shuro
-        highest medalo marks[k];
+        highest melado marks[k];
     khatam
-    sum medalo sum + marks[k];
+    sum melado sum + marks[k];
     agar ( marks[k] >= 50 ) shuro
-        passes medalo passes + 1;
+        passes melado passes + 1;
     khatam
-    k medalo k + 1;
+    k melado k + 1;
 khatam
 
 // integer sum divided by an integer count, in real arithmetic:
 // the compiler widens both operands to real before dividing
-real mean medalo sum / 1.0 / count;
+real mean melado sum / 1.0 / count;
 
 dikhao("count   : ", count);
 dikhao("lowest  : ", lowest);
@@ -307,15 +334,15 @@ dikhao("mean    : ", mean);
 dikhao("passed  : ", passes, " of ", count);
 
 // a grade for the class average
-char grade medalo 'F';
+char grade melado 'F';
 agar ( mean >= 80.0 ) shuro
-    grade medalo 'A';
+    grade melado 'A';
 khatam wagarna shuro
     agar ( mean >= 70.0 ) shuro
-        grade medalo 'B';
+        grade melado 'B';
     khatam wagarna shuro
         agar ( mean >= 60.0 ya mean >= 55.0 ) shuro
-            grade medalo 'C';
+            grade melado 'C';
         khatam
     khatam
 khatam
@@ -380,7 +407,7 @@ error    syntax   36:1    expected an expression but found '<eof>'
 The grammar lives in `citu/grammar.py` and is the single source of truth:
 the parser implements exactly these productions, and the same file
 mechanically builds the LL(1) table and checks it for conflicts. The full
-machine-generated listing — all 69 productions, FIRST, FOLLOW, every
+machine-generated listing — all 70 productions, FIRST, FOLLOW, every
 PREDICT set, and the conflict check — is in **`doc/grammar_report.txt`**,
 regenerated with:
 
@@ -441,10 +468,18 @@ a `\b` guard so that `integer` is not scanned as `int` + `eger`.
 | `agar` | `AGAR` | `uint16` | `UINT16` |
 | `wagarna` | `WAGARNA` | `uint32` | `UINT32` |
 | `jabtak` | `JABTAK` | `real` | `REAL` |
-| `nikal` | `NIKAL` | `char` | `CHAR` |
-| `medalo` | `MEDALO` | `aur` | `AUR` |
-| `dikhao` | `DIKHAO` | `ya` | `YA` |
+| `nikal` | `NIKAL` | `float` | `FLOAT` |
+| `melado` | `MELADO` | `char` | `CHAR` |
+| `dikhao` | `DIKHAO` | `aur` | `AUR` |
+| | | `ya` | `YA` |
 | | | `nahi` | `NAHI` |
+
+Two keywords have a second accepted spelling, because the handwritten
+assignment pages are not consistent about them:
+
+* `melado` is canonical — it is the spelling in the grammar production on
+  page 1 of the assignment; `medalo` is accepted and means the same thing;
+* `real` is canonical; `float` is accepted and names the same type.
 
 #### Operators and punctuators
 
@@ -457,11 +492,11 @@ a `\b` guard so that `integer` is not scanned as `int` + `eger`.
 | `>` | `GT` | `%` | `PERCENT` | `;` | `SEMI` |
 | `=` | `EQ` (equality) | | | `,` | `COMMA` |
 
-There are **40 terminals** in all, including `EOF`.
+There are **41 terminals** in all, including `EOF`.
 
 ### 2.2 Syntax rules
 
-69 productions over 32 nonterminals. Start symbol `Program`. `eps` is the
+70 productions over 32 nonterminals. Start symbol `Program`. `eps` is the
 empty string. The grammar has **no left recursion** and **no common
 prefixes**, which is what makes it LL(1).
 
@@ -479,7 +514,7 @@ prefixes**, which is what makes it LL(1).
  8  Stmt      -> Break
  9  Stmt      -> Print
 
-32  Block     -> SHURO StmtList KHATAM
+35  Block     -> SHURO StmtList KHATAM
 ```
 
 `Stmt` is decided by one lookahead token: a type keyword starts a `Decl`,
@@ -491,14 +526,15 @@ start exactly one other kind of statement.
 ```
 10  Decl      -> Type ID DeclTail
 11  DeclTail  -> LBRACK INTLIT RBRACK SEMI        -- int32 a[8];
-12  DeclTail  -> MEDALO Expr SEMI                 -- int32 x medalo 5;
+12  DeclTail  -> MELADO Expr SEMI                 -- int32 x melado 5;
 13  DeclTail  -> SEMI                             -- int32 x;
 14  Type      -> INT16
 15  Type      -> INT32
 16  Type      -> UINT16
 17  Type      -> UINT32
 18  Type      -> REAL
-19  Type      -> CHAR
+19  Type      -> FLOAT        -- a second spelling of REAL
+20  Type      -> CHAR
 ```
 
 An array size must be an integer **literal**, so storage is known at compile
@@ -507,9 +543,9 @@ time.
 #### Assignment
 
 ```
-20  Assign    -> ID AsgTail
-21  AsgTail   -> LBRACK Expr RBRACK MEDALO Expr SEMI   -- a[i] medalo e;
-22  AsgTail   -> MEDALO Expr SEMI                      -- x medalo e;
+21  Assign    -> ID AsgTail
+22  AsgTail   -> LBRACK Expr RBRACK MELADO Expr SEMI   -- a[i] melado e;
+23  AsgTail   -> MELADO Expr SEMI                      -- x melado e;
 ```
 
 Factoring the common `ID` out into `Assign` and deciding on the next token
@@ -519,18 +555,18 @@ grammar would not be LL(1).
 #### Control flow and output
 
 ```
-23  If        -> AGAR LPAREN Expr RPAREN Block ElsePart
-24  ElsePart  -> WAGARNA Block
-25  ElsePart  -> eps
-26  While     -> JABTAK LPAREN Expr RPAREN Block
-27  Break     -> NIKAL SEMI
+24  If        -> AGAR LPAREN Expr RPAREN Block ElsePart
+25  ElsePart  -> WAGARNA Block
+26  ElsePart  -> eps
+27  While     -> JABTAK LPAREN Expr RPAREN Block
+28  Break     -> NIKAL SEMI
 
-28  Print     -> DIKHAO LPAREN ArgList RPAREN SEMI
-29  ArgList   -> Arg ArgTail
-30  ArgTail   -> COMMA Arg ArgTail
-31  ArgTail   -> eps
-32  Arg       -> STRLIT
-33  Arg       -> Expr
+29  Print     -> DIKHAO LPAREN ArgList RPAREN SEMI
+30  ArgList   -> Arg ArgTail
+31  ArgTail   -> COMMA Arg ArgTail
+32  ArgTail   -> eps
+33  Arg       -> STRLIT
+34  Arg       -> Expr
 ```
 
 Because the body of `agar` and `jabtak` is always a `Block`, Citu has **no
@@ -544,36 +580,36 @@ first. Each level uses the right-recursive `...Tail` form so that there is
 no left recursion.
 
 ```
-34  Expr      -> OrExpr
-35  OrExpr    -> AndExpr OrTail
-36  OrTail    -> YA AndExpr OrTail
-37  OrTail    -> eps
-38  AndExpr   -> RelExpr AndTail
-39  AndTail   -> AUR RelExpr AndTail
-40  AndTail   -> eps
-41  RelExpr   -> AddExpr RelTail
-42  RelTail   -> RelOp AddExpr
-43  RelTail   -> eps
-44-49  RelOp  -> EQ | NE | LT | LE | GT | GE
-50  AddExpr   -> MulExpr AddTail
-51  AddTail   -> PLUS MulExpr AddTail
-52  AddTail   -> MINUS MulExpr AddTail
-53  AddTail   -> eps
-54  MulExpr   -> Unary MulTail
-55  MulTail   -> STAR Unary MulTail
-56  MulTail   -> SLASH Unary MulTail
-57  MulTail   -> PERCENT Unary MulTail
-58  MulTail   -> eps
-59  Unary     -> MINUS Unary
-60  Unary     -> NAHI Unary
-61  Unary     -> Primary
-62  Primary   -> ID PrimTail
-63  Primary   -> INTLIT
-64  Primary   -> REALLIT
-65  Primary   -> CHARLIT
-66  Primary   -> LPAREN Expr RPAREN
-67  PrimTail  -> LBRACK Expr RBRACK
-68  PrimTail  -> eps
+36  Expr      -> OrExpr
+37  OrExpr    -> AndExpr OrTail
+38  OrTail    -> YA AndExpr OrTail
+39  OrTail    -> eps
+40  AndExpr   -> RelExpr AndTail
+41  AndTail   -> AUR RelExpr AndTail
+42  AndTail   -> eps
+43  RelExpr   -> AddExpr RelTail
+44  RelTail   -> RelOp AddExpr
+45  RelTail   -> eps
+46-51  RelOp  -> EQ | NE | LT | LE | GT | GE
+52  AddExpr   -> MulExpr AddTail
+53  AddTail   -> PLUS MulExpr AddTail
+54  AddTail   -> MINUS MulExpr AddTail
+55  AddTail   -> eps
+56  MulExpr   -> Unary MulTail
+57  MulTail   -> STAR Unary MulTail
+58  MulTail   -> SLASH Unary MulTail
+59  MulTail   -> PERCENT Unary MulTail
+60  MulTail   -> eps
+61  Unary     -> MINUS Unary
+62  Unary     -> NAHI Unary
+63  Unary     -> Primary
+64  Primary   -> ID PrimTail
+65  Primary   -> INTLIT
+66  Primary   -> REALLIT
+67  Primary   -> CHARLIT
+68  Primary   -> LPAREN Expr RPAREN
+69  PrimTail  -> LBRACK Expr RBRACK
+70  PrimTail  -> eps
 ```
 
 Precedence, lowest to highest: `ya` < `aur` < relational < `+ -` < `* / %` <
@@ -597,9 +633,9 @@ Computed by `citu/grammar.py`. An abridged table; the complete one is in
 | `Program` | type keywords, `ID`, `AGAR`, `JABTAK`, `NIKAL`, `DIKHAO`, eps | `$` |
 | `StmtList` | same as `Program` | `$` `KHATAM` |
 | `Decl` | `CHAR INT16 INT32 REAL UINT16 UINT32` | statement starters, `KHATAM`, `$` |
-| `DeclTail` | `LBRACK MEDALO SEMI` | statement starters, `KHATAM`, `$` |
+| `DeclTail` | `LBRACK MELADO SEMI` | statement starters, `KHATAM`, `$` |
 | `Assign` | `ID` | statement starters, `KHATAM`, `$` |
-| `AsgTail` | `LBRACK MEDALO` | statement starters, `KHATAM`, `$` |
+| `AsgTail` | `LBRACK MELADO` | statement starters, `KHATAM`, `$` |
 | `ElsePart` | `WAGARNA`, eps | statement starters, `KHATAM`, `$` |
 | `Block` | `SHURO` | statement starters, `KHATAM`, `WAGARNA`, `$` |
 | `Expr` | `CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT` | `COMMA RBRACK RPAREN SEMI` |
@@ -620,7 +656,7 @@ with `M[A, t] = A -> alpha` for every `t` in the predict set.
 ## LL(1) check
 
 No cell of the parsing table received two productions.
-The grammar is LL(1).  Filled cells: 223
+The grammar is LL(1).  Filled cells: 229
 ```
 
 Because the table is conflict-free, the recursive-descent parser needs one
@@ -641,8 +677,8 @@ Rules a context-free grammar cannot express, all enforced in
 * an assignment must be type-compatible, with a warning on a narrowing,
   truncating or signedness-changing conversion;
 * an integer literal has the adaptive type `intlit`: it takes the type of
-  whatever it is combined with, so `uint16 n medalo 40;` is silent, while a
-  literal that does not fit (`char c medalo 70000;`) is an error.
+  whatever it is combined with, so `uint16 n melado 40;` is silent, while a
+  literal that does not fit (`char c melado 70000;`) is an error.
 
 Usual arithmetic conversion: if either operand is `real` the result is
 `real`; otherwise the wider type wins, with `char` widening to `int16`
@@ -939,7 +975,7 @@ Shared conventions:
 #------------------------------------------------------------------------------
 0     | 15   | 1   | INT32      | TYPE_KEYWORD   | int32        | -
 1     | 15   | 7   | ID         | IDENTIFIER     | size         | -
-2     | 15   | 12  | MEDALO     | KEYWORD        | medalo       | -
+2     | 15   | 12  | MELADO     | KEYWORD        | melado       | -
 3     | 15   | 19  | INTLIT     | INT_LITERAL    | 8            | 8
 4     | 15   | 20  | SEMI       | PUNCTUATOR     | ;            | -
 #------------------------------------------------------------------------------
@@ -970,7 +1006,7 @@ Program
 |  |  |  |  |  INT32  "int32"
 |  |  |  |  ID  "size"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 ```
@@ -1203,9 +1239,13 @@ citu-compiler/
 $ python run_tests.py
 
 1. grammar
-  PASS  grammar is LL(1) (223 cells filled)
+  PASS  grammar is LL(1) (229 cells filled)
 
 2-4. example programs
+  PASS  ex0_board.citu compiles without errors
+  PASS  ex0_board.citu compiles without warnings
+  PASS  ex0_board.citu produces the expected output
+  PASS  ex0_board.citu optimised output is identical (21 -> 21 quads)
   PASS  ex1_search.citu compiles without errors
   PASS  ex1_search.citu compiles without warnings
   PASS  ex1_search.citu produces the expected output
@@ -1234,5 +1274,5 @@ $ python run_tests.py
   PASS  reports: expected an expression
   PASS  reports: unterminated string literal
 
-26 passed, 0 failed
+30 passed, 0 failed
 ```

@@ -35,19 +35,20 @@ PRODUCTIONS = [
     # declarations
     ("Decl",     ["Type", "ID", "DeclTail"]),
     ("DeclTail", ["LBRACK", "INTLIT", "RBRACK", "SEMI"]),
-    ("DeclTail", ["MEDALO", "Expr", "SEMI"]),
+    ("DeclTail", ["MELADO", "Expr", "SEMI"]),
     ("DeclTail", ["SEMI"]),
     ("Type", ["INT16"]),
     ("Type", ["INT32"]),
     ("Type", ["UINT16"]),
     ("Type", ["UINT32"]),
     ("Type", ["REAL"]),
+    ("Type", ["FLOAT"]),
     ("Type", ["CHAR"]),
 
     # assignment
     ("Assign",  ["ID", "AsgTail"]),
-    ("AsgTail", ["LBRACK", "Expr", "RBRACK", "MEDALO", "Expr", "SEMI"]),
-    ("AsgTail", ["MEDALO", "Expr", "SEMI"]),
+    ("AsgTail", ["LBRACK", "Expr", "RBRACK", "MELADO", "Expr", "SEMI"]),
+    ("AsgTail", ["MELADO", "Expr", "SEMI"]),
 
     # control flow
     ("If",       ["AGAR", "LPAREN", "Expr", "RPAREN", "Block", "ElsePart"]),

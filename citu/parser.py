@@ -23,14 +23,14 @@ from .errors import DiagnosticBag
 
 # Tokens that may begin a statement -- used by panic-mode recovery.
 STMT_START = frozenset([
-    "INT16", "INT32", "UINT16", "UINT32", "REAL", "CHAR",
+    "INT16", "INT32", "UINT16", "UINT32", "REAL", "FLOAT", "CHAR",
     "ID", "AGAR", "JABTAK", "NIKAL", "DIKHAO",
 ])
 
 TYPE_TOKENS = {
     "INT16": "int16", "INT32": "int32",
     "UINT16": "uint16", "UINT32": "uint32",
-    "REAL": "real", "CHAR": "char",
+    "REAL": "real", "FLOAT": "real", "CHAR": "char",
 }
 
 REL_OPS = {"EQ": "=", "NE": "!=", "LT": "<", "LE": "<=", "GT": ">", "GE": ">="}
@@ -41,7 +41,7 @@ MUL_OPS = {"STAR": "*", "SLASH": "/", "PERCENT": "%"}
 FRIENDLY = {
     "SEMI": "';'", "LPAREN": "'('", "RPAREN": "')'",
     "LBRACK": "'['", "RBRACK": "']'", "COMMA": "','",
-    "SHURO": "'shuro'", "KHATAM": "'khatam'", "MEDALO": "'medalo'",
+    "SHURO": "'shuro'", "KHATAM": "'khatam'", "MELADO": "'melado'",
     "ID": "an identifier", "INTLIT": "an integer literal",
     "EOF": "end of file",
 }
@@ -228,8 +228,8 @@ class Parser(object):
                                        type_name=type_name,
                                        name=name_tok.lexeme,
                                        size=size_tok.value)
-                if self.ttype == "MEDALO":
-                    self._match("MEDALO")
+                if self.ttype == "MELADO":
+                    self._match("MELADO")
                     init = self._expr()
                     self._match("SEMI")
                     return A.VarDecl(line=start.line, col=start.col,
@@ -255,13 +255,13 @@ class Parser(object):
                     self._match("LBRACK")
                     index = self._expr()
                     self._match("RBRACK")
-                    self._match("MEDALO")
+                    self._match("MELADO")
                     value = self._expr()
                     self._match("SEMI")
                     return A.IndexAssign(line=name_tok.line, col=name_tok.col,
                                          name=name_tok.lexeme,
                                          index=index, value=value)
-                self._match("MEDALO")
+                self._match("MELADO")
                 value = self._expr()
                 self._match("SEMI")
                 return A.Assign(line=name_tok.line, col=name_tok.col,

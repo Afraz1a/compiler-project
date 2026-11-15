@@ -1,14 +1,14 @@
 # citu-grammar-report v1
 
-## Terminals (40)
+## Terminals (41)
 
-AGAR AUR CHAR CHARLIT COMMA DIKHAO EOF EQ GE GT ID INT16 INT32 INTLIT JABTAK KHATAM LBRACK LE LPAREN LT MEDALO MINUS NAHI NE NIKAL PERCENT PLUS RBRACK REAL REALLIT RPAREN SEMI SHURO SLASH STAR STRLIT UINT16 UINT32 WAGARNA YA
+AGAR AUR CHAR CHARLIT COMMA DIKHAO EOF EQ FLOAT GE GT ID INT16 INT32 INTLIT JABTAK KHATAM LBRACK LE LPAREN LT MELADO MINUS NAHI NE NIKAL PERCENT PLUS RBRACK REAL REALLIT RPAREN SEMI SHURO SLASH STAR STRLIT UINT16 UINT32 WAGARNA YA
 
 ## Nonterminals (32)
 
 Program StmtList Stmt Decl DeclTail Type Assign AsgTail If ElsePart While Break Print ArgList ArgTail Arg Block Expr OrExpr OrTail AndExpr AndTail RelExpr RelTail RelOp AddExpr AddTail MulExpr MulTail Unary Primary PrimTail
 
-## Productions (69)
+## Productions (70)
 
   1.  Program -> StmtList
   2.  StmtList -> Stmt StmtList
@@ -21,86 +21,87 @@ Program StmtList Stmt Decl DeclTail Type Assign AsgTail If ElsePart While Break 
   9.  Stmt -> Print
  10.  Decl -> Type ID DeclTail
  11.  DeclTail -> LBRACK INTLIT RBRACK SEMI
- 12.  DeclTail -> MEDALO Expr SEMI
+ 12.  DeclTail -> MELADO Expr SEMI
  13.  DeclTail -> SEMI
  14.  Type -> INT16
  15.  Type -> INT32
  16.  Type -> UINT16
  17.  Type -> UINT32
  18.  Type -> REAL
- 19.  Type -> CHAR
- 20.  Assign -> ID AsgTail
- 21.  AsgTail -> LBRACK Expr RBRACK MEDALO Expr SEMI
- 22.  AsgTail -> MEDALO Expr SEMI
- 23.  If -> AGAR LPAREN Expr RPAREN Block ElsePart
- 24.  ElsePart -> WAGARNA Block
- 25.  ElsePart -> eps
- 26.  While -> JABTAK LPAREN Expr RPAREN Block
- 27.  Break -> NIKAL SEMI
- 28.  Print -> DIKHAO LPAREN ArgList RPAREN SEMI
- 29.  ArgList -> Arg ArgTail
- 30.  ArgTail -> COMMA Arg ArgTail
- 31.  ArgTail -> eps
- 32.  Arg -> STRLIT
- 33.  Arg -> Expr
- 34.  Block -> SHURO StmtList KHATAM
- 35.  Expr -> OrExpr
- 36.  OrExpr -> AndExpr OrTail
- 37.  OrTail -> YA AndExpr OrTail
- 38.  OrTail -> eps
- 39.  AndExpr -> RelExpr AndTail
- 40.  AndTail -> AUR RelExpr AndTail
- 41.  AndTail -> eps
- 42.  RelExpr -> AddExpr RelTail
- 43.  RelTail -> RelOp AddExpr
- 44.  RelTail -> eps
- 45.  RelOp -> EQ
- 46.  RelOp -> NE
- 47.  RelOp -> LT
- 48.  RelOp -> LE
- 49.  RelOp -> GT
- 50.  RelOp -> GE
- 51.  AddExpr -> MulExpr AddTail
- 52.  AddTail -> PLUS MulExpr AddTail
- 53.  AddTail -> MINUS MulExpr AddTail
- 54.  AddTail -> eps
- 55.  MulExpr -> Unary MulTail
- 56.  MulTail -> STAR Unary MulTail
- 57.  MulTail -> SLASH Unary MulTail
- 58.  MulTail -> PERCENT Unary MulTail
- 59.  MulTail -> eps
- 60.  Unary -> MINUS Unary
- 61.  Unary -> NAHI Unary
- 62.  Unary -> Primary
- 63.  Primary -> ID PrimTail
- 64.  Primary -> INTLIT
- 65.  Primary -> REALLIT
- 66.  Primary -> CHARLIT
- 67.  Primary -> LPAREN Expr RPAREN
- 68.  PrimTail -> LBRACK Expr RBRACK
- 69.  PrimTail -> eps
+ 19.  Type -> FLOAT
+ 20.  Type -> CHAR
+ 21.  Assign -> ID AsgTail
+ 22.  AsgTail -> LBRACK Expr RBRACK MELADO Expr SEMI
+ 23.  AsgTail -> MELADO Expr SEMI
+ 24.  If -> AGAR LPAREN Expr RPAREN Block ElsePart
+ 25.  ElsePart -> WAGARNA Block
+ 26.  ElsePart -> eps
+ 27.  While -> JABTAK LPAREN Expr RPAREN Block
+ 28.  Break -> NIKAL SEMI
+ 29.  Print -> DIKHAO LPAREN ArgList RPAREN SEMI
+ 30.  ArgList -> Arg ArgTail
+ 31.  ArgTail -> COMMA Arg ArgTail
+ 32.  ArgTail -> eps
+ 33.  Arg -> STRLIT
+ 34.  Arg -> Expr
+ 35.  Block -> SHURO StmtList KHATAM
+ 36.  Expr -> OrExpr
+ 37.  OrExpr -> AndExpr OrTail
+ 38.  OrTail -> YA AndExpr OrTail
+ 39.  OrTail -> eps
+ 40.  AndExpr -> RelExpr AndTail
+ 41.  AndTail -> AUR RelExpr AndTail
+ 42.  AndTail -> eps
+ 43.  RelExpr -> AddExpr RelTail
+ 44.  RelTail -> RelOp AddExpr
+ 45.  RelTail -> eps
+ 46.  RelOp -> EQ
+ 47.  RelOp -> NE
+ 48.  RelOp -> LT
+ 49.  RelOp -> LE
+ 50.  RelOp -> GT
+ 51.  RelOp -> GE
+ 52.  AddExpr -> MulExpr AddTail
+ 53.  AddTail -> PLUS MulExpr AddTail
+ 54.  AddTail -> MINUS MulExpr AddTail
+ 55.  AddTail -> eps
+ 56.  MulExpr -> Unary MulTail
+ 57.  MulTail -> STAR Unary MulTail
+ 58.  MulTail -> SLASH Unary MulTail
+ 59.  MulTail -> PERCENT Unary MulTail
+ 60.  MulTail -> eps
+ 61.  Unary -> MINUS Unary
+ 62.  Unary -> NAHI Unary
+ 63.  Unary -> Primary
+ 64.  Primary -> ID PrimTail
+ 65.  Primary -> INTLIT
+ 66.  Primary -> REALLIT
+ 67.  Primary -> CHARLIT
+ 68.  Primary -> LPAREN Expr RPAREN
+ 69.  PrimTail -> LBRACK Expr RBRACK
+ 70.  PrimTail -> eps
 
 ## FIRST and FOLLOW
 
 NT         | FIRST                                              | FOLLOW
 ----------------------------------------------------------------------------------------------------------------------
-Program    | AGAR CHAR DIKHAO ID INT16 INT32 JABTAK NIKAL REAL UINT16 UINT32 eps | $
-StmtList   | AGAR CHAR DIKHAO ID INT16 INT32 JABTAK NIKAL REAL UINT16 UINT32 eps | $ KHATAM
-Stmt       | AGAR CHAR DIKHAO ID INT16 INT32 JABTAK NIKAL REAL UINT16 UINT32 | $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
-Decl       | CHAR INT16 INT32 REAL UINT16 UINT32                | $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
-DeclTail   | LBRACK MEDALO SEMI                                 | $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
-Type       | CHAR INT16 INT32 REAL UINT16 UINT32                | ID
-Assign     | ID                                                 | $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
-AsgTail    | LBRACK MEDALO                                      | $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
-If         | AGAR                                               | $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
-ElsePart   | WAGARNA eps                                        | $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
-While      | JABTAK                                             | $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
-Break      | NIKAL                                              | $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
-Print      | DIKHAO                                             | $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
+Program    | AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK NIKAL REAL UINT16 UINT32 eps | $
+StmtList   | AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK NIKAL REAL UINT16 UINT32 eps | $ KHATAM
+Stmt       | AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK NIKAL REAL UINT16 UINT32 | $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
+Decl       | CHAR FLOAT INT16 INT32 REAL UINT16 UINT32          | $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
+DeclTail   | LBRACK MELADO SEMI                                 | $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
+Type       | CHAR FLOAT INT16 INT32 REAL UINT16 UINT32          | ID
+Assign     | ID                                                 | $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
+AsgTail    | LBRACK MELADO                                      | $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
+If         | AGAR                                               | $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
+ElsePart   | WAGARNA eps                                        | $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
+While      | JABTAK                                             | $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
+Break      | NIKAL                                              | $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
+Print      | DIKHAO                                             | $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32
 ArgList    | CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT STRLIT | RPAREN
 ArgTail    | COMMA eps                                          | RPAREN
 Arg        | CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT STRLIT | COMMA RPAREN
-Block      | SHURO                                              | $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32 WAGARNA
+Block      | SHURO                                              | $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32 WAGARNA
 Expr       | CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT        | COMMA RBRACK RPAREN SEMI
 OrExpr     | CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT        | COMMA RBRACK RPAREN SEMI
 OrTail     | YA eps                                             | COMMA RBRACK RPAREN SEMI
@@ -119,77 +120,78 @@ PrimTail   | LBRACK eps                                         | AUR COMMA EQ G
 
 ## PREDICT sets (one row of the LL(1) table each)
 
-  1.  Program -> StmtList                             PREDICT = { $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK NIKAL REAL UINT16 UINT32 }
-  2.  StmtList -> Stmt StmtList                       PREDICT = { AGAR CHAR DIKHAO ID INT16 INT32 JABTAK NIKAL REAL UINT16 UINT32 }
+  1.  Program -> StmtList                             PREDICT = { $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK NIKAL REAL UINT16 UINT32 }
+  2.  StmtList -> Stmt StmtList                       PREDICT = { AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK NIKAL REAL UINT16 UINT32 }
   3.  StmtList -> eps                                 PREDICT = { $ KHATAM }
-  4.  Stmt -> Decl                                    PREDICT = { CHAR INT16 INT32 REAL UINT16 UINT32 }
+  4.  Stmt -> Decl                                    PREDICT = { CHAR FLOAT INT16 INT32 REAL UINT16 UINT32 }
   5.  Stmt -> Assign                                  PREDICT = { ID }
   6.  Stmt -> If                                      PREDICT = { AGAR }
   7.  Stmt -> While                                   PREDICT = { JABTAK }
   8.  Stmt -> Break                                   PREDICT = { NIKAL }
   9.  Stmt -> Print                                   PREDICT = { DIKHAO }
- 10.  Decl -> Type ID DeclTail                        PREDICT = { CHAR INT16 INT32 REAL UINT16 UINT32 }
+ 10.  Decl -> Type ID DeclTail                        PREDICT = { CHAR FLOAT INT16 INT32 REAL UINT16 UINT32 }
  11.  DeclTail -> LBRACK INTLIT RBRACK SEMI           PREDICT = { LBRACK }
- 12.  DeclTail -> MEDALO Expr SEMI                    PREDICT = { MEDALO }
+ 12.  DeclTail -> MELADO Expr SEMI                    PREDICT = { MELADO }
  13.  DeclTail -> SEMI                                PREDICT = { SEMI }
  14.  Type -> INT16                                   PREDICT = { INT16 }
  15.  Type -> INT32                                   PREDICT = { INT32 }
  16.  Type -> UINT16                                  PREDICT = { UINT16 }
  17.  Type -> UINT32                                  PREDICT = { UINT32 }
  18.  Type -> REAL                                    PREDICT = { REAL }
- 19.  Type -> CHAR                                    PREDICT = { CHAR }
- 20.  Assign -> ID AsgTail                            PREDICT = { ID }
- 21.  AsgTail -> LBRACK Expr RBRACK MEDALO Expr SEMI  PREDICT = { LBRACK }
- 22.  AsgTail -> MEDALO Expr SEMI                     PREDICT = { MEDALO }
- 23.  If -> AGAR LPAREN Expr RPAREN Block ElsePart    PREDICT = { AGAR }
- 24.  ElsePart -> WAGARNA Block                       PREDICT = { WAGARNA }
- 25.  ElsePart -> eps                                 PREDICT = { $ AGAR CHAR DIKHAO ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32 }
- 26.  While -> JABTAK LPAREN Expr RPAREN Block        PREDICT = { JABTAK }
- 27.  Break -> NIKAL SEMI                             PREDICT = { NIKAL }
- 28.  Print -> DIKHAO LPAREN ArgList RPAREN SEMI      PREDICT = { DIKHAO }
- 29.  ArgList -> Arg ArgTail                          PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT STRLIT }
- 30.  ArgTail -> COMMA Arg ArgTail                    PREDICT = { COMMA }
- 31.  ArgTail -> eps                                  PREDICT = { RPAREN }
- 32.  Arg -> STRLIT                                   PREDICT = { STRLIT }
- 33.  Arg -> Expr                                     PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
- 34.  Block -> SHURO StmtList KHATAM                  PREDICT = { SHURO }
- 35.  Expr -> OrExpr                                  PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
- 36.  OrExpr -> AndExpr OrTail                        PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
- 37.  OrTail -> YA AndExpr OrTail                     PREDICT = { YA }
- 38.  OrTail -> eps                                   PREDICT = { COMMA RBRACK RPAREN SEMI }
- 39.  AndExpr -> RelExpr AndTail                      PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
- 40.  AndTail -> AUR RelExpr AndTail                  PREDICT = { AUR }
- 41.  AndTail -> eps                                  PREDICT = { COMMA RBRACK RPAREN SEMI YA }
- 42.  RelExpr -> AddExpr RelTail                      PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
- 43.  RelTail -> RelOp AddExpr                        PREDICT = { EQ GE GT LE LT NE }
- 44.  RelTail -> eps                                  PREDICT = { AUR COMMA RBRACK RPAREN SEMI YA }
- 45.  RelOp -> EQ                                     PREDICT = { EQ }
- 46.  RelOp -> NE                                     PREDICT = { NE }
- 47.  RelOp -> LT                                     PREDICT = { LT }
- 48.  RelOp -> LE                                     PREDICT = { LE }
- 49.  RelOp -> GT                                     PREDICT = { GT }
- 50.  RelOp -> GE                                     PREDICT = { GE }
- 51.  AddExpr -> MulExpr AddTail                      PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
- 52.  AddTail -> PLUS MulExpr AddTail                 PREDICT = { PLUS }
- 53.  AddTail -> MINUS MulExpr AddTail                PREDICT = { MINUS }
- 54.  AddTail -> eps                                  PREDICT = { AUR COMMA EQ GE GT LE LT NE RBRACK RPAREN SEMI YA }
- 55.  MulExpr -> Unary MulTail                        PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
- 56.  MulTail -> STAR Unary MulTail                   PREDICT = { STAR }
- 57.  MulTail -> SLASH Unary MulTail                  PREDICT = { SLASH }
- 58.  MulTail -> PERCENT Unary MulTail                PREDICT = { PERCENT }
- 59.  MulTail -> eps                                  PREDICT = { AUR COMMA EQ GE GT LE LT MINUS NE PLUS RBRACK RPAREN SEMI YA }
- 60.  Unary -> MINUS Unary                            PREDICT = { MINUS }
- 61.  Unary -> NAHI Unary                             PREDICT = { NAHI }
- 62.  Unary -> Primary                                PREDICT = { CHARLIT ID INTLIT LPAREN REALLIT }
- 63.  Primary -> ID PrimTail                          PREDICT = { ID }
- 64.  Primary -> INTLIT                               PREDICT = { INTLIT }
- 65.  Primary -> REALLIT                              PREDICT = { REALLIT }
- 66.  Primary -> CHARLIT                              PREDICT = { CHARLIT }
- 67.  Primary -> LPAREN Expr RPAREN                   PREDICT = { LPAREN }
- 68.  PrimTail -> LBRACK Expr RBRACK                  PREDICT = { LBRACK }
- 69.  PrimTail -> eps                                 PREDICT = { AUR COMMA EQ GE GT LE LT MINUS NE PERCENT PLUS RBRACK RPAREN SEMI SLASH STAR YA }
+ 19.  Type -> FLOAT                                   PREDICT = { FLOAT }
+ 20.  Type -> CHAR                                    PREDICT = { CHAR }
+ 21.  Assign -> ID AsgTail                            PREDICT = { ID }
+ 22.  AsgTail -> LBRACK Expr RBRACK MELADO Expr SEMI  PREDICT = { LBRACK }
+ 23.  AsgTail -> MELADO Expr SEMI                     PREDICT = { MELADO }
+ 24.  If -> AGAR LPAREN Expr RPAREN Block ElsePart    PREDICT = { AGAR }
+ 25.  ElsePart -> WAGARNA Block                       PREDICT = { WAGARNA }
+ 26.  ElsePart -> eps                                 PREDICT = { $ AGAR CHAR DIKHAO FLOAT ID INT16 INT32 JABTAK KHATAM NIKAL REAL UINT16 UINT32 }
+ 27.  While -> JABTAK LPAREN Expr RPAREN Block        PREDICT = { JABTAK }
+ 28.  Break -> NIKAL SEMI                             PREDICT = { NIKAL }
+ 29.  Print -> DIKHAO LPAREN ArgList RPAREN SEMI      PREDICT = { DIKHAO }
+ 30.  ArgList -> Arg ArgTail                          PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT STRLIT }
+ 31.  ArgTail -> COMMA Arg ArgTail                    PREDICT = { COMMA }
+ 32.  ArgTail -> eps                                  PREDICT = { RPAREN }
+ 33.  Arg -> STRLIT                                   PREDICT = { STRLIT }
+ 34.  Arg -> Expr                                     PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
+ 35.  Block -> SHURO StmtList KHATAM                  PREDICT = { SHURO }
+ 36.  Expr -> OrExpr                                  PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
+ 37.  OrExpr -> AndExpr OrTail                        PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
+ 38.  OrTail -> YA AndExpr OrTail                     PREDICT = { YA }
+ 39.  OrTail -> eps                                   PREDICT = { COMMA RBRACK RPAREN SEMI }
+ 40.  AndExpr -> RelExpr AndTail                      PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
+ 41.  AndTail -> AUR RelExpr AndTail                  PREDICT = { AUR }
+ 42.  AndTail -> eps                                  PREDICT = { COMMA RBRACK RPAREN SEMI YA }
+ 43.  RelExpr -> AddExpr RelTail                      PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
+ 44.  RelTail -> RelOp AddExpr                        PREDICT = { EQ GE GT LE LT NE }
+ 45.  RelTail -> eps                                  PREDICT = { AUR COMMA RBRACK RPAREN SEMI YA }
+ 46.  RelOp -> EQ                                     PREDICT = { EQ }
+ 47.  RelOp -> NE                                     PREDICT = { NE }
+ 48.  RelOp -> LT                                     PREDICT = { LT }
+ 49.  RelOp -> LE                                     PREDICT = { LE }
+ 50.  RelOp -> GT                                     PREDICT = { GT }
+ 51.  RelOp -> GE                                     PREDICT = { GE }
+ 52.  AddExpr -> MulExpr AddTail                      PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
+ 53.  AddTail -> PLUS MulExpr AddTail                 PREDICT = { PLUS }
+ 54.  AddTail -> MINUS MulExpr AddTail                PREDICT = { MINUS }
+ 55.  AddTail -> eps                                  PREDICT = { AUR COMMA EQ GE GT LE LT NE RBRACK RPAREN SEMI YA }
+ 56.  MulExpr -> Unary MulTail                        PREDICT = { CHARLIT ID INTLIT LPAREN MINUS NAHI REALLIT }
+ 57.  MulTail -> STAR Unary MulTail                   PREDICT = { STAR }
+ 58.  MulTail -> SLASH Unary MulTail                  PREDICT = { SLASH }
+ 59.  MulTail -> PERCENT Unary MulTail                PREDICT = { PERCENT }
+ 60.  MulTail -> eps                                  PREDICT = { AUR COMMA EQ GE GT LE LT MINUS NE PLUS RBRACK RPAREN SEMI YA }
+ 61.  Unary -> MINUS Unary                            PREDICT = { MINUS }
+ 62.  Unary -> NAHI Unary                             PREDICT = { NAHI }
+ 63.  Unary -> Primary                                PREDICT = { CHARLIT ID INTLIT LPAREN REALLIT }
+ 64.  Primary -> ID PrimTail                          PREDICT = { ID }
+ 65.  Primary -> INTLIT                               PREDICT = { INTLIT }
+ 66.  Primary -> REALLIT                              PREDICT = { REALLIT }
+ 67.  Primary -> CHARLIT                              PREDICT = { CHARLIT }
+ 68.  Primary -> LPAREN Expr RPAREN                   PREDICT = { LPAREN }
+ 69.  PrimTail -> LBRACK Expr RBRACK                  PREDICT = { LBRACK }
+ 70.  PrimTail -> eps                                 PREDICT = { AUR COMMA EQ GE GT LE LT MINUS NE PERCENT PLUS RBRACK RPAREN SEMI SLASH STAR YA }
 
 ## LL(1) check
 
 No cell of the parsing table received two productions.
-The grammar is LL(1).  Filled cells: 223
+The grammar is LL(1).  Filled cells: 229

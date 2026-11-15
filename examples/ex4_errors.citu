@@ -9,13 +9,13 @@
 //  Compile it with:   python cituc.py examples/ex4_errors.citu
 // ===================================================================
 
-int32 x medalo 5;
-int32 x medalo 6;           // semantic: x is already declared
+int32 x melado 5;
+int32 x melado 6;           // semantic: x is already declared
 
-char  c medalo 70000;       // semantic: literal does not fit in char
+char  c melado 70000;       // semantic: literal does not fit in char
 
 int32 arr[3];
-arr[7] medalo 1;            // semantic: index 7 is outside arr
+arr[7] melado 1;            // semantic: index 7 is outside arr
 
 agar ( x ) shuro            // semantic: condition is not a comparison
     dikhao(y);              // semantic: y is not declared
@@ -23,13 +23,13 @@ khatam
 
 nikal;                      // semantic: nikal outside a jabtak loop
 
-int32 q medalo x / 0;       // semantic: division by zero
-int32 w medalo arr;         // semantic: an array needs a subscript
+int32 q melado x / 0;       // semantic: division by zero
+int32 w melado arr;         // semantic: an array needs a subscript
 
-real r medalo 2.5;
-int32 z medalo x % r;       // semantic: % needs integer operands
+real r melado 2.5;
+int32 z melado x % r;       // semantic: % needs integer operands
 
-int32 m medalo 3 @ 4;       // lexical: '@' is not a Citu character
+int32 m melado 3 @ 4;       // lexical: '@' is not a Citu character
 
-int32 k medalo ;            // syntax: expression missing
+int32 k melado ;            // syntax: expression missing
 dikhao("unterminated       // lexical: string literal never closed

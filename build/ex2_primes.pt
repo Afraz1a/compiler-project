@@ -11,7 +11,7 @@ Program
 |  |  |  |  |  UINT16  "uint16"
 |  |  |  |  ID  "limit"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -33,7 +33,7 @@ Program
 |  |  |  |  |  UINT16  "uint16"
 |  |  |  |  ID  "n"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -55,7 +55,7 @@ Program
 |  |  |  |  |  UINT16  "uint16"
 |  |  |  |  ID  "count"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -77,7 +77,7 @@ Program
 |  |  |  |  |  UINT32  "uint32"
 |  |  |  |  ID  "total"
 |  |  |  |  DeclTail
-|  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  Expr
 |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  AndExpr
@@ -132,7 +132,7 @@ Program
 |  |  |  |  |  |  |  |  |  UINT16  "uint16"
 |  |  |  |  |  |  |  |  ID  "d"
 |  |  |  |  |  |  |  |  DeclTail
-|  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  |  |  |  |  Expr
 |  |  |  |  |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  |  |  |  |  AndExpr
@@ -154,7 +154,7 @@ Program
 |  |  |  |  |  |  |  |  |  INT16  "int16"
 |  |  |  |  |  |  |  |  ID  "prime"
 |  |  |  |  |  |  |  |  DeclTail
-|  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  |  |  |  |  Expr
 |  |  |  |  |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  |  |  |  |  AndExpr
@@ -249,7 +249,7 @@ Program
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Assign
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  ID  "prime"
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AsgTail
-|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
@@ -275,7 +275,7 @@ Program
 |  |  |  |  |  |  |  |  |  |  |  Assign
 |  |  |  |  |  |  |  |  |  |  |  |  ID  "d"
 |  |  |  |  |  |  |  |  |  |  |  |  AsgTail
-|  |  |  |  |  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
@@ -399,7 +399,7 @@ Program
 |  |  |  |  |  |  |  |  |  |  |  Assign
 |  |  |  |  |  |  |  |  |  |  |  |  ID  "count"
 |  |  |  |  |  |  |  |  |  |  |  |  AsgTail
-|  |  |  |  |  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
@@ -426,7 +426,7 @@ Program
 |  |  |  |  |  |  |  |  |  |  |  Assign
 |  |  |  |  |  |  |  |  |  |  |  |  ID  "total"
 |  |  |  |  |  |  |  |  |  |  |  |  AsgTail
-|  |  |  |  |  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  |  |  |  |  |  |  |  |  Expr
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  AndExpr
@@ -456,7 +456,7 @@ Program
 |  |  |  |  |  |  |  Assign
 |  |  |  |  |  |  |  |  ID  "n"
 |  |  |  |  |  |  |  |  AsgTail
-|  |  |  |  |  |  |  |  |  MEDALO  "medalo"
+|  |  |  |  |  |  |  |  |  MELADO  "melado"
 |  |  |  |  |  |  |  |  |  Expr
 |  |  |  |  |  |  |  |  |  |  OrExpr
 |  |  |  |  |  |  |  |  |  |  |  AndExpr

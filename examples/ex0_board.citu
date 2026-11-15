@@ -1,0 +1,11 @@
+// The original program from the Citu grammar assignment, verbatim,
+// with the declarations the full C2 grammar requires.
+int32 SIZE melado 4;
+int32 a[4];
+int32 i melado 0;
+
+jabtak ( i < SIZE ) shuro
+    agar ( a[i] = 0 ) shuro nikal ; khatam
+    i melado ( i + 1 ) ;
+khatam
+dikhao("i = ", i);

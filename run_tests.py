@@ -29,6 +29,10 @@ from citu.tac import TACGenerator
 from citu.vm import VM
 
 EXPECTED = {
+    # the program from the original Citu grammar assignment, verbatim
+    "ex0_board.citu": [
+        "i = 0",
+    ],
     "ex1_search.citu": [
         "first zero is at index 3",
         "elements inspected: 4",

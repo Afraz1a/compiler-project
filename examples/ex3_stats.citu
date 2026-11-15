@@ -8,43 +8,43 @@
 //         of agar / wagarna.
 // ===================================================================
 
-int32 count medalo 10;
+int32 count melado 10;
 int16 marks[10];
 
-marks[0] medalo 72;
-marks[1] medalo 48;
-marks[2] medalo 91;
-marks[3] medalo 65;
-marks[4] medalo 33;
-marks[5] medalo 88;
-marks[6] medalo 57;
-marks[7] medalo 79;
-marks[8] medalo 95;
-marks[9] medalo 61;
+marks[0] melado 72;
+marks[1] melado 48;
+marks[2] melado 91;
+marks[3] melado 65;
+marks[4] melado 33;
+marks[5] melado 88;
+marks[6] melado 57;
+marks[7] melado 79;
+marks[8] melado 95;
+marks[9] melado 61;
 
-int16  lowest  medalo 32767;    // the largest value an int16 can hold
-int16  highest medalo -32768;
-int32  sum     medalo 0;
-int32  passes  medalo 0;
-int32  k       medalo 0;
+int16  lowest  melado 32767;    // the largest value an int16 can hold
+int16  highest melado -32768;
+int32  sum     melado 0;
+int32  passes  melado 0;
+int32  k       melado 0;
 
 jabtak ( k < count ) shuro
     agar ( marks[k] < lowest ) shuro
-        lowest medalo marks[k];
+        lowest melado marks[k];
     khatam
     agar ( marks[k] > highest ) shuro
-        highest medalo marks[k];
+        highest melado marks[k];
     khatam
-    sum medalo sum + marks[k];
+    sum melado sum + marks[k];
     agar ( marks[k] >= 50 ) shuro
-        passes medalo passes + 1;
+        passes melado passes + 1;
     khatam
-    k medalo k + 1;
+    k melado k + 1;
 khatam
 
 // integer sum divided by an integer count, in real arithmetic:
 // the compiler widens both operands to real before dividing
-real mean medalo sum / 1.0 / count;
+real mean melado sum / 1.0 / count;
 
 dikhao("count   : ", count);
 dikhao("lowest  : ", lowest);
@@ -54,15 +54,15 @@ dikhao("mean    : ", mean);
 dikhao("passed  : ", passes, " of ", count);
 
 // a grade for the class average
-char grade medalo 'F';
+char grade melado 'F';
 agar ( mean >= 80.0 ) shuro
-    grade medalo 'A';
+    grade melado 'A';
 khatam wagarna shuro
     agar ( mean >= 70.0 ) shuro
-        grade medalo 'B';
+        grade melado 'B';
     khatam wagarna shuro
         agar ( mean >= 60.0 ya mean >= 55.0 ) shuro
-            grade medalo 'C';
+            grade melado 'C';
         khatam
     khatam
 khatam

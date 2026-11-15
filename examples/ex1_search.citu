@@ -7,32 +7,32 @@
 //  This is the program from the Citu grammar assignment
 //      jabtak ( i < size ) shuro
 //          agar ( a[i] = 0 ) shuro nikal ; khatam
-//          i medalo ( i + 1 ) ;
+//          i melado ( i + 1 ) ;
 //      khatam
 //  extended so that it declares its own data and reports the answer.
 // ===================================================================
 
-int32 size medalo 8;
+int32 size melado 8;
 int32 a[8];
 
-a[0] medalo 14;
-a[1] medalo 7;
-a[2] medalo 23;
-a[3] medalo 0;
-a[4] medalo 9;
-a[5] medalo 0;
-a[6] medalo 31;
-a[7] medalo 5;
+a[0] melado 14;
+a[1] melado 7;
+a[2] melado 23;
+a[3] melado 0;
+a[4] melado 9;
+a[5] melado 0;
+a[6] melado 31;
+a[7] melado 5;
 
-int32 i medalo 0;
-int32 found medalo -1;          /* -1 stands for "not found yet" */
+int32 i melado 0;
+int32 found melado -1;          /* -1 stands for "not found yet" */
 
 jabtak ( i < size ) shuro
     agar ( a[i] = 0 ) shuro
-        found medalo i;
+        found melado i;
         nikal;                  // stop at the FIRST zero
     khatam
-    i medalo i + 1;
+    i melado i + 1;
 khatam
 
 agar ( found < 0 ) shuro
