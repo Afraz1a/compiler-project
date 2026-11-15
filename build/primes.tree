@@ -1,0 +1,76 @@
+PARSE TREE
+-----------------------------------
+Program
+    Declare uint16 limit
+        Number 40 : number
+    Declare uint16 n
+        Number 2 : number
+    Declare uint16 count
+        Number 0 : number
+    Declare uint32 total
+        Number 0 : number
+    While
+        Binary < : truth
+            Name n : uint16
+            Name limit : uint16
+        Block
+            Declare uint16 d
+                Number 2 : number
+            Declare int16 prime
+                Number 1 : number
+            While
+                Binary <= : truth
+                    Binary * : uint16
+                        Name d : uint16
+                        Name d : uint16
+                    Name n : uint16
+                Block
+                    If
+                        Binary = : truth
+                            Binary % : uint16
+                                Name n : uint16
+                                Name d : uint16
+                            Number 0 : number
+                        Block
+                            Set prime
+                                Number 0 : number
+                            Break
+                    Set d
+                        Binary + : uint16
+                            Name d : uint16
+                            Number 1 : number
+            If
+                Binary aur : truth
+                    Binary = : truth
+                        Name prime : int16
+                        Number 1 : number
+                    Not : truth
+                        Binary = : truth
+                            Name n : uint16
+                            Number 1 : number
+                Block
+                    Print
+                        Name n : uint16
+                        Text  is prime : text
+                    Set count
+                        Binary + : uint16
+                            Name count : uint16
+                            Number 1 : number
+                    Set total
+                        Binary + : uint32
+                            Name total : uint32
+                            Name n : uint16
+            Set n
+                Binary + : uint16
+                    Name n : uint16
+                    Number 1 : number
+    Print
+        Text primes below  : text
+        Name limit : uint16
+        Text  =  : text
+        Name count : uint16
+    Print
+        Text their sum =  : text
+        Name total : uint32
+-----------------------------------
+total nodes = 72

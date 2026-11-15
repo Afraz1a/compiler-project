@@ -1,354 +1,340 @@
-"""Citu semantic analyser (phase 3).
+widths = {"char": 1, "int16": 2, "uint16": 2, "int32": 4, "uint32": 4,
+          "real": 8}
 
-Walks the AST produced by the parser and
+ranks = {"char": 1, "int16": 2, "uint16": 3, "int32": 4, "uint32": 5,
+         "real": 6}
 
-  * builds the symbol table (scopes, declarations, offsets);
-  * resolves every identifier to a symbol;
-  * computes and checks the type of every expression, writing the result
-    into each node's `ctype` slot;
-  * applies the context rules that a context-free grammar cannot express:
-        - a name must be declared before it is used, and only once per scope
-        - an array name needs a subscript, a scalar name must not have one
-        - a subscript must have an integral type and, when it is a constant,
-          must be inside the declared bounds
-        - the condition of `agar` / `jabtak` must be a bool-valued expression
-        - `nikal` may only appear inside a `jabtak` loop
-        - `%` needs integral operands; division by a literal zero is an error
-        - an assignment must be type compatible, with a warning on a
-          narrowing, truncating or signedness-changing conversion
+limits = {"char": (-128, 127), "int16": (-32768, 32767),
+          "uint16": (0, 65535), "int32": (-2147483648, 2147483647),
+          "uint32": (0, 4294967295)}
 
-The output is the same AST, now annotated with types (written out as
-.tast.json), plus the symbol table (.sym).
-"""
-
-from . import ast_nodes as A
-from .errors import DiagnosticBag
-from .symtab import (SymbolTable, RANGES, assignable, is_integral,
-                     is_numeric, promote)
-
-ARITH_OPS = ("+", "-", "*", "/", "%")
-REL_OPS = ("=", "!=", "<", "<=", ">", ">=")
-LOGIC_OPS = ("aur", "ya")
+numbers = ["char", "int16", "uint16", "int32", "uint32", "real"]
+whole = ["char", "int16", "uint16", "int32", "uint32"]
 
 
-class SemanticAnalyzer(object):
+class Symbol:
+    def __init__(self, name, slot, kind, datatype, length, offset, scope,
+                 line):
+        self.name = name
+        self.slot = slot
+        self.kind = kind
+        self.datatype = datatype
+        self.length = length
+        self.offset = offset
+        self.scope = scope
+        self.line = line
 
-    def __init__(self, filename="<source>", diagnostics=None):
-        self.filename = filename
-        self.diag = diagnostics if diagnostics is not None else DiagnosticBag()
-        self.table = SymbolTable()
-        self.loop_depth = 0
 
-    # ------------------------------------------------------------ helpers --
-    def err(self, node, msg):
-        self.diag.error("semantic", node.line, node.col, msg)
+def common(a, b):
+    if a == "number":
+        return b if b != "number" else "int32"
+    if b == "number":
+        return a
+    if a == "real" or b == "real":
+        return "real"
+    wider = a if ranks[a] >= ranks[b] else b
+    if wider == "char":
+        return "int16"
+    return wider
 
-    def warn(self, node, msg):
-        self.diag.warning("semantic", node.line, node.col, msg)
 
-    # -------------------------------------------------------------- entry --
-    def analyze(self, program):
-        for s in program.stmts:
-            self.stmt(s)
-        self.check_unused()
-        program.ctype = "void"
-        return program
+class Checker:
+    def __init__(self, errors):
+        self.errors = errors
+        self.scopes = [{}]
+        self.table = []
+        self.used = []
+        self.offset = 0
+        self.depth = 0
 
-    def check_unused(self):
-        for sc in self.table.all_scopes:
-            for sym in sc:
-                if sym.reads == 0 and sym.writes == 0:
-                    self.diag.warning(
-                        "semantic", sym.line, sym.col,
-                        "'%s' is declared but never used" % sym.name)
-                elif sym.reads == 0:
-                    self.diag.warning(
-                        "semantic", sym.line, sym.col,
-                        "'%s' is assigned but its value is never read"
-                        % sym.name)
+    def error(self, node, message):
+        self.errors.append((node.line, 0, "semantic", message))
 
-    # --------------------------------------------------------- statements --
-    def stmt(self, node):
-        getattr(self, "st_" + node.kind)(node)
+    def declare(self, node, name, kind, datatype, length):
+        if name in self.scopes[-1]:
+            self.error(node, name + " is already declared")
+            return None
+        slot = name
+        if slot in self.used:
+            slot = name + "_" + str(len(self.scopes))
+        self.used.append(slot)
+        symbol = Symbol(name, slot, kind, datatype, length, self.offset,
+                        len(self.scopes) - 1, node.line)
+        self.offset = self.offset + widths[datatype] * length
+        self.scopes[-1][name] = symbol
+        self.table.append(symbol)
+        return symbol
 
-    def st_Block(self, node):
-        self.table.push("block@%d:%d" % (node.line, node.col))
-        for s in node.stmts:
-            self.stmt(s)
-        self.table.pop()
-        node.ctype = "void"
+    def find(self, name):
+        i = len(self.scopes) - 1
+        while i >= 0:
+            if name in self.scopes[i]:
+                return self.scopes[i][name]
+            i = i - 1
+        return None
 
-    def st_VarDecl(self, node):
-        sym, already = self.table.declare(
-            node.name, "scalar", node.type_name, 1, node.line, node.col)
-        if already:
-            self.err(node, "'%s' is already declared in this scope "
-                           "(first declared at line %d)"
-                     % (node.name, sym.line))
+    def run(self, tree):
+        for item in tree.body:
+            self.statement(item)
+
+    def statement(self, node):
+        if node.kind == "Declare":
+            self.do_declare(node)
+        elif node.kind == "Array":
+            self.do_array(node)
+        elif node.kind == "Set":
+            self.do_set(node)
+        elif node.kind == "SetItem":
+            self.do_set_item(node)
+        elif node.kind == "If":
+            self.do_if(node)
+        elif node.kind == "While":
+            self.do_while(node)
+        elif node.kind == "Break":
+            self.do_break(node)
+        elif node.kind == "Print":
+            self.do_print(node)
+        elif node.kind == "Block":
+            self.do_block(node)
+
+    def do_block(self, node):
+        self.scopes.append({})
+        for item in node.body:
+            self.statement(item)
+        self.scopes.pop()
+
+    def do_declare(self, node):
+        symbol = self.declare(node, node.name, "scalar", node.datatype, 1)
+        node.symbol = symbol
+        if node.value is not None:
+            self.store(node, node.datatype, self.expression(node.value),
+                       node.name)
+            self.fits(node.value, node.datatype)
+
+    def do_array(self, node):
+        if node.size < 1:
+            self.error(node, node.name + " must have at least one element")
+        node.symbol = self.declare(node, node.name, "array", node.datatype,
+                                   max(node.size, 1))
+
+    def do_set(self, node):
+        symbol = self.find(node.name)
+        if symbol is None:
+            self.error(node, node.name + " is not declared")
+            self.expression(node.value)
             return
-        node.sym = sym
-        if node.init is not None:
-            vt = self.expr(node.init)
-            self.check_assign(node, node.type_name, vt, node.name)
-            sym.assigned = True
-            sym.writes += 1
-            self.fold_range_check(node.init, node.type_name)
-        node.ctype = node.type_name
+        if symbol.kind == "array":
+            self.error(node, node.name + " is an array, use " + node.name +
+                       "[index]")
+        node.symbol = symbol
+        self.store(node, symbol.datatype, self.expression(node.value),
+                   node.name)
+        self.fits(node.value, symbol.datatype)
 
-    def st_ArrayDecl(self, node):
-        if node.size is None or node.size <= 0:
-            self.err(node, "array '%s' must have a size greater than 0"
-                     % node.name)
-            size = 1
-        else:
-            size = node.size
-        sym, already = self.table.declare(
-            node.name, "array", node.type_name, size, node.line, node.col)
-        if already:
-            self.err(node, "'%s' is already declared in this scope "
-                           "(first declared at line %d)"
-                     % (node.name, sym.line))
-        node.sym = sym
-        node.ctype = node.type_name
-
-    def st_Assign(self, node):
-        sym = self.table.lookup(node.name)
-        if sym is None:
-            self.err(node, "'%s' is not declared" % node.name)
-            self.expr(node.value)
+    def do_set_item(self, node):
+        symbol = self.find(node.name)
+        if symbol is None:
+            self.error(node, node.name + " is not declared")
+            self.expression(node.index)
+            self.expression(node.value)
             return
-        if sym.sym_kind == "array":
-            self.err(node, "'%s' is an array; assign to an element such as "
-                           "%s[0]" % (node.name, node.name))
-            self.expr(node.value)
+        if symbol.kind != "array":
+            self.error(node, node.name + " is not an array")
+        node.symbol = symbol
+        self.index(node, symbol, node.index)
+        self.store(node, symbol.datatype, self.expression(node.value),
+                   node.name)
+
+    def do_if(self, node):
+        self.condition(node, self.expression(node.test), "agar")
+        self.do_block(node.yes)
+        if node.no is not None:
+            self.do_block(node.no)
+
+    def do_while(self, node):
+        self.condition(node, self.expression(node.test), "jabtak")
+        self.depth = self.depth + 1
+        self.do_block(node.body)
+        self.depth = self.depth - 1
+
+    def do_break(self, node):
+        if self.depth == 0:
+            self.error(node, "nikal is only allowed inside jabtak")
+
+    def do_print(self, node):
+        for item in node.items:
+            if item.kind == "Text":
+                item.type = "text"
+            else:
+                self.expression(item)
+
+    def condition(self, node, found, word):
+        if found is not None and found != "truth":
+            self.error(node, "the condition of " + word +
+                       " must be a comparison")
+
+    def store(self, node, target, found, name):
+        if found is None:
             return
-        node.sym = sym
-        vt = self.expr(node.value)
-        self.check_assign(node, sym.type_name, vt, node.name)
-        self.fold_range_check(node.value, sym.type_name)
-        sym.assigned = True
-        sym.writes += 1
-        node.ctype = sym.type_name
-
-    def st_IndexAssign(self, node):
-        sym = self.table.lookup(node.name)
-        if sym is None:
-            self.err(node, "'%s' is not declared" % node.name)
-            self.expr(node.index)
-            self.expr(node.value)
+        if found == "truth" or found == "text":
+            self.error(node, "cannot store a " + found + " value in " + name)
             return
-        if sym.sym_kind != "array":
-            self.err(node, "'%s' is not an array, so it cannot be subscripted"
-                     % node.name)
-        node.sym = sym
-        self.check_index(node, sym, node.index)
-        vt = self.expr(node.value)
-        self.check_assign(node, sym.type_name, vt, "%s[]" % node.name)
-        sym.assigned = True
-        sym.writes += 1
-        node.ctype = sym.type_name
-
-    def st_If(self, node):
-        ct = self.expr(node.cond)
-        self.check_condition(node.cond, ct, "agar")
-        self.st_Block(node.then_block)
-        if node.else_block is not None:
-            self.st_Block(node.else_block)
-        node.ctype = "void"
-
-    def st_While(self, node):
-        ct = self.expr(node.cond)
-        self.check_condition(node.cond, ct, "jabtak")
-        self.loop_depth += 1
-        self.st_Block(node.body)
-        self.loop_depth -= 1
-        node.ctype = "void"
-
-    def st_Break(self, node):
-        if self.loop_depth == 0:
-            self.err(node, "'nikal' is only allowed inside a 'jabtak' loop")
-        node.ctype = "void"
-
-    def st_Print(self, node):
-        for a in node.args:
-            t = self.expr(a)
-            if t is None:
-                continue          # the operand already reported an error
-            if t not in ("string", "bool") and not is_numeric(t):
-                self.err(a, "'dikhao' cannot print a value of type %s" % t)
-        node.ctype = "void"
-
-    # ---------------------------------------------------------- the rules --
-    def check_condition(self, node, t, keyword):
-        if t != "bool":
-            self.err(node,
-                     "the condition of '%s' must be a comparison, not a "
-                     "plain %s value" % (keyword, t))
-
-    def check_assign(self, node, target, source, what):
-        if source is None:
+        if found == "number":
             return
-        ok, note = assignable(target, source)
-        if not ok:
-            self.err(node, "cannot assign a %s value to '%s' of type %s"
-                     % (source, what, target))
+        if target == found or target == "real":
             return
-        if note == "narrowing":
-            self.warn(node, "narrowing conversion: %s value stored into "
-                            "'%s' of type %s" % (source, what, target))
-        elif note == "truncation":
-            self.warn(node, "real value stored into '%s' of type %s loses "
-                            "its fractional part" % (what, target))
-        elif note == "signedness":
-            self.warn(node, "signed/unsigned mismatch storing a %s value "
-                            "into '%s' of type %s" % (source, what, target))
+        if found == "real":
+            self.error(node, "cannot store a real value in " + name +
+                       " of type " + target)
+            return
+        if widths[found] > widths[target]:
+            self.error(node, "a " + found + " value does not fit in " +
+                       name + " of type " + target)
 
-    def check_index(self, node, sym, index_node):
-        it = self.expr(index_node)
-        if it is None:
-            return
-        if not is_integral(it):
-            self.err(index_node,
-                     "array subscript must have an integer type, not %s" % it)
-            return
-        if isinstance(index_node, A.IntLit) and sym.sym_kind == "array":
-            if index_node.value >= sym.length:
-                self.err(index_node,
-                         "index %d is outside '%s', which has %d elements "
-                         "(0 to %d)" % (index_node.value, sym.name,
-                                        sym.length, sym.length - 1))
-
-    def fold_range_check(self, node, target):
-        """If the initialiser is a literal, check it fits the target type."""
-        if target not in RANGES:
+    def fits(self, node, target):
+        if target not in limits:
             return
         value = None
-        if isinstance(node, A.IntLit):
+        if node.kind == "Number":
             value = node.value
-        elif (isinstance(node, A.Unary) and node.op == "-"
-                and isinstance(node.operand, A.IntLit)):
-            value = -node.operand.value
+        if node.kind == "Negate" and node.value.kind == "Number":
+            value = -node.value.value
         if value is None:
             return
-        lo, hi = RANGES[target]
-        if not (lo <= value <= hi):
-            self.err(node, "literal %d does not fit in %s (range %d..%d)"
-                     % (value, target, lo, hi))
+        low, high = limits[target]
+        if value < low or value > high:
+            self.error(node, str(value) + " does not fit in " + target)
 
-    # -------------------------------------------------------- expressions --
-    def expr(self, node):
-        t = getattr(self, "ex_" + node.kind)(node)
-        node.ctype = t
-        return t
+    def index(self, node, symbol, where):
+        found = self.expression(where)
+        if found is None:
+            return
+        if found != "number" and found not in whole:
+            self.error(where, "an index must be a whole number")
+            return
+        if where.kind == "Number" and where.value >= symbol.length:
+            self.error(where, "index " + str(where.value) + " is outside " +
+                       symbol.name)
 
-    def ex_IntLit(self, node):
-        return "intlit"
+    def expression(self, node):
+        node.type = self.work_out(node)
+        return node.type
 
-    def ex_RealLit(self, node):
-        return "real"
+    def work_out(self, node):
+        if node.kind == "Number":
+            return "number"
+        if node.kind == "RealNumber":
+            return "real"
+        if node.kind == "Character":
+            return "char"
+        if node.kind == "Text":
+            return "text"
+        if node.kind == "Name":
+            return self.read_name(node)
+        if node.kind == "Item":
+            return self.read_item(node)
+        if node.kind == "Negate":
+            return self.read_negate(node)
+        if node.kind == "Not":
+            return self.read_not(node)
+        return self.read_binary(node)
 
-    def ex_CharLit(self, node):
-        return "char"
-
-    def ex_StrLit(self, node):
-        return "string"
-
-    def ex_Var(self, node):
-        sym = self.table.lookup(node.name)
-        if sym is None:
-            self.err(node, "'%s' is not declared" % node.name)
+    def read_name(self, node):
+        symbol = self.find(node.name)
+        if symbol is None:
+            self.error(node, node.name + " is not declared")
             return None
-        if sym.sym_kind == "array":
-            self.err(node, "'%s' is an array; it needs a subscript such as "
-                           "%s[0]" % (node.name, node.name))
+        if symbol.kind == "array":
+            self.error(node, node.name + " is an array, use " + node.name +
+                       "[index]")
             return None
-        if not sym.assigned:
-            self.warn(node, "'%s' may be read before it is given a value"
-                      % node.name)
-        sym.reads += 1
-        node.sym = sym
-        return sym.type_name
+        node.symbol = symbol
+        return symbol.datatype
 
-    def ex_Index(self, node):
-        sym = self.table.lookup(node.name)
-        if sym is None:
-            self.err(node, "'%s' is not declared" % node.name)
-            self.expr(node.index)
+    def read_item(self, node):
+        symbol = self.find(node.name)
+        if symbol is None:
+            self.error(node, node.name + " is not declared")
+            self.expression(node.index)
             return None
-        if sym.sym_kind != "array":
-            self.err(node, "'%s' is not an array, so it cannot be subscripted"
-                     % node.name)
-            self.expr(node.index)
+        if symbol.kind != "array":
+            self.error(node, node.name + " is not an array")
+            self.expression(node.index)
             return None
-        self.check_index(node, sym, node.index)
-        sym.reads += 1
-        node.sym = sym
-        return sym.type_name
+        node.symbol = symbol
+        self.index(node, symbol, node.index)
+        return symbol.datatype
 
-    def ex_Unary(self, node):
-        t = self.expr(node.operand)
-        if t is None:
+    def read_negate(self, node):
+        found = self.expression(node.value)
+        if found is None:
             return None
-        if node.op == "-":
-            if not is_numeric(t):
-                self.err(node, "unary '-' needs a number, not %s" % t)
+        if found == "number":
+            return "number"
+        if found not in numbers:
+            self.error(node, "minus needs a number")
+            return None
+        return "int16" if found == "char" else found
+
+    def read_not(self, node):
+        found = self.expression(node.value)
+        if found is not None and found != "truth":
+            self.error(node, "nahi needs a comparison")
+        return "truth"
+
+    def read_binary(self, node):
+        left = self.expression(node.left)
+        right = self.expression(node.right)
+
+        if node.op == "aur" or node.op == "ya":
+            if left is not None and left != "truth":
+                self.error(node, node.op + " needs a comparison on the left")
+            if right is not None and right != "truth":
+                self.error(node, node.op + " needs a comparison on the right")
+            return "truth"
+
+        if left is None or right is None:
+            return None
+
+        if left not in numbers and left != "number":
+            self.error(node, node.op + " needs numbers")
+            return None
+        if right not in numbers and right != "number":
+            self.error(node, node.op + " needs numbers")
+            return None
+
+        if node.op in ["=", "!=", "<", "<=", ">", ">="]:
+            return "truth"
+
+        if node.op == "%":
+            if (left not in whole and left != "number") or \
+                    (right not in whole and right != "number"):
+                self.error(node, "% needs whole numbers")
                 return None
-            return "int16" if t == "char" else t
-        # nahi
-        if t != "bool":
-            self.err(node, "'nahi' needs a comparison, not a %s value" % t)
-            return None
-        return "bool"
 
-    def ex_Binary(self, node):
-        lt = self.expr(node.left)
-        rt = self.expr(node.right)
-        op = node.op
+        if node.op == "/" or node.op == "%":
+            if node.right.kind == "Number" and node.right.value == 0:
+                self.error(node, "division by zero")
 
-        if op in LOGIC_OPS:
-            if lt is not None and lt != "bool":
-                self.err(node.left,
-                         "left operand of '%s' must be a comparison, not %s"
-                         % (op, lt))
-            if rt is not None and rt != "bool":
-                self.err(node.right,
-                         "right operand of '%s' must be a comparison, not %s"
-                         % (op, rt))
-            return "bool"
-
-        if lt is None or rt is None:
-            return None
-
-        if op in REL_OPS:
-            if not (is_numeric(lt) and is_numeric(rt)):
-                self.err(node, "cannot compare %s with %s" % (lt, rt))
-                return None
-            return "bool"
-
-        # arithmetic
-        if not (is_numeric(lt) and is_numeric(rt)):
-            self.err(node, "operator '%s' needs numbers, not %s and %s"
-                     % (op, lt, rt))
-            return None
-        if op == "%":
-            if not (is_integral(lt) and is_integral(rt)):
-                self.err(node, "operator '%%' needs integer operands, "
-                               "not %s and %s" % (lt, rt))
-                return None
-        if op in ("/", "%"):
-            r = node.right
-            if isinstance(r, A.IntLit) and r.value == 0:
-                self.err(node, "division by zero")
-            elif isinstance(r, A.RealLit) and r.value == 0.0:
-                self.err(node, "division by zero")
-        return promote(lt, rt)
-
-    # ------------------------------------------------ intermediate files --
-    def write_symbol_file(self, path):
-        return self.table.write_symbol_file(path, self.filename)
+        return common(left, right)
 
 
-def analyze(program, filename="<source>", diagnostics=None):
-    sa = SemanticAnalyzer(filename, diagnostics)
-    sa.analyze(program)
-    return sa
+def check(tree, errors):
+    checker = Checker(errors)
+    checker.run(tree)
+    return checker
+
+
+def write_symbols(checker, path):
+    out = open(path, "w")
+    out.write("NAME , KIND , TYPE , LENGTH , WIDTH , OFFSET , SCOPE , LINE\n")
+    out.write("-------------------------------------------------------------\n")
+    for s in checker.table:
+        out.write(s.name + " , " + s.kind + " , " + s.datatype + " , " +
+                  str(s.length) + " , " + str(widths[s.datatype] * s.length) +
+                  " , " + str(s.offset) + " , " + str(s.scope) + " , " +
+                  str(s.line) + "\n")
+    out.write("-------------------------------------------------------------\n")
+    out.write("total symbols = " + str(len(checker.table)) + "\n")
+    out.write("total bytes = " + str(checker.offset) + "\n")
+    out.close()

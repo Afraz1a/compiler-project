@@ -1,0 +1,11 @@
+NAME , KIND , TYPE , LENGTH , WIDTH , OFFSET , SCOPE , LINE
+-------------------------------------------------------------
+limit , scalar , uint16 , 1 , 2 , 0 , 0 , 1
+n , scalar , uint16 , 1 , 2 , 2 , 0 , 2
+count , scalar , uint16 , 1 , 2 , 4 , 0 , 3
+total , scalar , uint32 , 1 , 4 , 6 , 0 , 4
+d , scalar , uint16 , 1 , 2 , 10 , 1 , 7
+prime , scalar , int16 , 1 , 2 , 12 , 1 , 8
+-------------------------------------------------------------
+total symbols = 6
+total bytes = 14

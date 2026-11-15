@@ -1,0 +1,9 @@
+NAME , KIND , TYPE , LENGTH , WIDTH , OFFSET , SCOPE , LINE
+-------------------------------------------------------------
+size , scalar , int32 , 1 , 4 , 0 , 0 , 1
+a , array , int32 , 8 , 32 , 4 , 0 , 2
+i , scalar , int32 , 1 , 4 , 36 , 0 , 13
+found , scalar , int32 , 1 , 4 , 40 , 0 , 14
+-------------------------------------------------------------
+total symbols = 4
+total bytes = 44

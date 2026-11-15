@@ -1,0 +1,146 @@
+PARSE TREE
+-----------------------------------
+Program
+    Declare int32 count
+        Number 10 : number
+    Array int16 marks 10
+    SetItem marks
+        Number 0 : number
+        Number 72 : number
+    SetItem marks
+        Number 1 : number
+        Number 48 : number
+    SetItem marks
+        Number 2 : number
+        Number 91 : number
+    SetItem marks
+        Number 3 : number
+        Number 65 : number
+    SetItem marks
+        Number 4 : number
+        Number 33 : number
+    SetItem marks
+        Number 5 : number
+        Number 88 : number
+    SetItem marks
+        Number 6 : number
+        Number 57 : number
+    SetItem marks
+        Number 7 : number
+        Number 79 : number
+    SetItem marks
+        Number 8 : number
+        Number 95 : number
+    SetItem marks
+        Number 9 : number
+        Number 61 : number
+    Declare int16 lowest
+        Number 32767 : number
+    Declare int16 highest
+        Negate : number
+            Number 32768 : number
+    Declare int32 sum
+        Number 0 : number
+    Declare int32 passed
+        Number 0 : number
+    Declare int32 k
+        Number 0 : number
+    While
+        Binary < : truth
+            Name k : int32
+            Name count : int32
+        Block
+            If
+                Binary < : truth
+                    Item marks : int16
+                        Name k : int32
+                    Name lowest : int16
+                Block
+                    Set lowest
+                        Item marks : int16
+                            Name k : int32
+            If
+                Binary > : truth
+                    Item marks : int16
+                        Name k : int32
+                    Name highest : int16
+                Block
+                    Set highest
+                        Item marks : int16
+                            Name k : int32
+            Set sum
+                Binary + : int32
+                    Name sum : int32
+                    Item marks : int16
+                        Name k : int32
+            If
+                Binary >= : truth
+                    Item marks : int16
+                        Name k : int32
+                    Number 50 : number
+                Block
+                    Set passed
+                        Binary + : int32
+                            Name passed : int32
+                            Number 1 : number
+            Set k
+                Binary + : int32
+                    Name k : int32
+                    Number 1 : number
+    Declare real mean
+        Binary / : real
+            Binary * : real
+                Name sum : int32
+                RealNumber 1.0 : real
+            Name count : int32
+    Declare char grade
+        Character F : char
+    If
+        Binary >= : truth
+            Name mean : real
+            RealNumber 80.0 : real
+        Block
+            Set grade
+                Character A : char
+        Block
+            If
+                Binary >= : truth
+                    Name mean : real
+                    RealNumber 70.0 : real
+                Block
+                    Set grade
+                        Character B : char
+                Block
+                    If
+                        Binary ya : truth
+                            Binary >= : truth
+                                Name mean : real
+                                RealNumber 60.0 : real
+                            Binary >= : truth
+                                Name mean : real
+                                RealNumber 55.0 : real
+                        Block
+                            Set grade
+                                Character C : char
+    Print
+        Text lowest =  : text
+        Name lowest : int16
+    Print
+        Text highest =  : text
+        Name highest : int16
+    Print
+        Text sum =  : text
+        Name sum : int32
+    Print
+        Text mean =  : text
+        Name mean : real
+    Print
+        Text passed =  : text
+        Name passed : int32
+        Text  of  : text
+        Name count : int32
+    Print
+        Text grade =  : text
+        Name grade : char
+-----------------------------------
+total nodes = 142

@@ -1,0 +1,28 @@
+int32 size melado 8;
+int32 a[8];
+
+a[0] melado 14;
+a[1] melado 7;
+a[2] melado 23;
+a[3] melado 0;
+a[4] melado 9;
+a[5] melado 0;
+a[6] melado 31;
+a[7] melado 5;
+
+int32 i melado 0;
+int32 found melado -1;
+
+jabtak ( i < size ) shuro
+    agar ( a[i] = 0 ) shuro
+        found melado i;
+        nikal;
+    khatam
+    i melado i + 1;
+khatam
+
+agar ( found < 0 ) shuro
+    dikhao("no zero in the array");
+khatam wagarna shuro
+    dikhao("first zero at index ", found);
+khatam

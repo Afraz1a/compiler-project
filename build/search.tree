@@ -1,0 +1,66 @@
+PARSE TREE
+-----------------------------------
+Program
+    Declare int32 size
+        Number 8 : number
+    Array int32 a 8
+    SetItem a
+        Number 0 : number
+        Number 14 : number
+    SetItem a
+        Number 1 : number
+        Number 7 : number
+    SetItem a
+        Number 2 : number
+        Number 23 : number
+    SetItem a
+        Number 3 : number
+        Number 0 : number
+    SetItem a
+        Number 4 : number
+        Number 9 : number
+    SetItem a
+        Number 5 : number
+        Number 0 : number
+    SetItem a
+        Number 6 : number
+        Number 31 : number
+    SetItem a
+        Number 7 : number
+        Number 5 : number
+    Declare int32 i
+        Number 0 : number
+    Declare int32 found
+        Negate : number
+            Number 1 : number
+    While
+        Binary < : truth
+            Name i : int32
+            Name size : int32
+        Block
+            If
+                Binary = : truth
+                    Item a : int32
+                        Name i : int32
+                    Number 0 : number
+                Block
+                    Set found
+                        Name i : int32
+                    Break
+            Set i
+                Binary + : int32
+                    Name i : int32
+                    Number 1 : number
+    If
+        Binary < : truth
+            Name found : int32
+            Number 0 : number
+        Block
+            Print
+                Text no zero in the array : text
+        Block
+            Print
+                Text first zero at index  : text
+                Name found : int32
+-----------------------------------
+total nodes = 62

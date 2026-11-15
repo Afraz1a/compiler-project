@@ -1,0 +1,14 @@
+NAME , KIND , TYPE , LENGTH , WIDTH , OFFSET , SCOPE , LINE
+-------------------------------------------------------------
+count , scalar , int32 , 1 , 4 , 0 , 0 , 1
+marks , array , int16 , 10 , 20 , 4 , 0 , 2
+lowest , scalar , int16 , 1 , 2 , 24 , 0 , 15
+highest , scalar , int16 , 1 , 2 , 26 , 0 , 16
+sum , scalar , int32 , 1 , 4 , 28 , 0 , 17
+passed , scalar , int32 , 1 , 4 , 32 , 0 , 18
+k , scalar , int32 , 1 , 4 , 36 , 0 , 19
+mean , scalar , real , 1 , 8 , 40 , 0 , 35
+grade , scalar , char , 1 , 1 , 48 , 0 , 36
+-------------------------------------------------------------
+total symbols = 9
+total bytes = 49
