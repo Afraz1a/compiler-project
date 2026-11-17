@@ -1,3 +1,12 @@
 __pycache__/
 *.pyc
 desktop.ini
+
+/LL1_Assignment_Solutions.md
+/SLR1_Assignment_Solutions.md
+/Token_Categories.docx
+/bscs23029_ll1.pdf
+/extra/
+/lexer.py
+/sample.c
+/tokens.txt

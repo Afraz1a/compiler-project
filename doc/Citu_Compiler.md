@@ -701,14 +701,15 @@ Settings → Collaborators.
 
 ```
 compiler-project/
-    cituc.py              driver
-    citu/lexer.py         phase 1
-    citu/parser.py        phase 2
-    citu/semantic.py      phase 3
-    citu/codegen.py       phase 4
+    cituc.py               driver
+    citu/lexer.py          phase 1
+    citu/parser.py         phase 2
+    citu/semantic.py       phase 3
+    citu/codegen.py        phase 4
     examples/search.citu
     examples/primes.citu
     examples/average.citu
-    doc/Citu_Compiler.md  this document
-    build/                the generated files
+    doc/Citu_Compiler.md   this document
+    doc/Citu_Compiler.pdf  the same document as a PDF
+    build/                 the four generated files per program
 ```
