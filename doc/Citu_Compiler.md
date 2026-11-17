@@ -1,49 +1,49 @@
-# Citu — Language and Compiler
+# Citu Language and Compiler
 
-| | |
-|---|---|
-| Student ID | BSCS23029 |
-| Repository | https://github.com/Afraz1a/compiler-project |
-| Commit | see section 5 |
+Student ID: BSCS23029
 
-Citu is the language from the grammar assignment. Its keywords are Urdu
-words. The compiler is in `citu/` and is run with:
+Repository: https://github.com/Afraz1a/compiler-project
+
+Citu is a small language whose keywords are Urdu words. The compiler is
+written in Python and is run like this:
 
 ```
 python cituc.py examples/search.citu
 ```
 
-Four phases, each one writes its result into `build/`:
+It has four parts, and each part writes one file into the build folder.
 
-| Phase | File | Output file |
-|---|---|---|
-| 1. lexical analysis | `citu/lexer.py` | `name.tokens` |
-| 2. syntax analysis | `citu/parser.py` | `name.tree` |
-| 3. semantic analysis | `citu/semantic.py` | `name.symbols` |
-| 4. code generation | `citu/codegen.py` | `name.tac` |
+```
+citu/lexer.py      lexical analysis      name.tokens
+citu/parser.py     syntax analysis       name.tree
+citu/semantic.py   semantic analysis     name.symbols
+citu/codegen.py    code generation       name.tac
+```
 
-| Keyword | Meaning | Keyword | Meaning |
-|---|---|---|---|
-| `shuro` | `{` | `melado` | assignment |
-| `khatam` | `}` | `dikhao` | print |
-| `agar` | `if` | `aur` | `&&` |
-| `wagarna` | `else` | `ya` | `\|\|` |
-| `jabtak` | `while` | `nahi` | `!` |
-| `nikal` | `break` | `=` | equality test |
+The keywords are:
 
-Assignment is the word `melado`, so `=` is free to mean equality.
-Types are `char`, `int16`, `uint16`, `int32`, `uint32`, `real` (`float` is
-the same type), and one-dimensional arrays of those.
+```
+shuro     {                melado    assignment
+khatam    }                dikhao    print
+agar      if               aur       and
+wagarna   else             ya        or
+jabtak    while            nahi      not
+nikal     break
+```
+
+Assignment is the word `melado`, so `=` is used for the equality test.
+
+The types are `char`, `int16`, `uint16`, `int32`, `uint32` and `real`.
+`float` means the same as `real`. Arrays of one dimension are allowed.
 
 ---
 
 ## 1. Example Programs
 
-### 1.1 `examples/search.citu` — linear search
+### 1.1 search.citu
 
-Array, `jabtak`, `agar` / `wagarna`, `nikal` to leave the loop early,
-unary minus. This is the loop from the grammar assignment with data and a
-result added.
+Finds the first zero in an array. Uses an array, a `jabtak` loop,
+`agar` and `wagarna`, and `nikal` to leave the loop early.
 
 ```
 int32 size melado 8;
@@ -76,13 +76,14 @@ khatam wagarna shuro
 khatam
 ```
 
-Finds the first zero at index 3. 133 tokens, 4 symbols, 40 instructions.
+The first zero is at index 3.
 
-### 1.2 `examples/primes.citu` — primes below a limit
+### 1.2 primes.citu
 
-Nested `jabtak`, `%`, `nikal` leaving only the inner loop, `aur` and
-`nahi`, the unsigned types, and a block scope: `d` and `prime` are
-declared inside the loop body, not at the top of the program.
+Prints the prime numbers below 40. Uses nested `jabtak` loops, the `%`
+operator, `nikal` in the inner loop, `aur` and `nahi`, and the unsigned
+types. `d` and `prime` are declared inside the loop body, so they belong
+to that block.
 
 ```
 uint16 limit melado 40;
@@ -115,13 +116,13 @@ dikhao("primes below ", limit, " = ", count);
 dikhao("their sum = ", total);
 ```
 
-Finds 12 primes below 40, summing to 197. 129 tokens, 6 symbols,
-59 instructions.
+There are 12 primes below 40 and their sum is 197.
 
-### 1.3 `examples/average.citu` — lowest, highest and mean
+### 1.3 average.citu
 
-Every type, mixed arithmetic with automatic widening, real division, a
-character constant, `ya`, and nested `agar` / `wagarna` used as a chain.
+Finds the lowest, highest and mean of ten marks and gives a grade. Uses
+every type, mixed arithmetic, real division, a character constant, `ya`,
+and `agar` with `wagarna` used as a chain.
 
 ```
 int32 count melado 10;
@@ -181,8 +182,8 @@ dikhao("passed = ", passed, " of ", count);
 dikhao("grade = ", grade);
 ```
 
-Lowest 33, highest 95, sum 689, mean 68.9, 8 of 10 passed, grade C.
-290 tokens, 9 symbols, 101 instructions.
+The lowest is 33, the highest is 95, the sum is 689, the mean is 68.9,
+8 of 10 passed and the grade is C.
 
 ---
 
@@ -190,65 +191,53 @@ Lowest 33, highest 95, sum 689, mean 68.9, 8 of 10 passed, grade C.
 
 ### 2.1 Lexical rules
 
-One regular expression per category. They are joined into one master
-expression of named groups and matched at the current position. Python
-returns the **first alternative that matches**, so the order below is the
-order in the code and it gives the longest match.
+There is one regular expression for each kind of token. They are joined
+into one big expression and matched at the current position. Python
+returns the first one that matches, so the order below is the order in
+the code.
 
-| Category | Regular expression | Note |
-|---|---|---|
-| newline | `\n` | counts lines, discarded |
-| space | `[ \t\r]+` | discarded |
-| comment | `//[^\n]*` or `/\*[\s\S]*?\*/` | lazy `*?` stops at the first `*/` |
-| real | `\d+\.\d*` or `\.\d+` | before `number` |
-| number | `\d+` | |
-| character | `'(?:\\.\|[^'\\\n])'` | `'A'`, `'\n'` |
-| string | `"(?:\\.\|[^"\\\n])*"` | |
-| identifier | `[A-Za-z_][A-Za-z0-9_]*` | then looked up in the keyword table |
-| symbol | `<=\|>=\|!=\|[-+*/%<>=()\[\];,]` | two-character ones first |
-| unknown | `.` | illegal character, reported, scanning continues |
+```
+newline       \n
+space         [ \t\r]+
+comment       //[^\n]*        or   /\*[\s\S]*?\*/
+real          \d+\.\d*        or   \.\d+
+number        \d+
+character     '(?:\\.|[^'\\\n])'
+string        "(?:\\.|[^"\\\n])*"
+identifier    [A-Za-z_][A-Za-z0-9_]*
+symbol        <=|>=|!=|[-+*/%<>=()\[\];,]
+unknown       .
+```
 
-Why the order matters:
+The order matters. Comment comes before symbol, otherwise `/*` is read
+as `/` and `*`. Real comes before number, otherwise `3.14` is read as
+`3`, `.` and `14`. Character and string come before identifier.
+`<=`, `>=` and `!=` come before `<`, `>` and `=`. The rule `unknown`
+is last, so an illegal character is reported and the scanner still moves
+forward.
 
-* comment before symbol, or `/*` is read as `/` then `*`
-* real before number, or `3.14` is read as `3` `.` `14`
-* character and string before identifier, so a literal is never split
-* `<=` `>=` `!=` before `<` `>` `=`, or they split in two
-* `unknown` last, so the scanner always moves forward at least one
-  character and can never loop
+Keywords have no rule of their own. They match the identifier rule and
+are then looked up in a table, so `integer` is not read as `int` and
+`eger`.
 
-Keywords get no regular expression of their own. They match the
-identifier rule and are then re-classified by a dictionary lookup, so
-`integer` is not read as `int` + `eger`.
+The token names are:
 
-| Lexeme | Token | Lexeme | Token | Lexeme | Token |
-|---|---|---|---|---|---|
-| `shuro` | SHURO | `melado` | MELADO | `int16` | INT16 |
-| `khatam` | KHATAM | `dikhao` | DIKHAO | `int32` | INT32 |
-| `agar` | AGAR | `aur` | AUR | `uint16` | UINT16 |
-| `wagarna` | WAGARNA | `ya` | YA | `uint32` | UINT32 |
-| `jabtak` | JABTAK | `nahi` | NAHI | `real` | REAL |
-| `nikal` | NIKAL | | | `float` | FLOAT |
-| | | | | `char` | CHAR |
+```
+SHURO KHATAM AGAR WAGARNA JABTAK NIKAL MELADO DIKHAO AUR YA NAHI
+INT16 INT32 UINT16 UINT32 REAL FLOAT CHAR
+IDENTIFIER NUMBER REALNUM CHARACTER STRING
+LE GE NE LT GT EQ PLUS MINUS STAR SLASH PERCENT
+LPAREN RPAREN LBRACK RBRACK SEMI COMMA
+EOF
+```
 
-| Lexeme | Token | Lexeme | Token | Lexeme | Token |
-|---|---|---|---|---|---|
-| `<=` | LE | `+` | PLUS | `(` | LPAREN |
-| `>=` | GE | `-` | MINUS | `)` | RPAREN |
-| `!=` | NE | `*` | STAR | `[` | LBRACK |
-| `<` | LT | `/` | SLASH | `]` | RBRACK |
-| `>` | GT | `%` | PERCENT | `;` | SEMI |
-| `=` | EQ | | | `,` | COMMA |
-
-The categories written into the token file are `TYPE`, `KEYWORD`,
-`IDENTIFIER`, `NUMBER`, `REAL_NUMBER`, `CHARACTER`, `STRING`, `OPERATOR`,
-`PUNCTUATOR`, `EOF`. With `EOF` there are 40 terminals.
+That is 40 terminals.
 
 ### 2.2 Syntax rules
 
-69 productions, 31 nonterminals, start symbol `program`, `λ` is the empty
-string. No left recursion and no two alternatives of one nonterminal start
-with the same token.
+There are 69 productions and 31 nonterminals. The start symbol is
+`program` and `λ` is the empty string. There is no left recursion, and
+no two choices of the same nonterminal start with the same token.
 
 ```
  1  program     → statements
@@ -328,243 +317,152 @@ with the same token.
 69  primtail    → λ
 ```
 
-Notes on the shape of the grammar:
+One token is enough to choose a statement: a type keyword begins a
+declaration, `id` begins an assignment, and `agar`, `jabtak`, `nikal`
+and `dikhao` begin one each. A declaration and an assignment both carry
+on with `id`, so the common part is left factored into `decltail` and
+`asgtail`.
 
-* `statement` is chosen by one token: a type keyword begins a declaration,
-  `id` an assignment, and `agar` `jabtak` `nikal` `dikhao` one each.
-* `declaration` and `assignment` both continue with `id`, so the common
-  part is **left factored** into `decltail` and `asgtail`.
-* Precedence is one nonterminal per level, lowest first:
-  `ya` < `aur` < relational < `+ -` < `* / %` < unary < primary.
-* Each level uses the right-recursive `...tail` form so there is no left
-  recursion. The parser writes each tail as a loop, which folds the
-  result leftwards, so `+ - * / %` come out left-associative.
-* `comptail` does not call itself, so relational operators do not chain:
-  `a < b < c` is a syntax error instead of a wrong answer.
-* The body of `agar` and `jabtak` is always a `block`, so there is no
-  dangling-else problem: `elsepart` can only belong to the `agar` before it.
-* An array size must be a `num`, so the storage is known at compile time.
+Precedence is one nonterminal per level, lowest first:
+`ya`, then `aur`, then the relational operators, then `+ -`, then
+`* / %`, then unary, then primary. Each level uses the `...tail` form so
+there is no left recursion, and the parser writes each tail as a loop so
+`+ - * / %` stay left-associative.
+
+`comptail` does not call itself, so relational operators cannot chain
+and `a < b < c` is a syntax error. The body of `agar` and `jabtak` is
+always a `block`, so there is no dangling else problem.
 
 ### 2.3 FIRST and FOLLOW
 
-`S` below stands for the statement starter set
-`{int16 int32 uint16 uint32 real float char id agar jabtak nikal dikhao}`.
+`S` is the set of tokens that can start a statement, that is
+`int16 int32 uint16 uint32 real float char id agar jabtak nikal dikhao`.
 
-| Nonterminal | FIRST | FOLLOW |
-|---|---|---|
-| program | S, λ | `$` |
-| statements | S, λ | `$ khatam` |
-| statement | S | S, `khatam $` |
-| declaration | type keywords | S, `khatam $` |
-| decltail | `[ melado ;` | S, `khatam $` |
-| type | the 7 type keywords | `id` |
-| assignment | `id` | S, `khatam $` |
-| asgtail | `[ melado` | S, `khatam $` |
-| ifpart, whilepart, breakpart, printpart | `agar` / `jabtak` / `nikal` / `dikhao` | S, `khatam $` |
-| elsepart | `wagarna`, λ | S, `khatam $` |
-| block | `shuro` | S, `khatam wagarna $` |
-| arglist | `string id num realnum charconst ( - nahi` | `)` |
-| argtail | `,`, λ | `)` |
-| arg | `string id num realnum charconst ( - nahi` | `) ,` |
-| expression | `id num realnum charconst ( - nahi` | `) , ; ]` |
-| ortail | `ya`, λ | `) , ; ]` |
-| andpart | `id num realnum charconst ( - nahi` | `) , ; ] ya` |
-| andtail | `aur`, λ | `) , ; ] ya` |
-| compare | `id num realnum charconst ( - nahi` | `) , ; ] aur ya` |
-| comptail | `= != < <= > >=`, λ | `) , ; ] aur ya` |
-| relop | `= != < <= > >=` | `id num realnum charconst ( - nahi` |
-| sum | `id num realnum charconst ( - nahi` | relops, `) , ; ] aur ya` |
-| sumtail | `+ -`, λ | relops, `) , ; ] aur ya` |
-| term | `id num realnum charconst ( - nahi` | `+ -`, relops, `) , ; ] aur ya` |
-| termtail | `* / %`, λ | `+ -`, relops, `) , ; ] aur ya` |
-| unary | `id num realnum charconst ( - nahi` | `* / % + -`, relops, `) , ; ] aur ya` |
-| primary | `id num realnum charconst (` | `* / % + -`, relops, `) , ; ] aur ya` |
-| primtail | `[`, λ | `* / % + -`, relops, `) , ; ] aur ya` |
+```
+program       FIRST  S λ                              FOLLOW  $
+statements    FIRST  S λ                              FOLLOW  $ khatam
+statement     FIRST  S                                FOLLOW  S khatam $
+declaration   FIRST  type keywords                    FOLLOW  S khatam $
+decltail      FIRST  [ melado ;                       FOLLOW  S khatam $
+type          FIRST  the 7 type keywords              FOLLOW  id
+assignment    FIRST  id                               FOLLOW  S khatam $
+asgtail       FIRST  [ melado                         FOLLOW  S khatam $
+ifpart        FIRST  agar                             FOLLOW  S khatam $
+elsepart      FIRST  wagarna λ                        FOLLOW  S khatam $
+whilepart     FIRST  jabtak                           FOLLOW  S khatam $
+breakpart     FIRST  nikal                            FOLLOW  S khatam $
+printpart     FIRST  dikhao                           FOLLOW  S khatam $
+block         FIRST  shuro                            FOLLOW  S khatam wagarna $
+arglist       FIRST  string id num realnum char ( - nahi   FOLLOW  )
+argtail       FIRST  , λ                              FOLLOW  )
+arg           FIRST  string id num realnum char ( - nahi   FOLLOW  ) ,
+expression    FIRST  id num realnum char ( - nahi     FOLLOW  ) , ; ]
+ortail        FIRST  ya λ                             FOLLOW  ) , ; ]
+andpart       FIRST  id num realnum char ( - nahi     FOLLOW  ) , ; ] ya
+andtail       FIRST  aur λ                            FOLLOW  ) , ; ] ya
+compare       FIRST  id num realnum char ( - nahi     FOLLOW  ) , ; ] aur ya
+comptail      FIRST  = != < <= > >= λ                 FOLLOW  ) , ; ] aur ya
+relop         FIRST  = != < <= > >=                   FOLLOW  id num realnum char ( - nahi
+sum           FIRST  id num realnum char ( - nahi     FOLLOW  relops ) , ; ] aur ya
+sumtail       FIRST  + - λ                            FOLLOW  relops ) , ; ] aur ya
+term          FIRST  id num realnum char ( - nahi     FOLLOW  + - relops ) , ; ] aur ya
+termtail      FIRST  * / % λ                          FOLLOW  + - relops ) , ; ] aur ya
+unary         FIRST  id num realnum char ( - nahi     FOLLOW  * / % + - relops ) , ; ] aur ya
+primary       FIRST  id num realnum char (            FOLLOW  * / % + - relops ) , ; ] aur ya
+primtail      FIRST  [ λ                              FOLLOW  * / % + - relops ) , ; ] aur ya
+```
 
-### 2.4 The table is conflict free
+### 2.4 The parsing table
 
-For `A → α` the table is filled with `M[A,a] = A → α` for every
-`a ∈ FIRST(α)`, and if `λ ∈ FIRST(α)` also for every `a ∈ FOLLOW(A)`.
-Blank cell = error.
+For `A → α` the table gets `M[A,a] = A → α` for every `a` in FIRST(α),
+and if `λ` is in FIRST(α) then also for every `a` in FOLLOW(A). A blank
+cell is an error.
 
-Doing this for all 69 productions fills **222 cells and no cell receives
-two productions**, so the grammar is **LL(1)**. The three places where a
-clash could have happened:
-
-| Nonterminal | Why there is no clash |
-|---|---|
-| `decltail` | `[` vs `melado` vs `;` are three different tokens |
-| `asgtail` | `[` vs `melado` |
-| `elsepart` | FIRST = `{wagarna}`, FOLLOW does not contain `wagarna` |
-
-Because no cell is doubled, the parser needs one token of lookahead and
-never backtracks. It is written as recursive descent, one function per
-nonterminal, which is the same decision the table would make.
-
-### 2.5 Rules the grammar cannot express
-
-Checked in `citu/semantic.py`:
-
-* a name must be declared before it is used, and only once per scope
-* an array name needs an index, a plain variable must not have one
-* an index must be a whole number, and a constant index must be in range
-* the condition of `agar` and `jabtak` must be a comparison, not a number
-* `nikal` is only allowed inside `jabtak`
-* `%` needs whole numbers, and division by the constant 0 is an error
-* a value must fit the variable it is stored in, and a constant that is
-  out of range for its type is an error
-
-When two numbers of different type meet, the wider one wins; if either is
-`real` the result is `real`; `char` widens to `int16` first.
+Doing this for all 69 productions fills 222 cells and no cell gets two
+productions, so the grammar is LL(1). The parser is written as recursive
+descent with one function per nonterminal, which makes the same choice
+the table would make, with one token of lookahead and no backtracking.
 
 ---
 
 ## 3. Data Structures
 
-| Structure | Where | Shape |
-|---|---|---|
-| keyword table | `lexer.py` | dictionary, lexeme → token name |
-| token | `lexer.py` | object: kind, text, value, line, col |
-| token list | `lexer.py` | list of tokens, ending with `EOF` |
-| tree node | `parser.py` | object: kind, line, type, symbol, named parts |
-| symbol | `semantic.py` | object: name, slot, kind, type, length, offset, scope, line |
-| scope stack | `semantic.py` | list of dictionaries |
-| symbol table | `semantic.py` | list of every symbol, in declaration order |
-| quadruple | `codegen.py` | list of four strings: op, arg1, arg2, result |
-| code | `codegen.py` | list of quadruples |
-| error list | `cituc.py` | list of (line, col, phase, message) |
+**Token.** One object per token, holding the token name, the exact text,
+the value behind a literal, and the line and column. The line and column
+are the reason the later parts can still report an error on the right
+line after the source text is gone.
 
-### 3.1 Token and token list
+**Token list.** A plain list of tokens ending with `EOF`. A list and not
+a stream, so the parser is only an index into it.
 
-```
-class Token:
-    kind    token name, e.g. JABTAK, IDENTIFIER, NUMBER, PLUS
-    text    the exact text matched
-    value   the number or character behind a literal, else None
-    line    line number
-    col     column number
-```
+**Keyword table.** A dictionary from the word to its token name, used to
+turn an identifier into a keyword.
 
-A flat list, not a stream, because the parser is then just an index into
-it, and the whole list can be written out and read.
+**Tree node.** One object per node, holding its kind, its line, its type,
+the symbol it refers to, and its children under their own names such as
+`test`, `yes`, `no`, `left` and `right`. There are 19 kinds: Program,
+Declare, Array, Set, SetItem, If, While, Break, Print, Block, Binary,
+Negate, Not, Name, Item, Number, RealNumber, Character and Text.
 
-Line and column are carried on every token. That is the only reason the
-later phases can report an error against the right line, since by then
-the source text is gone.
+The tree is abstract, so brackets, semicolons and the chain productions
+are not in it. `i + 1` is one Binary node with two children. The whole of
+search.citu is 62 nodes.
 
-### 3.2 Tree node
+The type and the symbol start empty and are filled in by the semantic
+part, so the code generator does not have to look anything up.
 
-```
-class Node:
-    kind    Program, Declare, Array, Set, SetItem, If, While, Break,
-            Print, Block, Binary, Negate, Not, Name, Item, Number,
-            RealNumber, Character, Text
-    line    source line
-    type    filled in later by the semantic phase
-    symbol  filled in later, the symbol this node refers to
-    parts   the names of this node's children
-```
-
-19 node kinds. Parts are stored under their own names (`test`, `yes`,
-`no`, `left`, `right`, `body`), so the code reads as `node.test` rather
-than `node.children[0]`.
-
-`type` and `symbol` start empty and are filled in by phase 3. That is why
-the code generator does not need to look anything up: the type and the
-storage slot are already sitting on the node.
-
-The tree is abstract, not a full parse tree: brackets, semicolons and the
-chain productions (`expression → andpart → compare → sum → term → unary
-→ primary`) are gone, and only the structure is left. `i + 1` becomes one
-`Binary` node with two children, where a full parse tree needs about
-twenty. The whole of `search.citu` is 62 nodes.
-
-### 3.3 Scope stack and symbol table
-
-The scope stack is a **list of dictionaries**. Entering a `shuro ...
-khatam` block pushes an empty dictionary, leaving it pops. `find` walks
+**Scope stack.** A list of dictionaries. Entering a `shuro ... khatam`
+block pushes an empty dictionary and leaving it pops one. A lookup walks
 the list from the back, so an inner declaration hides an outer one of the
-same name. `declare` only looks in the last dictionary, so declaring the
-same name twice in one block is an error but shadowing is allowed.
+same name. A declaration only looks in the last dictionary, so declaring
+the same name twice in one block is an error but shadowing is allowed.
 
-Alongside the stack there is a plain list of every symbol ever declared.
-Popping a scope removes it from view but not from this list, which is
-what gets written to the symbol file and what the code generator walks to
-reserve storage.
+**Symbol table.** A list of every symbol that was ever declared. Popping
+a scope hides it from lookup but does not remove it from this list, which
+is what gets written to the symbol file and what the code generator walks
+to reserve storage. Each symbol holds its name, the name used in the
+generated code, whether it is a plain variable or an array, its type, its
+number of elements, its byte offset, its scope and its line.
 
-```
-class Symbol:
-    name     as written
-    slot     the name used in the generated code
-    kind     scalar or array
-    datatype char, int16, uint16, int32, uint32, real
-    length   number of elements, 1 for a plain variable
-    offset   byte offset, handed out at declaration
-    scope    which scope it belongs to
-    line     where it was declared
-```
+The second name is needed because two different blocks can both declare a
+`d`. They are different variables and must not share storage, so the
+second one is called `d_2`.
 
-`slot` exists because two different blocks may both declare a `d`. They
-are two different variables and must not share storage, but both are
-spelled `d`, so the second one gets the slot `d_2`.
-
-`offset` runs on across the whole program, so the last offset plus the
-last width is the total storage the program needs — 44 bytes for
-`search.citu`.
-
-### 3.4 Quadruples
-
-Three-address code is a flat list, each entry four strings:
+**Quadruple list.** The three address code, a flat list where each entry
+is four strings: the operation, two arguments and a result. Flat and not
+a tree, because the position in the list is the jump target. A missing
+argument is written `-`. Temporaries are `t0`, `t1` and so on, and labels
+are `L0`, `L1` and so on. The operations are:
 
 ```
-[ op , arg1 , arg2 , result ]
+alloc copy
+add sub mul div mod neg
+eq ne lt le gt ge
+not
+load store
+label goto iffalse iftrue
+write line
+stop
 ```
 
-Flat and not a tree, because an index into the list is a jump target.
-A missing operand is written `-`. Temporaries are `t0`, `t1`, ... and
-labels are `L0`, `L1`, ...; two counters hand them out.
+The generator also keeps a list of the exit labels of the loops it is
+inside. `jabtak` pushes its exit label before the body and pops it after,
+so `nikal` is a `goto` to the last one. It is also how the compiler knows
+that a `nikal` outside any loop has nowhere to jump.
 
-The 24 operations:
-
-| Group | Operations |
-|---|---|
-| storage | `alloc` |
-| move | `copy` |
-| arithmetic | `add` `sub` `mul` `div` `mod` `neg` |
-| comparison | `eq` `ne` `lt` `le` `gt` `ge` |
-| logic | `not` |
-| array | `load` `store` |
-| jumps | `label` `goto` `iffalse` `iftrue` |
-| output | `write` `line` |
-| end | `stop` |
-
-The generator also keeps a small list of loop exit labels. `jabtak`
-pushes its exit label before generating the body and pops it after, so
-`nikal` is a `goto` to the top of that list. It is also how the compiler
-knows a `nikal` outside any loop has nowhere to jump.
-
-`aur` and `ya` do not become single instructions. They expand into
-jumps so the right operand is only evaluated when it has to be.
+**Error list.** One list of line, column, part and message, filled by all
+the parts, so one run reports every problem instead of only the first.
 
 ---
 
 ## 4. Intermediate File Format
 
-Every phase writes one file into `build/`. All four are plain text and
-follow the same shape: a header line naming the columns, a line of
-dashes, the rows, another line of dashes, and a total. Fields are
-separated by ` , `.
+Every part writes one file into the build folder. All four are plain
+text with the same shape: a heading line with the column names, a line of
+dashes, the rows, another line of dashes, and a total. The fields are
+separated by a space, a comma and a space.
 
-| Phase | File | Contents |
-|---|---|---|
-| lexical analysis | `name.tokens` | one line per token |
-| syntax analysis | `name.tree` | the tree, indented |
-| semantic analysis | `name.symbols` | one line per symbol |
-| code generation | `name.tac` | one line per quadruple |
-
-### 4.1 `name.tokens`
-
-`LINE , COL , TOKEN TYPE , LEXEME`
+### 4.1 name.tokens
 
 ```
 LINE , COL , TOKEN TYPE , LEXEME
@@ -574,20 +472,15 @@ LINE , COL , TOKEN TYPE , LEXEME
 1 , 12 , KEYWORD , melado
 1 , 19 , NUMBER , 8
 1 , 20 , PUNCTUATOR , ;
-2 , 1 , TYPE , int32
 -----------------------------------
 total tokens = 133
 ```
 
-The last token is always `EOF`. Token type is the category, not the
-individual token name, so the list reads the same way as the token list
-of the C scanner from the first assignment.
+The token type is the category, which is one of TYPE, KEYWORD,
+IDENTIFIER, NUMBER, REAL_NUMBER, CHARACTER, STRING, OPERATOR,
+PUNCTUATOR and EOF. The last token is always EOF.
 
-### 4.2 `name.tree`
-
-One node per line, four spaces per level. A node shows its kind, then
-any plain values it carries, then `:` and its type once the semantic
-phase has filled it in.
+### 4.2 name.tree
 
 ```
 PARSE TREE
@@ -603,12 +496,12 @@ Program
 total nodes = 62
 ```
 
-Indentation is the only structure: everything printed deeper than a node
-is a child of it.
+One node per line with four spaces for each level. A node shows its kind,
+then the plain values it carries, then a colon and its type once the
+semantic part has filled it in. The indentation is the only structure:
+anything printed deeper than a node is a child of it.
 
-### 4.3 `name.symbols`
-
-`NAME , KIND , TYPE , LENGTH , WIDTH , OFFSET , SCOPE , LINE`
+### 4.3 name.symbols
 
 ```
 NAME , KIND , TYPE , LENGTH , WIDTH , OFFSET , SCOPE , LINE
@@ -622,21 +515,17 @@ total symbols = 4
 total bytes = 44
 ```
 
-In declaration order, not scope order, so the offsets run upwards down
-the page. `SCOPE` is 0 for the program itself and 1, 2, ... inside
-blocks. `WIDTH` is the width of one element times the length.
+In declaration order, so the offsets go upwards down the page. The scope
+is 0 for the program itself and 1, 2 and so on inside blocks. The width
+is the width of one element times the length.
 
-### 4.4 `name.tac`
-
-`INDEX , OP , ARG1 , ARG2 , RESULT`
+### 4.4 name.tac
 
 ```
 INDEX , OP , ARG1 , ARG2 , RESULT
 -----------------------------------
 0 , alloc , int32 , 1 , size
 1 , alloc , int32 , 8 , a
-2 , alloc , int32 , 1 , i
-3 , alloc , int32 , 1 , found
 4 , copy , 8 , - , size
 5 , store , 0 , 14 , a
 13 , copy , 0 , - , i
@@ -652,64 +541,38 @@ INDEX , OP , ARG1 , ARG2 , RESULT
 total instructions = 40
 ```
 
-`INDEX` is the jump target: `goto L1` goes to the line that holds
-`label , L1`. The `alloc` instructions come first, one per symbol, so the
-file is complete on its own and nothing else has to be read to know how
-much storage the program needs.
+The index is the jump target, so `goto L1` goes to the line that holds
+`label , L1`. The `alloc` lines come first, one for each symbol, so the
+file is complete on its own.
 
-Reading rows 16 to 21 back: `L0` is the top of the loop, `t1` is
-`i < size`, if it is false jump past the loop to `L1`, otherwise load
-`a[i]` into `t2`, compare it with 0 into `t3`, and if that is false skip
-the body of the `agar` to `L2`.
+Reading lines 16 to 21: `L0` is the top of the loop, `t1` is `i < size`,
+if that is false jump out of the loop to `L1`, otherwise load `a[i]` into
+`t2`, compare it with 0 into `t3`, and if that is false skip the body of
+the `agar` to `L2`.
 
-If any phase reports an error, no `.tac` file is written.
-
-### 4.5 Errors
-
-Errors are collected from all phases and printed together, sorted by
-line, so one run shows every problem rather than only the first:
-
-```
-errors : 9
-  line 2 : semantic error : x is already declared
-  line 3 : semantic error : 70000 does not fit in char
-  line 5 : semantic error : index 7 is outside arr
-  line 6 : semantic error : the condition of agar must be a comparison
-  line 6 : semantic error : y is not declared
-  line 7 : semantic error : nikal is only allowed inside jabtak
-  line 8 : semantic error : division by zero
-  line 9 : lexical error : illegal character @
-  line 9 : syntax error : expected SEMI but found 4
-```
-
-The scanner reports an illegal character and moves on one character, and
-the parser skips to the next `;` or statement keyword, so one mistake
-does not hide the rest of the file.
+If any part reports an error, no `.tac` file is written.
 
 ---
 
 ## 5. Git Repository
 
-| | |
-|---|---|
-| Student ID | BSCS23029 |
-| Repository | https://github.com/Afraz1a/compiler-project |
-| Commit | `git rev-parse HEAD` after pushing |
+Student ID: BSCS23029
 
-Shared with `umarsuleman@gmail.com` and `mscs24052@itu.edu.pk` through
-Settings → Collaborators.
+Repository: https://github.com/Afraz1a/compiler-project
+
+Shared with umarsuleman@gmail.com and mscs24052@itu.edu.pk.
 
 ```
 compiler-project/
-    cituc.py               driver
-    citu/lexer.py          phase 1
-    citu/parser.py         phase 2
-    citu/semantic.py       phase 3
-    citu/codegen.py        phase 4
+    cituc.py
+    citu/lexer.py
+    citu/parser.py
+    citu/semantic.py
+    citu/codegen.py
     examples/search.citu
     examples/primes.citu
     examples/average.citu
-    doc/Citu_Compiler.md   this document
-    doc/Citu_Compiler.pdf  the same document as a PDF
-    build/                 the four generated files per program
+    doc/Citu_Compiler.md
+    doc/Citu_Compiler.pdf
+    build/
 ```
