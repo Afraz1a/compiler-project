@@ -13,23 +13,23 @@ python cituc.py examples/search.citu
 
 It has four parts, and each part writes one file into the build folder.
 
-```
-citu/lexer.py      lexical analysis      name.tokens
-citu/parser.py     syntax analysis       name.tree
-citu/semantic.py   semantic analysis     name.symbols
-citu/codegen.py    code generation       name.tac
-```
+| File | Part | Writes |
+|---|---|---|
+| `citu/lexer.py` | lexical analysis | `name.tokens` |
+| `citu/parser.py` | syntax analysis | `name.tree` |
+| `citu/semantic.py` | semantic analysis | `name.symbols` |
+| `citu/codegen.py` | code generation | `name.tac` |
 
 The keywords are:
 
-```
-shuro     {                melado    assignment
-khatam    }                dikhao    print
-agar      if               aur       and
-wagarna   else             ya        or
-jabtak    while            nahi      not
-nikal     break
-```
+| Keyword | Meaning | Keyword | Meaning |
+|---|---|---|---|
+| `shuro` | `{` | `melado` | assignment |
+| `khatam` | `}` | `dikhao` | print |
+| `agar` | if | `aur` | and |
+| `wagarna` | else | `ya` | or |
+| `jabtak` | while | `nahi` | not |
+| `nikal` | break | | |
 
 Assignment is the word `melado`, so `=` is used for the equality test.
 
@@ -196,18 +196,18 @@ into one big expression and matched at the current position. Python
 returns the first one that matches, so the order below is the order in
 the code.
 
-```
-newline       \n
-space         [ \t\r]+
-comment       //[^\n]*        or   /\*[\s\S]*?\*/
-real          \d+\.\d*        or   \.\d+
-number        \d+
-character     '(?:\\.|[^'\\\n])'
-string        "(?:\\.|[^"\\\n])*"
-identifier    [A-Za-z_][A-Za-z0-9_]*
-symbol        <=|>=|!=|[-+*/%<>=()\[\];,]
-unknown       .
-```
+| Token | Regular expression |
+|---|---|
+| newline | `\n` |
+| space | `[ \t\r]+` |
+| comment | `//[^\n]*` or `/\*[\s\S]*?\*/` |
+| real | `\d+\.\d*` or `\.\d+` |
+| number | `\d+` |
+| character | `'(?:\\.\|[^'\\\n])'` |
+| string | `"(?:\\.\|[^"\\\n])*"` |
+| identifier | `[A-Za-z_][A-Za-z0-9_]*` |
+| symbol | `<=\|>=\|!=\|[-+*/%<>=()\[\];,]` |
+| unknown | `.` |
 
 The order matters. Comment comes before symbol, otherwise `/*` is read
 as `/` and `*`. Real comes before number, otherwise `3.14` is read as
@@ -338,39 +338,39 @@ always a `block`, so there is no dangling else problem.
 `S` is the set of tokens that can start a statement, that is
 `int16 int32 uint16 uint32 real float char id agar jabtak nikal dikhao`.
 
-```
-program       FIRST  S λ                              FOLLOW  $
-statements    FIRST  S λ                              FOLLOW  $ khatam
-statement     FIRST  S                                FOLLOW  S khatam $
-declaration   FIRST  type keywords                    FOLLOW  S khatam $
-decltail      FIRST  [ melado ;                       FOLLOW  S khatam $
-type          FIRST  the 7 type keywords              FOLLOW  id
-assignment    FIRST  id                               FOLLOW  S khatam $
-asgtail       FIRST  [ melado                         FOLLOW  S khatam $
-ifpart        FIRST  agar                             FOLLOW  S khatam $
-elsepart      FIRST  wagarna λ                        FOLLOW  S khatam $
-whilepart     FIRST  jabtak                           FOLLOW  S khatam $
-breakpart     FIRST  nikal                            FOLLOW  S khatam $
-printpart     FIRST  dikhao                           FOLLOW  S khatam $
-block         FIRST  shuro                            FOLLOW  S khatam wagarna $
-arglist       FIRST  string id num realnum char ( - nahi   FOLLOW  )
-argtail       FIRST  , λ                              FOLLOW  )
-arg           FIRST  string id num realnum char ( - nahi   FOLLOW  ) ,
-expression    FIRST  id num realnum char ( - nahi     FOLLOW  ) , ; ]
-ortail        FIRST  ya λ                             FOLLOW  ) , ; ]
-andpart       FIRST  id num realnum char ( - nahi     FOLLOW  ) , ; ] ya
-andtail       FIRST  aur λ                            FOLLOW  ) , ; ] ya
-compare       FIRST  id num realnum char ( - nahi     FOLLOW  ) , ; ] aur ya
-comptail      FIRST  = != < <= > >= λ                 FOLLOW  ) , ; ] aur ya
-relop         FIRST  = != < <= > >=                   FOLLOW  id num realnum char ( - nahi
-sum           FIRST  id num realnum char ( - nahi     FOLLOW  relops ) , ; ] aur ya
-sumtail       FIRST  + - λ                            FOLLOW  relops ) , ; ] aur ya
-term          FIRST  id num realnum char ( - nahi     FOLLOW  + - relops ) , ; ] aur ya
-termtail      FIRST  * / % λ                          FOLLOW  + - relops ) , ; ] aur ya
-unary         FIRST  id num realnum char ( - nahi     FOLLOW  * / % + - relops ) , ; ] aur ya
-primary       FIRST  id num realnum char (            FOLLOW  * / % + - relops ) , ; ] aur ya
-primtail      FIRST  [ λ                              FOLLOW  * / % + - relops ) , ; ] aur ya
-```
+| Nonterminal | FIRST | FOLLOW |
+|---|---|---|
+| program | S λ | $ |
+| statements | S λ | $ khatam |
+| statement | S | S khatam $ |
+| declaration | type keywords | S khatam $ |
+| decltail | [ melado ; | S khatam $ |
+| type | the 7 type keywords | id |
+| assignment | id | S khatam $ |
+| asgtail | [ melado | S khatam $ |
+| ifpart | agar | S khatam $ |
+| elsepart | wagarna λ | S khatam $ |
+| whilepart | jabtak | S khatam $ |
+| breakpart | nikal | S khatam $ |
+| printpart | dikhao | S khatam $ |
+| block | shuro | S khatam wagarna $ |
+| arglist | string id num realnum char ( - nahi | ) |
+| argtail | , λ | ) |
+| arg | string id num realnum char ( - nahi | ) , |
+| expression | id num realnum char ( - nahi | ) , ; ] |
+| ortail | ya λ | ) , ; ] |
+| andpart | id num realnum char ( - nahi | ) , ; ] ya |
+| andtail | aur λ | ) , ; ] ya |
+| compare | id num realnum char ( - nahi | ) , ; ] aur ya |
+| comptail | = != < <= > >= λ | ) , ; ] aur ya |
+| relop | = != < <= > >= | id num realnum char ( - nahi |
+| sum | id num realnum char ( - nahi | relops ) , ; ] aur ya |
+| sumtail | + - λ | relops ) , ; ] aur ya |
+| term | id num realnum char ( - nahi | + - relops ) , ; ] aur ya |
+| termtail | * / % λ | + - relops ) , ; ] aur ya |
+| unary | id num realnum char ( - nahi | * / % + - relops ) , ; ] aur ya |
+| primary | id num realnum char ( | * / % + - relops ) , ; ] aur ya |
+| primtail | [ λ | * / % + - relops ) , ; ] aur ya |
 
 ### 2.4 The parsing table
 
@@ -386,6 +386,17 @@ the table would make, with one token of lookahead and no backtracking.
 ---
 
 ## 3. Data Structures
+
+| Structure | Where | Shape |
+|---|---|---|
+| token | `lexer.py` | object with 5 fields |
+| token list | `lexer.py` | list of tokens |
+| keyword table | `lexer.py` | dictionary |
+| tree node | `parser.py` | object with named children |
+| scope stack | `semantic.py` | list of dictionaries |
+| symbol table | `semantic.py` | list of symbols |
+| quadruple list | `codegen.py` | list of four strings each |
+| error list | `cituc.py` | list of four values each |
 
 **Token.** One object per token, holding the token name, the exact text,
 the value behind a literal, and the line and column. The line and column
@@ -461,6 +472,13 @@ Every part writes one file into the build folder. All four are plain
 text with the same shape: a heading line with the column names, a line of
 dashes, the rows, another line of dashes, and a total. The fields are
 separated by a space, a comma and a space.
+
+| Part | File | Holds |
+|---|---|---|
+| lexical analysis | `name.tokens` | one line per token |
+| syntax analysis | `name.tree` | the tree, indented |
+| semantic analysis | `name.symbols` | one line per symbol |
+| code generation | `name.tac` | one line per quadruple |
 
 ### 4.1 name.tokens
 
