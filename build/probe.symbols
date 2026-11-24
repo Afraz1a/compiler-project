@@ -1,0 +1,15 @@
+NAME , KIND , TYPE , LENGTH , WIDTH , OFFSET , SCOPE , LINE
+-------------------------------------------------------------
+a , array , int32 , 3 , 12 , 0 , 0 , 1
+p , scalar , int32 , 1 , 4 , 12 , 0 , 2
+r , scalar , real , 1 , 8 , 16 , 0 , 3
+useBeforeSet , scalar , int32 , 1 , 4 , 24 , 0 , 5
+q , scalar , int32 , 1 , 4 , 28 , 0 , 6
+bad , scalar , int32 , 1 , 4 , 32 , 0 , 12
+m , scalar , int32 , 1 , 4 , 36 , 0 , 16
+z , scalar , int32 , 1 , 4 , 40 , 0 , 17
+big , scalar , real , 1 , 8 , 44 , 0 , 19
+small , scalar , int16 , 1 , 2 , 52 , 0 , 20
+-------------------------------------------------------------
+total symbols = 10
+total bytes = 54

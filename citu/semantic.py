@@ -212,8 +212,13 @@ class Checker:
         if found != "number" and found not in whole:
             self.error(where, "an index must be a whole number")
             return
-        if where.kind == "Number" and where.value >= symbol.length:
-            self.error(where, "index " + str(where.value) + " is outside " +
+        value = None
+        if where.kind == "Number":
+            value = where.value
+        if where.kind == "Negate" and where.value.kind == "Number":
+            value = -where.value.value
+        if value is not None and (value < 0 or value >= symbol.length):
+            self.error(where, "index " + str(value) + " is outside " +
                        symbol.name)
 
     def expression(self, node):

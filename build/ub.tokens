@@ -1,0 +1,18 @@
+LINE , COL , TOKEN TYPE , LEXEME
+-----------------------------------
+1 , 1 , TYPE , int32
+1 , 7 , IDENTIFIER , a
+1 , 8 , PUNCTUATOR , [
+1 , 9 , NUMBER , 3
+1 , 10 , PUNCTUATOR , ]
+1 , 11 , PUNCTUATOR , ;
+2 , 1 , IDENTIFIER , a
+2 , 2 , PUNCTUATOR , [
+2 , 3 , NUMBER , 5
+2 , 4 , PUNCTUATOR , ]
+2 , 6 , KEYWORD , melado
+2 , 13 , NUMBER , 1
+2 , 14 , PUNCTUATOR , ;
+3 , 1 , EOF , end of file
+-----------------------------------
+total tokens = 14

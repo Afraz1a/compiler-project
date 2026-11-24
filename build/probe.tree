@@ -1,0 +1,48 @@
+PARSE TREE
+-----------------------------------
+Program
+    Array int32 a 3
+    Declare int32 p
+    Declare real r
+        RealNumber 1.5 : real
+    Declare int32 useBeforeSet
+    Declare int32 q
+        Binary + : int32
+            Name useBeforeSet : int32
+            Number 1 : number
+    SetItem p
+        Number 0 : number
+        Number 1 : number
+    SetItem a
+        Name r : real
+        Number 2 : number
+    SetItem a
+        Negate : number
+            Number 1 : number
+        Number 3 : number
+    Declare int32 bad
+        Name r : real
+    If
+        Number 5 : number
+        Block
+            Print
+                Text x : text
+    While
+        Item a : int32
+            Number 0 : number
+        Block
+            Break
+    Declare int32 m
+        Binary %
+            Number 7 : number
+            Name r : real
+    Declare int32 z
+        Binary / : int32
+            Name p : int32
+            Number 0 : number
+    Declare real big
+        RealNumber 3.9 : real
+    Declare int16 small
+        Name big : real
+-----------------------------------
+total nodes = 44
