@@ -42,3 +42,10 @@ if errors:
         print("  line", line, ":", phase, "error :", message)
 else:
     print("errors : 0")
+
+if checker.warnings:
+    print("warnings :", len(checker.warnings))
+    for line, col, phase, message in sorted(checker.warnings):
+        print("  line", line, ":", phase, "warning :", message)
+else:
+    print("warnings : 0")

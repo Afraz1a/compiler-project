@@ -1,0 +1,25 @@
+LINE , COL , TOKEN TYPE , LEXEME
+-----------------------------------
+1 , 1 , TYPE , int32
+1 , 7 , IDENTIFIER , x
+1 , 8 , PUNCTUATOR , ;
+2 , 1 , KEYWORD , agar
+2 , 6 , PUNCTUATOR , (
+2 , 8 , NUMBER , 1
+2 , 10 , OPERATOR , <
+2 , 12 , NUMBER , 2
+2 , 14 , PUNCTUATOR , )
+2 , 16 , KEYWORD , shuro
+2 , 22 , IDENTIFIER , x
+2 , 24 , KEYWORD , melado
+2 , 31 , NUMBER , 5
+2 , 32 , PUNCTUATOR , ;
+2 , 34 , KEYWORD , khatam
+3 , 1 , KEYWORD , dikhao
+3 , 7 , PUNCTUATOR , (
+3 , 8 , IDENTIFIER , x
+3 , 9 , PUNCTUATOR , )
+3 , 10 , PUNCTUATOR , ;
+4 , 1 , EOF , end of file
+-----------------------------------
+total tokens = 21

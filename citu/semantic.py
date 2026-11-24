@@ -23,6 +23,7 @@ class Symbol:
         self.offset = offset
         self.scope = scope
         self.line = line
+        self.assigned = False
 
 
 def common(a, b):
@@ -41,6 +42,7 @@ def common(a, b):
 class Checker:
     def __init__(self, errors):
         self.errors = errors
+        self.warnings = []
         self.scopes = [{}]
         self.table = []
         self.used = []
@@ -49,6 +51,9 @@ class Checker:
 
     def error(self, node, message):
         self.errors.append((node.line, 0, "semantic", message))
+
+    def warn(self, node, message):
+        self.warnings.append((node.line, 0, "semantic", message))
 
     def declare(self, node, name, kind, datatype, length):
         if name in self.scopes[-1]:
@@ -110,6 +115,8 @@ class Checker:
             self.store(node, node.datatype, self.expression(node.value),
                        node.name)
             self.fits(node.value, node.datatype)
+            if symbol is not None:
+                symbol.assigned = True
 
     def do_array(self, node):
         if node.size < 1:
@@ -130,6 +137,7 @@ class Checker:
         self.store(node, symbol.datatype, self.expression(node.value),
                    node.name)
         self.fits(node.value, symbol.datatype)
+        symbol.assigned = True
 
     def do_set_item(self, node):
         symbol = self.find(node.name)
@@ -144,6 +152,7 @@ class Checker:
         self.index(node, symbol, node.index)
         self.store(node, symbol.datatype, self.expression(node.value),
                    node.name)
+        symbol.assigned = True
 
     def do_if(self, node):
         self.condition(node, self.expression(node.test), "agar")
@@ -253,6 +262,8 @@ class Checker:
             self.error(node, node.name + " is an array, use " + node.name +
                        "[index]")
             return None
+        if not symbol.assigned:
+            self.warn(node, node.name + " is used before it is given a value")
         node.symbol = symbol
         return symbol.datatype
 

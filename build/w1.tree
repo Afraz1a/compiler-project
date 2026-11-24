@@ -1,0 +1,13 @@
+PARSE TREE
+-----------------------------------
+Program
+    Declare int32 x
+    Declare int32 y
+        Binary + : int32
+            Name x : int32
+            Number 1 : number
+    Print
+        Text y =  : text
+        Name y : int32
+-----------------------------------
+total nodes = 9

@@ -433,7 +433,8 @@ a scope hides it from lookup but does not remove it from this list, which
 is what gets written to the symbol file and what the code generator walks
 to reserve storage. Each symbol holds its name, the name used in the
 generated code, whether it is a plain variable or an array, its type, its
-number of elements, its byte offset, its scope and its line.
+number of elements, its byte offset, its scope, its line, and whether it
+has been given a value yet.
 
 The second name is needed because two different blocks can both declare a
 `d`. They are different variables and must not share storage, so the
@@ -463,6 +464,10 @@ that a `nikal` outside any loop has nowhere to jump.
 
 **Error list.** One list of line, column, part and message, filled by all
 the parts, so one run reports every problem instead of only the first.
+The semantic part keeps a second list of the same shape for warnings.
+A warning says the program is suspicious but still legal, such as reading
+a variable before it is given a value, so it is printed but does not stop
+code generation.
 
 ---
 

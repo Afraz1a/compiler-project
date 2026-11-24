@@ -1,0 +1,15 @@
+PARSE TREE
+-----------------------------------
+Program
+    Declare int32 x
+    If
+        Binary < : truth
+            Number 1 : number
+            Number 2 : number
+        Block
+            Set x
+                Number 5 : number
+    Print
+        Name x : int32
+-----------------------------------
+total nodes = 11
