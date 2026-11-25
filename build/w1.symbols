@@ -1,7 +1,0 @@
-NAME , KIND , TYPE , LENGTH , WIDTH , OFFSET , SCOPE , LINE
--------------------------------------------------------------
-x , scalar , int32 , 1 , 4 , 0 , 0 , 1
-y , scalar , int32 , 1 , 4 , 4 , 0 , 2
--------------------------------------------------------------
-total symbols = 2
-total bytes = 8

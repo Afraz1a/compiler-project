@@ -1,9 +1,0 @@
-PARSE TREE
------------------------------------
-Program
-    Array int32 a 3
-    SetItem a
-        Number 5 : number
-        Number 1 : number
------------------------------------
-total nodes = 5
